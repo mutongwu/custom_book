@@ -1,0 +1,161 @@
+.Heidelberg-Book {
+  perspective: 2200px;
+  transform-style: preserve-3d;
+}
+
+.Heidelberg-Book .Heidelberg-Page {
+  transition: transform 0.9s ease;
+}
+
+.Heidelberg-Book:not(.is-ready) * {
+  transition: none !important;
+}
+
+.Heidelberg-Book:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.Heidelberg-Book > .Heidelberg-Spread {
+  display: none;
+}
+
+.Heidelberg-Book > .Heidelberg-Spread:first-child {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+.Heidelberg-Page {
+  position: absolute;
+  width: 50%;
+  min-height: 100%;
+  max-height: 100%;
+  background: black;
+  overflow: hidden;
+  backface-visibility: hidden;
+  transform: rotateY(0);
+}
+
+.Heidelberg-Page:nth-child(2) {
+  float: left;
+  position: relative;
+}
+
+.Heidelberg-Page:nth-child(even) {
+  transform-origin: 100%;
+  left: 0;
+}
+
+.Heidelberg-Page:nth-child(odd) {
+  transform-origin: 0;
+  right: 0;
+  transform: rotateY(-180deg);
+}
+
+.Heidelberg-Page.is-active {
+  z-index: 2;
+}
+
+.Heidelberg-Page.is-active:nth-child(even) {
+  transform: rotateY(10deg);
+}
+
+.Heidelberg-Page.is-active:nth-child(even):hover {
+  transform: rotateY(15deg);
+}
+
+.Heidelberg-Page.is-active:nth-child(odd) {
+  transform: rotateY(-10deg);
+}
+
+.Heidelberg-Page.is-active:nth-child(odd):hover {
+  transform: rotateY(-15deg);
+}
+
+.Heidelberg-Page.is-active:nth-child(odd) ~ .Heidelberg-Page:nth-child(even) {
+  transform: rotateY(180deg);
+}
+
+.Heidelberg-Page.is-active:nth-child(odd) ~ .Heidelberg-Page:nth-child(odd) {
+  transform: rotateY(0);
+}
+
+.Heidelberg-Page.was-active {
+  z-index: 1;
+}
+
+.Heidelberg-Page.is-animating:nth-child(odd) {
+  z-index: 4;
+}
+
+.Heidelberg-Page.is-animating:nth-child(odd) ~ .Heidelberg-Page.is-animating {
+  z-index: 3;
+}
+
+.Heidelberg-Page.is-animating + .Heidelberg-Page:not(.is-animating):nth-child(odd) {
+  z-index: 1;
+}
+
+.no-csstransforms3d .Heidelberg-Page {
+  display: none;
+}
+
+.no-csstransforms3d .Heidelberg-Page.is-active {
+  display: block;
+  position: relative;
+  float: left;
+}
+
+.no-csstransforms3d .Heidelberg-Page.with-Spread.is-active + .Heidelberg-Page.with-Spread.is-active .Heidelberg-Spread {
+  left: -100%;
+}
+
+.Heidelberg-Spread {
+  position: relative;
+  width: 200%;
+}
+
+.Heidelberg-Page.with-Spread:nth-child(odd) .Heidelberg-Spread {
+  left: -100%;
+}
+
+.Heidelberg-Book[data-useragent*='MSIE10'] .Heidelberg-Page {
+  opacity: 0;
+}
+
+.Heidelberg-Book[data-useragent*='MSIE10'] .Heidelberg-Page.is-active {
+  transition: transform 0.9s ease, opacity 0.9s ease;
+  opacity: 1;
+}
+
+.Heidelberg-Book[data-useragent*='MSIE10'] .Heidelberg-Page.was-active {
+  transition-delay: 2s;
+  transition: transform 0.9s ease, opacity 0.9s ease;
+  opacity: 0;
+}
+
+.Heidelberg-Book {
+  width: 1000px;/*574px;*/
+  max-width: 100%;
+  height: 360px;/*215px;*/
+  margin: 0 auto 15px;
+  background: #333;
+}
+
+.Heidelberg-Book:not(.with-Spreads):before {
+  content: 'Click the cover to open';
+  position: absolute;
+  width: 50%;
+  text-align: center;
+  top: 50%;
+  margin-top: -20px;
+  line-height: 22px;
+  font-size: 22px;
+  color: #777;
+}
+
+.Heidelberg-Book img {
+  width: 100%;
+}
