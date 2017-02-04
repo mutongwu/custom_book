@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="import" href="./pub/res.html?__inline">
+</head>
+<body>
+<div class="wrapper">
+    <link rel="import" href="./pub/top.html?__inline">
+
+    <div class="container sendMsgCnt" >
+        <div class="breadNav"><span>首页</span>&gt;<span>发送消息</span></div>
+
+        <div class="contentBox ">
+            <div class="bd">
+                <p class="txt"><i class="icon icon-msg"></i>发送站内消息</p>
+                <form class="ui-form msgForm">
+                    <div class="ui-form-item">
+                        <label class="ui-form-label">接收人：</label>
+                        <div class="ui-form-group">
+                            <input class="ui-input" name="username" placeholder="邮箱/手机号/用户名"/>
+                            <select class="ui-select">
+                                <option>从好友中选择</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ui-form-item">
+                        <label class="ui-form-label">消息内容：</label>
+                        <div class="ui-form-group">
+                            <textarea class="ui-textarea" placeholder="在这里写下你的消息"></textarea>
+                        </div>
+                    </div>
+                    <div class="ui-form-item tc">
+                        <label class="ui-form-label">&nbsp;</label>
+                        <div class="ui-form-group">
+                            <input type="button" class="ui-button ui-button-L" value="发送消息" id="j_sendMsg"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <link rel="import" href="./pub/copyright.html?__inline">
+</div>
+</body>
+</html>

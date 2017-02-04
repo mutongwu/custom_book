@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <link rel="import" href="./pub/res.html?__inline">
+</head>
+<body>
+<div class="wrapper">
+    <link rel="import" href="./pub/top.html?__inline">
+
+    <div class="container addBookCnt" >
+        <div class="breadNav"><span>首页</span>&gt;<span>添加图书</span></div>
+        <div class="hd cf">
+            <h2 class="title tc green">我的书房</h2>
+        </div>
+        <div class="contentBox ">
+            <p><i class="icon icon-tag"></i>
+                输入<a>书背面上的ISBN码</a>，即可添加图书到您的书房中，您可以<a href="download.html" target="_blank">下载书友APP</a>，录入图书更快捷：
+            </p>
+            <form class="ui-form tc addForm">
+                <input type="text" placeholder="ISBN" class="ui-input" />
+                <input type="button" class="ui-button ui-button-L" value="添加" id="j_addBook"/>
+            </form>
+            <p><i class="icon icon-tag"></i> 录入结果如下，您可以删除错误的录入：</p>
+            <div class="bookList">
+                <table class="table">
+                    <thead><tr><th>书名</th><th>ISBN</th><th>状态</th><th>操作</th></tr></thead>
+                    <tbody>
+                        <tr><td>图书名称1</td><td>3456789009876</td>
+                            <td>已识别</td><td><a class="del">放弃添加</a></td>
+                        </tr>
+                        <tr><td>图书名称1</td><td>3456789009876</td>
+                            <td>重复添加</td><td><a class="del">放弃添加</a></td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr><td colspan="4">
+                            <p class="fs12">注：未识别图书也可以添加进书房，24小时内，我们帮你完善图书信息。</p>
+                        </td></tr>
+                    </tfoot>
+                </table>
+            </div>
+            <p class="tc"><input type="button" class="ui-button ui-button-L ui-button-yellow" value="添加图书"/></p>
+        </div>
+    </div>
+    <link rel="import" href="./pub/copyright.html?__inline">
+</div>
+</body>
+</html>

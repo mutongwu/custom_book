@@ -1,0 +1,3 @@
+@echo off
+echo  FIS release ...
+fis3 release  -d ../dist -w
