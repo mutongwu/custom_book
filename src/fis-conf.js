@@ -15,8 +15,8 @@ fis.match('*.scss', {
     rExt: '.css'
 });
 
-fis.media('debug').match('*.{js,css,png}', {
-    useHash: false,
-    useSprite: false,
-    optimizer: null
-});
+// fis.media('debug').match('*.{js,css,png}', {
+//     useHash: false,
+//     useSprite: false,
+//     optimizer: null
+// });

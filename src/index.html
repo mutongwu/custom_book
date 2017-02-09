@@ -8,7 +8,7 @@
     <link rel="import" href="./pub/top.html?__inline">
 
     <div class="container indexCnt">
-        <div class="info">
+<!--         <div class="info">
             <h1>为孩子定制独一无二、珍藏一生的礼物</h1>
             <h2>激发儿童阅读兴趣、培养情商的启蒙绘本</h2>
         </div>
@@ -39,8 +39,8 @@
                     <p>全国范围内，我们都免费配送。输入优惠码，您可以获得特别的优惠。如果是当成礼物送人，我们还特别给您提供精美礼品包装服务。</p>
                 </li>
             </ul>
-        </div>
-        <!-- 轮播图 -->
+        </div> -->
+        <!-- 轮播图 
         <div class="sliderBox">
             <ul class="slider cf">
                 <li class="sliderItem"><a href="#"><img  class="pic" src="images/slider1.jpg"/>
@@ -57,25 +57,62 @@
                 </a></li>
             </ul>
             <div class="sliderNav">
-                <!--<dl>-->
-                <!--<dd class="sliderNavItem active"></dd>-->
-                <!--<dd class="sliderNavItem"></dd>-->
-                <!--<dd class="sliderNavItem"></dd>-->
-                <!--<dd class="sliderNavItem"></dd>-->
-                <!--</dl>-->
+                <dl>
+                <dd class="sliderNavItem active"></dd>
+                <dd class="sliderNavItem"></dd>
+                <dd class="sliderNavItem"></dd>
+                <dd class="sliderNavItem"></dd>
+                </dl>
                 <div class="sliderNavLeft"></div>
                 <div class="sliderNavRight"></div>
             </div>
         </div>
-        <!--END:轮播图 -->
+        END:轮播图 -->
+
+        <div class="sliderBox">
+            <ul class="slider cf">
+                <li class="sliderItem"><a href="#"><img  class="pic" src="http://lorempixel.com/800/400/sports/"/>
+                    <!-- <img class="s-text" src="images/s1_text.png" /> -->
+                </a></li>
+                <li class="sliderItem"><a href="#"><img  class="pic" src="http://lorempixel.com/800/400/food/"/>
+                    <!-- <img class="s-text" src="images/s2_text.png" /> -->
+                </a></li>
+                <li class="sliderItem"><a href="#"><img  class="pic" src="http://lorempixel.com/800/400/people/"/>
+                    <!-- <img class="s-text" src="images/s3_text.png" /> -->
+                </a></li>
+                <li class="sliderItem"><a href="#"><img  class="pic" src="http://lorempixel.com/800/400/cats/"/>
+<!--                     <img class="s-text" src="images/s4_text.png" /> -->
+                </a></li>
+            </ul>
+            <div class="sliderNav">
+                <dl>
+                <dd class="sliderNavItem active"></dd>
+                <dd class="sliderNavItem"></dd>
+                <dd class="sliderNavItem"></dd>
+                <dd class="sliderNavItem"></dd>
+                </dl>
+                <div class="sliderNavLeft"></div>
+                <div class="sliderNavRight"></div>
+            </div>
+        </div>
+
         <div class="userCommentBox">
             <h3>顾客的评价</h3>
-
+            <ul>
+                <li class="item">
+                    sss 2
+                </li>
+            </ul>
         </div>
     </div><!-- END container-->
 
     <link rel="import" href="./pub/copyright.html?__inline">
 </div>
-<script src="js/index.js"></script>
+<script src="./js/common/slider.js"></script>
+<script type="text/javascript">
+    new App.SimpleSlider({
+        $sliderBox: $('.sliderBox')
+    })
+</script>
 </body>
 </html>
