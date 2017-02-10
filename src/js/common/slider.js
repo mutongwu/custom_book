@@ -53,6 +53,15 @@
 	        },"slow",callback);
 	    },
 	    _opacityFx: function(pre, next, callback){
+	        next.css({
+	        	"zIndex": 2,
+	        	"opacity": 0
+	        });
+	        pre.css({
+	        	"zIndex": 1,
+	        	"opacity": 1
+	        });
+
 	        pre.animate({
 	            "opacity": 0
 	        },"slow",function(){
@@ -95,13 +104,14 @@
 	    },
 	    _initWH: function(){
 	        var w0 = this.config.w0 = this.config.$sliderBox.width(); //Math.max($(document.body).width(),980);//
+	        
 	        this.config.$sliderBox.width(w0);
 	        // $items.width(w0).filter(":not(" + curr + ")").css("left", w0 + "px");
 	        // $items.width(w0).filter(":eq("+ curr + ")").css("zIndex",1);
 	        // $slider.width(w0 * num);
 	        this.config.$items.width(w0).filter(":not(" + this.config.curr + ")").css("z-index", 0);
 	        this.config.$items.filter(":eq("+ this.config.curr + ")").css("z-index", 1);
-
+		},
 	    _initEvent: function(){
 	        var _this = this;
             $(window).resize(function(){

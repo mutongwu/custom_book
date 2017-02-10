@@ -207,12 +207,13 @@ input{outline:none;}
     vertical-align:middle;
     cursor:pointer;
     text-align:center;
-    background: #38b906;
-    border:1px solid #9e9e9e;
+    background: #4f8e1b;
+    /*border:1px solid #9e9e9e;*/
+    border:none;
     border-radius: 5px;
 }
-.ui-button-yellow{background:#fcb20a; }
-
+.ui-button-yellow{background:#e8a910; }
+.ui-button-gray{background:#a8a8a8; }
 .ui-button.disable,.ui-button.disable:hover{
     filter:none;
     cursor:default;
@@ -393,6 +394,9 @@ a.ui-button-XL{
 .ui-arrow-box-error{background:#FFEEEE;border-color:#FFE1E1;color:#CB4445;}
 .ui-arrow-box-error .ui-arrow em{color:#FFE1E1;}
 .ui-arrow-box-error .ui-arrow i{color:#FFEEEE;}
+.ui-arrow-box-gray{background:#fff;border-color:#a8a8a8;color:#000;}
+.ui-arrow-box-gray .ui-arrow em{color:#a8a8a8;}
+.ui-arrow-box-gray .ui-arrow i{color:#fff;}
 /*---------------------------------------------*/
 
 /*----------------------简单弹窗--------------------------*/

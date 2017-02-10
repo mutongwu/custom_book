@@ -1,4 +1,5 @@
-body{background: #fff;}
+@import './pure_grid.css';
+body{background-color: #f3efef;}
 img{max-width: 100%;}
 .price,.red{color: #f00;}
 .green{color:#4f8e1b;}
@@ -76,6 +77,23 @@ p.txt{text-indent: 2em;line-height: 1.8;}
 
 .wrapper{font-family: "SimSun";font-size: 12px;color: #282828;}
 
+.ui-arrow-box{
+  &.size-xl{
+    .ui-arrow i,.ui-arrow em{
+      height: 36px; width: 36px; font-size: 36px;line-height:36px;
+    }
+    .ui-arrow-up{
+      margin-left:-18px;top:-19px;
+      i{
+        top: 3px;
+      }
+    }
+    border-width: 2px;
+  }
+  &.border-radius{
+    border-radius: 8px;
+  }
+}
 .topNav{
    background: #ededed;
     .bd{width: 980px;margin: 0 auto; background: #4f8e1b;  }
@@ -158,11 +176,11 @@ p.txt{text-indent: 2em;line-height: 1.8;}
   }
 }
 .container{
-  width: 980px;margin:  0 auto;font-size: 14px;
+  width: 1280px;margin:  0 auto;font-size: 14px;
 }
 .sliderBox{ position: relative;width: 100%;overflow: hidden;z-index: 1;
   .slider{position:relative;overflow: hidden;width: 100%;height: 433px;
-    .sliderItem{position: absolute;top:0;left:0;width: 100%;height: 100%;
+    .sliderItem{position: absolute;top:0;left:0;width: 100%;height: 100%;overflow: hidden;
       .pic{max-width: 100%;width: 100%;min-height: 433px;}
       .s-text{position: absolute;left:0;right:0;margin:0 auto;bottom:20%;}
     }
@@ -181,58 +199,62 @@ p.txt{text-indent: 2em;line-height: 1.8;}
 }
 
 .indexCnt{
-  .introBox{
-    position:relative;z-index:2;width: 820px;margin:-40px auto 0;padding-bottom: 15px;
-    li{float: left;width: 220px;min-height:155px;
-      &.arrow{width: 80px;background: url(../images/stepArrow.jpg) no-repeat 50% 50%;}
+  .infoBox{
+    h1{font-size:38px;color:#f81157;}
+    h2{font-size:24px;color:#747474;}
+  }
+  .nameFormBox{
+    >h3{font-size:24px;border-bottom:5px solid #e8a910;}
+    .fieldBox{padding: 30px 0 50px;display:inline-block;}
+    .ui-input{
+      height: 36px;
+      border: 2px solid #a8a8a8;
+      font-size: 24px;
+    }
+    .sex{
+      width: 100px;
+    }
+    .item{margin-right:20px;}
+  }
+  .featureBox{
+    background: #fff;
+    .item{
+      h3{color: #e8a910;margin-top:50px;font-size:30px;}
+      p{font-family:"SimSun";font-size:20px;text-indent:2em;text-align:justify;margin:30px 50px 50px;}
     }
   }
-  .introDesc{
-    border-top: 1px solid #ddd;
-    padding:20px 0;
-    .bd{
-      width: 600px;margin: 0 auto;
-      .ui-button{margin-top:10px;}
+  .userCommentBox{
+    padding: 0px 90px 90px;
+    .slider{
+      height: 530px;
     }
-  }
-
-
-  .mainContent{
-    border-top: 1px solid #ddd;
-    padding-top: 10px;
-    .title{color:#4f8e1b;padding-bottom:8px;font-size: 16px;}
-    .imgText{
-      .textBox{
-        .subject{position: relative;margin-top: 5px;
-          h4{font-weight: normal;margin-bottom: 10px;}
-          .text{font-size: 12px;height:72px;overflow: hidden;}
-          .date{position: absolute;right:0;bottom:0;font-size: 12px;}
-        }
-        .cover{width: 80px;height:116px;margin-right:10px;}
+    .title{
+      font-size: 30px;
+      font-weight: bold;
+      margin: 30px auto;
+    }
+    .commentItem{
+      width: 420px;
+      height: 508px;
+      padding: 20px 40px 0;
+      border: 1px solid #a8a8a8;
+      margin-right: 96px;
+      float: left;
+      &:nth-of-type(even){
+        margin-right: 0;
       }
     }
-
-    .activity{width:500px;padding:0 10px;
-      .listBox{border-right:1px solid #ededed;padding-right:20px;}
-      .subject{height: 120px;}
+    .uPic{
+      width: 150px;height: 150px;border-radius:150px;
     }
-    .story{width: 460px;
-      .imgText{border: none;
-        .relationship{font-size:16px;}
-      }
-      .subject{height: 40px;}
+    .name{
+      color: #d8245b;font-size:30px;
     }
-
-    .salonBox{
-        clear: both;
-        .title{color: #000;font-size: 24px;margin-bottom: 25px;}
-        .list{
-            margin-left: -40px;
-            margin-bottom: 50px;
-            li{width: 200px;margin-left: 50px;
-              p{margin-top: 10px;}
-            }
-        }
+    .text{
+      text-indent: 2em;
+      text-align: justify;
+      font-size: 22px;
+      margin-top: 30px
     }
   }
 }
