@@ -13,16 +13,52 @@
             <h2 class="tc">激发儿童阅读兴趣、培养情商的启蒙绘本</h2>
         </div>
         <div class="bookSample">
-            
+            <link rel="import" href="./pub/bookfx.html?__inline">
         </div>
-        <div class="nameFormBox">
+        <div class="nameFormBox" id="j_nameFormBox">
             <h3>输入小朋友的名字，开启神奇之旅</h3>
             <form class="nameForm tc">
                 <div class="fieldBox cf">
-                    <input type="text" name="cn_name" placeholder="中文名字"  class="fl item tc ui-input" />
-                    <input type="text" name="py_name" placeholder="名字拼音"  class="fl item tc ui-input" />
-                    <div class="fl item sex ui-button ui-button-XL">男孩</div>
-                    <div class="fl item sex ui-button ui-button-gray ui-button-XL">女孩</div>
+                    <input type="text" name="cn_name" placeholder="中文名字"  class="fl item tc ui-input" maxlength="16" />
+                    <input type="text" name="py_name" placeholder="名字拼音"  class="fl item tc ui-input" maxlength="16" />
+                    <div class="fl item charatorBox">
+                        <div class="sex ui-button ui-button-XL">男孩</div>
+                        <div class="charatorPopBox ui-arrow-box ui-arrow-box-gray border-radius size-xl">
+                            <div class="contentBox cf">
+                                <div class="picBox fl active">
+                                    <img class="charator" src="./images/core/boy1.jpg"/>
+                                </div>
+                                <div class="picBox fl ">
+                                    <img class="charator" src="./images/core/boy2.jpg"/>
+                                </div>
+                                <div class="picBox fl ">
+                                    <img class="charator" src="./images/core/boy3.jpg"/>
+                                </div>
+                            </div>
+                            <div class="ui-arrow ui-arrow-up">
+                               <em>◆</em><i>◆</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fl item charatorBox">
+                        <div class="sex ui-button ui-button-gray ui-button-XL">女孩</div>
+                        <div class="charatorPopBox ui-arrow-box ui-arrow-box-gray border-radius size-xl">
+                            <div class="contentBox cf">
+                                <div class="picBox fl active">
+                                    <img class="charator" src="./images/core/girl1.jpg"/>
+                                </div>
+                                <div class="picBox fl ">
+                                    <img class="charator" src="./images/core/girl2.jpg"/>
+                                </div>
+                                <div class="picBox fl ">
+                                    <img class="charator" src="./images/core/girl3.jpg"/>
+                                </div>
+                            </div>
+                            <div class="ui-arrow ui-arrow-up">
+                               <em>◆</em><i>◆</i>
+                            </div>
+                        </div>    
+                    </div>
                     <input type="button" class="fl ui-button ui-button-yellow ui-button-XL submit_btn" value="马上定制绘本" />
                 </div>
             </form>
@@ -129,12 +165,6 @@
 
     <link rel="import" href="./pub/copyright.html?__inline">
 </div>
-<script src="./js/common/slider.js"></script>
-<script type="text/javascript">
-    new App.SimpleSlider({
-        $sliderBox: $('.j_sliderBox'),
-        auto: false
-    })
-</script>
+<script src="./js/index.js"></script>
 </body>
 </html>

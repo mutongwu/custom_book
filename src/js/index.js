@@ -1,101 +1,68 @@
 
 
 $(function () {
-    var $sliderBox = $('.sliderBox'),
-        $slider = $sliderBox.children('.slider'),
-        $items = $slider.children('.sliderItem'),
-        w0 = 0,
-        num = $items.length;
+    var nameForm = {
+        $box: $('#j_nameFormBox'),
+        init: function(){
+            var _this = this;
+            var charatorBtns = this.$box.find('.charatorBox > .sex');
+            var popLayers = this.$box.find('.charatorBox > .charatorPopBox');
+            var activePop = null;
 
-    var auto = false;
-    var curr = 0;
-    var direction = 1;
-    var timer = null;
-    var duration = 7000;
+            // hide all
+            $(document).on('click',function(event){
+                if(!$(event.target).is(charatorBtns) && !$(event.target).is(popLayers)){
+                    popLayers.hide();
+                }
+            });
 
-    function initWH(){
-        w0 = Math.max($(document.body).width(),980);//$slider.width();
-        $sliderBox.width(w0);
-        // $items.width(w0).filter(":not(" + curr + ")").css("left", w0 + "px");
-        // $items.width(w0).filter(":eq("+ curr + ")").css("zIndex",1);
-        // $slider.width(w0 * num);
-
-        $items.width(w0).filter(":not(" + curr + ")").css("opacity",0);
-        $items.filter(":eq("+ curr + ")").css("opacity",1);
-    }
-
-    initWH();
-
-
-
-    var animateLock = false;
-    function animateFn(nextIdx){
-        if(animateLock){
-            return;
+            // 男女角色选择
+            charatorBtns.on('click',function(){
+                var el = $(this),
+                    popBox = el.siblings('.charatorPopBox');
+                if(el.hasClass('ui-button-gray')){
+                    el.removeClass('ui-button-gray');
+                    charatorBtns.not(el).addClass('ui-button-gray');
+                    popLayers.hide();
+                    popBox.show();
+                    activePop = popBox[0];
+                }else{
+                    popBox.show();
+                    activePop = popBox[0];
+                }
+            });
+            // 角色人物选择
+            popLayers.on('click','.picBox',function(){
+                $(this).addClass('active').siblings('.picBox').removeClass('active');
+                popLayers.hide();
+            });
+            
         }
-        animateLock = true;
+    };
 
-        nextIdx = typeof nextIdx === "undefined" ? (curr + direction + num)%num : nextIdx;
-
-        var pre = $items.eq(curr),
-            next = $items.eq(nextIdx);
-
-        
-        // next.css("left" , w0 * direction);
-        pre.animate({
-            // "left": -w0 * direction
-            "opacity": 0
-        },"slow",function(){
-            // pre.css("left",w0);
-        });
-
-        next.animate({
-            // "left": 0
-            "opacity": 1
-        },"slow",function(){
-            animateLock = false;
-            curr = nextIdx;
-            $sliderBox.find(".sliderNavItem").eq(curr).addClass("active").siblings(".sliderNavItem").removeClass("active");
-        });
-
-        activeTimer();
-    }
-
-    function activeTimer(){
-
-        if(!timer && auto){
-            timer = setInterval(animateFn,duration)  ;
+    var bookFx = {
+        instance: null,
+        init: function(){
+            this.instance = new Heidelberg($('#j_bookfxCnt'), {
+              hasSpreads: true,
+              onPageTurn: function(el, els) {
+                console.log('Page turned');
+              },
+              onSpreadSetup: function(el) {
+                console.log('Spread setup');
+              }
+            });
         }
-    }
-
-    function clearTimer(){
-        if(timer){
-            clearInterval(timer);
-            timer = null;
+    };
+    var indexPage = {
+        init: function(){
+            // 轮播
+            new App.SimpleSlider({
+                $sliderBox: $('.j_sliderBox')
+            });
+            nameForm.init();
+            bookFx.init();
         }
-    }
-    $(window).resize(function(){
-        initWH();
-    });
-
-    $sliderBox.on("click",".sliderNavLeft",function(){
-        direction = -1;
-        clearTimer();
-        animateFn();
-    }).on("click",".sliderNavRight",function(){
-        direction = 1;
-        clearTimer();
-        animateFn();
-    }).on("click",".sliderNavItem",function(){
-        if($(this).hasClass("active")){
-            return;
-        }
-        var idx = $(this).index();
-
-        $(this).addClass("active").siblings(".sliderNavItem").removeClass("active");
-
-        animateFn(idx);
-    });
-
-    activeTimer();
+    };
+    indexPage.init();
 });
