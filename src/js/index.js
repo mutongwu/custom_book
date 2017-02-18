@@ -61,7 +61,7 @@ $(function () {
                 $sliderBox: $('.j_sliderBox')
             });
             nameForm.init();
-            bookFx.init();
+            // bookFx.init();
         }
     };
     indexPage.init();

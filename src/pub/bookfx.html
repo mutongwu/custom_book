@@ -1,103 +1,58 @@
 <script>
 	var basePath = 'images/sample/'
-	var allData = {
+	var globalAllData = {
 		'A':[{
-			id: '4',
-			img: 'A_Angel_s_Page_1.jpg',
+			id: 'a1',
+			thumb: 'a.jpg',
+			pic:['A_Angel_s_Page_1.jpg','A_Angel_s_Page_2.jpg'],
 			name: '大虾4'
 		},{
-			id: '3',
-			img: 'A_Angel_s_Page_3.jpg',
+			id: 'a2',
+			thumb: 'b.jpg',
+			pic:['A_Aardvark_s_Page_1.jpg','A_Aardvark_s_Page_2.jpg'],
 			name: '大虾3'
 		}],
-		'Z':[,{
-			id: '1',
-			img: 'S_Squid_s_Page_1.jpg',
+		'Z':[{
+			id: 'z1',
+			thumb: 'a.jpg',
+			pic: ['S_Squid_s_Page_1.jpg','S_Squid_s_Page_2.jpg'],
 			name: '大虾1'
 		}],
-		'H':[,{
-			id: '2',
-			img: 'S_Squid_s_Page_2.jpg',
+		'H':[{
+			id: 'h2',
+			thumb: 'a.jpg',
+			pic: ['F_Frog_s_Page_1.jpg','F_Frog_s_Page_2.jpg'],
 			name: '大虾2'
 		}],
-		'N':[,{
-			id: '5',
-			img: 'F_Frog_s_Page_1.jpg',
+		'N':[{
+			id: 'n1',
+			thumb: 'b.jpg',
+			pic: ['S_Squid_s_Page_1.jpg','S_Squid_s_Page_2.jpg'],
 			name: '大虾5'
 		}],
-		'G':[,{
-			id: '6',
-			img: 'F_Frog_s_Page_2.jpg',
+		'G':[{
+			id: 'g1',
+			thumb: 'a.jpg',
+			pic: ['F_Frog_s_Page_1.jpg','F_Frog_s_Page_2.jpg'],
 			name: '大虾6'
 		}]
 	}
-	var bookData = [
-		{id: '1',ch:'Z'},{id: '3',ch:'H'},{id: '4',ch:'A'}
-		{id: '5',ch:'N'},{id: '6',ch:'G'}
+	var bookData = {
+		nameStr: 'zhang',
+		sex: 1,// 男孩
+		list:[
+			{id: 'z1',ch:'Z'},{id: 'h2',ch:'H'},{id: 'a1',ch:'A'},
+			{id: 'n1',ch:'N'},{id: 'g1',ch:'G'}
 		]
+	};
+		
 </script>
-<div class="bookfxBox">
-	<div class="hd">
-		<ul class="lettersBox tc cf">
-			<li class="letterItem cover"><div class="coverDot"></div></li>
-			<li class="letterItem tc " data-id="1"><div class="charBox"><strong>Z</strong></div>
-				<div class="picBox"><img src="./images/sample/a.jpg" class="pic"/></div><input type="button" class="ui-button change_btn" value="更改" />
-			</li>
-			<li class="letterItem tc" data-id="2"><div class="charBox"><strong>H</strong></div>
-				<div class="picBox"><img src="./images/sample/b.jpg" class="pic"/></div>
-			</li>
-			<li class="letterItem tc active" data-id="3"><div class="charBox"><strong>A</strong></div>
-				<div class="picBox"><img src="./images/sample/b.jpg" class="pic"/></div>
-				<div class="picPopBox ui-arrow-box ui-arrow-box-gray border-radius size-xl">
-                    <div class="contentBox">
-                        <h3 class="tc">选择另外一个角色</h3>
-                        <ol class="roleList">
-                        	<dd class="roleItem disable cf">
-                        		<img src="./images/sample/b.jpg" class="pic fl"/>
-                        		<strong>小名</strong>
-                        		<input type="button" class="ui-button ui-button-L fr useBtn" value="已选" />
-                        	</dd>
-                        	<dd class="roleItem cf">
-                        		<img src="./images/sample/b.jpg" class="pic fl"/>
-                        		<strong>小名</strong>
-                        		<input type="button" class="ui-button ui-button-L fr useBtn" value="可选" />
-                        	</dd>
-                        </ol>
-                    </div>
-                    <div class="ui-arrow ui-arrow-up">
-                       <em>◆</em><i>◆</i>
-                    </div>
-                </div>    
-			</li>
-			<li class="letterItem tc" data-id="4"><div class="charBox"><strong>N</strong></div>
-				<div class="picBox"><img src="./images/sample/a.jpg" class="pic"/></div>
-			</li>
-			<li class="letterItem tc" data-id="5"><div class="charBox"><strong>G</strong></div>
-				<div class="picBox"><img src="./images/sample/a.jpg" class="pic"/></div>
-			</li>
-			<li class="letterItem cover back"><div class="coverDot"></div></li>
-		</ul>
-	</div>
-	<div class="bd">
-		<div class="Heidelberg-Book with-Spreads">
-		    <div class="Heidelberg-Spread">
-		      <img src="images/sample/A_Angel_s_Page_1.jpg" />
-		    </div>
-		    <div class="Heidelberg-Spread">
-		      <img src="images/sample/A_Angel_s_Page_2.jpg" />
-		    </div>
-		    <div class="Heidelberg-Spread">
-		      <img src="images/sample/F_Frog_s_Page_1.jpg" />
-		    </div>
-		    <div class="Heidelberg-Spread">
-		      <img src="images/sample/F_Frog_s_Page_2.jpg" />
-		    </div>
-		    <div class="Heidelberg-Spread">
-		      <img src="images/sample/S_Squid_s_Page_1.jpg" />
-		    </div>
-		    <div class="Heidelberg-Spread">
-		      <img src="images/sample/S_Squid_s_Page_2.jpg" />
-		    </div>
-		 </div>
-	</div>
-</div>
+<div id="j_bookCnt"></div>
+<script type="text/javascript">
+$(function function_name(argument) {
+	new App.BookFx({
+		$cnt: $('#j_bookCnt'),
+		data: bookData
+	})
+})
+</script>

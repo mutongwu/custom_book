@@ -90,6 +90,9 @@
 
       els.pages.eq(initialActivePage).add(
         els.pages.eq(initialActivePage + 1)).addClass('is-active');
+      if(initialActivePage === 0){
+        this.el.addClass('at-front-cover')
+      }
     }
     else {
       if (options.initialActivePage !== 0) {
@@ -181,6 +184,18 @@
     var isFirstPage = els.pages.first().index() == index.activeLeft && direction == 'back';
     var isLastPage  = els.pages.last().index() == index.activeRight && direction == 'forwards';
 
+    // console.log(els.pages.first().index() , index.activeLeft)
+    if(index.activeLeft - els.pages.first().index() <=  2 && direction == 'back' ){
+      this.el.addClass('at-front-cover');
+    }else{
+      this.el.removeClass('at-front-cover');
+    }
+
+    if(els.pages.last().index() - index.activeRight <=  2 && direction == 'forwards'){
+      this.el.addClass('at-back-cover');
+    }else{
+      this.el.removeClass('at-back-cover');
+    }
     if(isFirstPage || isLastPage) {
       return;
     }

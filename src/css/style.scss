@@ -199,6 +199,7 @@ p.txt{text-indent: 2em;line-height: 1.8;}
 }
 .bookfxBox{
   padding: 20px 0;
+  overflow: hidden; 
   .lettersBox{
     .letterItem{
       display: inline-block;
@@ -284,9 +285,10 @@ p.txt{text-indent: 2em;line-height: 1.8;}
                 line-height: 80px;
                 font-size: 18px;
               }
-              .useBtn{
+              .ui-button{
                 position: relative;
                 top: 20px;
+                &.disable{cursor:not-allowed;}
               }
               &.disable{
                 cursor:not-allowed;
@@ -301,9 +303,38 @@ p.txt{text-indent: 2em;line-height: 1.8;}
     }
   }
   .bd{
-    padding-top: 70px;
+    position: relative;
+    margin: 70px auto 0;
+    min-height: 360px;
+    width: 1000px;
+    .Heidelberg-Book{
+      position: absolute;
+      left: 0;
+      -webkit-transition: left .7s;
+      transition: left .7s;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      
+      &.at-front-cover{
+        left: -25%;
+        .Heidelberg-Page:nth-of-type(2){
+          display: none;
+        }
+      }
+      &.at-back-cover{
+        left: 25%;
+        // .Heidelberg-Page{
+        //   display: none;
+        // }
+        .Heidelberg-Page:nth-last-of-type(2){
+          display: none;
+        }
+      }
+    }
   }
 }
+
 .indexCnt{
   .infoBox{
     h1{font-size:38px;color:#f81157;}
