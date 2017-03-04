@@ -652,7 +652,7 @@ $.extend(App,{
  * @author shawn.
  * @example
  *
- * var dtPicker = new DatePicker({
+ * var dtPicker = new App.DatePicker({
           el: $('#box')
 //        hasTime: true,
 //        format: "YYYY-MM-DD hh:mm:ss",
@@ -661,7 +661,7 @@ $.extend(App,{
 //        maxVal:'2013-01-01'
     });
  */
-function DatePicker(cfg){
+App.DatePicker = function DatePicker(cfg){
     $.extend(this,{
         config: {},
         minTime: null,
@@ -678,7 +678,7 @@ function DatePicker(cfg){
     this.init(cfg);
 }
 
-$.extend(DatePicker.prototype,{
+$.extend(App.DatePicker.prototype,{
 
 
     defaultCfg: {
@@ -1054,7 +1054,7 @@ $.extend(DatePicker.prototype,{
 });
 
 
-function PageBar(cfg){
+App.PageBar = function PageBar(cfg){
     $.extend(this,{
         config:{},
 
@@ -1065,11 +1065,12 @@ function PageBar(cfg){
     this.init(cfg);
 }
 
-$.extend(PageBar.prototype, {
+$.extend(App.PageBar.prototype, {
 
     defaultCfg: {
         el : null,
-
+        //自定义样式
+        cls: '',
         //对齐方式：tc tl tr
         align:'tc',
 
@@ -1117,7 +1118,7 @@ $.extend(PageBar.prototype, {
             this.config.el = $("#" + this.config.el);
         }
 
-        this.config.el.html('<div class="ui_pageBar"></div>');
+        this.config.el.html('<div class="ui_pageBar ' + this.config.cls + '"></div>');
         this.domEl = this.config.el.find('.ui_pageBar').addClass(this.config.align);
 
         this.setList(this.config.page);

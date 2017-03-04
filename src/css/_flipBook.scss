@@ -1,0 +1,92 @@
+.flipBook{
+	// position: relative;
+	// width: 1000px;
+	// height: 400px;
+	// margin: auto;
+	position: absolute;
+    left: 0;
+    -webkit-transition: left .7s;
+    transition: left .7s;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+	.flipItem{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 50%;
+		height: 100%;
+		overflow: hidden;
+		// z-index: -1;
+		opacity: 0;
+		&.prevNextItem{
+			opacity: 1;
+		}
+		&.active{
+			z-index: 1;opacity: 1;
+		}
+		&.next{
+			z-index: 2;opacity: 1;
+		}
+		&.fliping{
+			z-index: 3;opacity: 1;
+		}
+		.picBox{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 200%;
+			height: 100%;
+			background-position: 0 0 ;
+			background-repeat:  no-repeat;
+			transition: transform 0.9s ease;
+			.pic{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+		}
+		&.evenItem{
+			left: 50%;
+			.picBox{
+				transform-origin: 0;
+				.pic{
+					left: auto;
+					right: 50%;
+				}
+			}
+		}
+	}
+}
+.flipBook{
+	perspective: 2200px;
+  	transform-style: preserve-3d;
+  	&.collapseCover{
+		&.at-front-cover{
+			left: -25%;
+			// .flipItem:nth-of-type(1) {
+			//   display: none;
+			// }
+		}
+		&.at-back-cover{
+			left: 25%;
+			// .flipItem:last-of-type {
+			//   display: none;
+			// }
+		}
+	}
+	.active:hover{
+		.picBox{
+			transform: rotateY(10deg);
+		}
+	}
+	.evenItem:hover{
+		.picBox{
+			transform: rotateY(-10deg);
+		}
+	}
+
+}

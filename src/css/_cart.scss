@@ -1,0 +1,45 @@
+.cartCnt{
+	>.section{
+		margin: 30px auto;
+		background: #fff;
+		padding: 2% 10%;
+		border:1px solid $border-color;
+
+		h3{font-size:24px;}
+	}
+	.adviceBox{
+		color: #787272;
+		font-size: 24px;
+		.moreBtn{
+			margin-top: 20px;
+		}
+	}
+	.addressBox{
+		.addAddress{
+			.ui-form{
+				width: 600px;
+				margin: 20px auto;
+			}
+			.address{width: 504px;}
+		}
+	}
+	.priceBox{
+		h3{margin-bottom: 30px;}
+		p{
+			font-size: 18px;margin-bottom: 10px;
+		}
+		.icon-question{position: relative;top: -5px;margin-left: 10px;cursor: pointer;}
+	}
+}
+.cartItemCnt{
+	.innerBox{
+		border: 1px solid $border-color;
+		border-radius: 5px;
+		background: #fff;
+		padding: 0 2%;
+		.bookList .item{border:none;border-bottom: 1px solid $border-color;border-radius: 0;}	
+		.bookEdit{border-bottom: 1px solid $border-color;}
+		.memoPicBox{border:none;border-bottom: 1px solid $border-color;}
+		.btnBox {margin: 30px auto 60px;}
+	}
+}

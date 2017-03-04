@@ -1,9 +1,9 @@
 (function(mod){
-	function slider(cfg){
+	function SimpleSlider(cfg){
 	    this.init(cfg);
 	    return this;
 	}
-	$.extend(slider.prototype,{
+	$.extend(SimpleSlider.prototype,{
 		defaultCfg: {
 	        $sliderBox: null,
 	        effect: 'opacity',
@@ -142,5 +142,5 @@
 	});
 
 
-	mod.SimpleSlider = slider;
+	mod.SimpleSlider = SimpleSlider;
 })(window.App)

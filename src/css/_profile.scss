@@ -1,0 +1,27 @@
+.accountCnt{
+    width: 1000px;
+    .bd{width:650px;margin:0 auto;}
+    .accountForm{
+        .ui-input{width:400px;}
+        .ui-select{width: 133px;}
+        .ui-textarea{width: 400px;}
+        .ui-form-group{
+          label{display: inline-block;margin-right:20px;}
+        }
+
+        .uploadCnt{
+            position: relative;margin-left: 50px;cursor: pointer;
+            .uploadFile{
+              position:absolute;display:block;top:0;left:0;width:100%;height:100%;opacity: 0;cursor: pointer;
+            }
+        }
+
+    }
+    &.privacyCnt{
+        .ui-form-label{width: 120px;}
+        .ui-form-item{border-bottom: 1px dotted #9e9e9e;padding-bottom: 20px;}
+        .ui-form-group{margin-left: 140px;
+            .btnBox{margin-top: 15px;}
+        }
+    }
+}

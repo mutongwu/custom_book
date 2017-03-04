@@ -1,0 +1,14 @@
+.couponCodeCnt{
+	width: 980px;
+	.agencyIntro{font-size: 18px;text-indent: 2em;padding: 20px 0;}
+	.applyType{display: inline-block;}
+}
+.applyCnt{
+	width: 980px;
+	.applyForm{width: 600px;display: inline-block;
+		.ui-form-label{width: 120px;
+			em{color: #f00;font-weight: bold;}
+		}
+		.ui-form-group{margin-left: 140px;}
+	}
+}

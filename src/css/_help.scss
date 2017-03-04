@@ -1,0 +1,28 @@
+
+.helpCnt{
+  width: 980px;
+  >.contentBox{
+    .quickTag{
+        .tag{float: none !important;width: 100% !important;
+            a{display: block;
+              em{margin-left: 5px;}
+            }
+        }
+    }
+    .content{
+        h3.title{margin-bottom: 15px;}
+    }
+  }
+
+  .helpList{
+    margin: 60px;
+    .helpItem{list-style-type: disc;margin-bottom: 15px;
+        a{display: block;}
+        .desc{display: none;}
+        &.active{
+          .desc{display: block;}
+        }
+
+    }
+  }
+}

@@ -1,0 +1,16 @@
+.orderCnt{
+	margin: 0 4%;
+	.couponInfo{
+		padding:0 20% 20px 5%;
+		margin-bottom: 10px;
+		border-bottom: 3px solid $border-color;
+	}
+}
+.orderdetailCnt{
+	h1{margin: 20px auto;}
+	.orderInfo{
+		padding:20px 10%;
+		border-top: 1px solid $border-color;
+		.item{margin-bottom: 10px;}
+	}
+}

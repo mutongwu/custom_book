@@ -1,6 +1,7 @@
 .Heidelberg-Book {
   perspective: 2200px;
   transform-style: preserve-3d;
+  /*-ms-transform:perspective(400px);*/
 }
 
 .Heidelberg-Book .Heidelberg-Page {
@@ -34,8 +35,10 @@
   max-height: 100%;
   background: black;
   overflow: hidden;
+  transform:rotateY(0);
+  /*-ms-transform: perspective(2000px)  rotateY(0);*/
   backface-visibility: hidden;
-  transform: rotateY(0);
+  -ms-backface-visibility: visible;
 }
 
 .Heidelberg-Page:nth-child(2) {
@@ -51,7 +54,8 @@
 .Heidelberg-Page:nth-child(odd) {
   transform-origin: 0;
   right: 0;
-  transform: rotateY(-180deg);
+  transform:rotateY(-180deg);
+  /*-ms-transform: perspective(2000px) rotateY(-180deg);*/
 }
 
 .Heidelberg-Page.is-active {
@@ -59,27 +63,29 @@
 }
 
 .Heidelberg-Page.is-active:nth-child(even) {
-  transform: rotateY(10deg);
+  transform:rotateY(10deg);
 }
 
 .Heidelberg-Page.is-active:nth-child(even):hover {
   transform: rotateY(15deg);
+  /*-ms-transform: perspective(2000px) rotateY(15deg);*/
 }
 
 .Heidelberg-Page.is-active:nth-child(odd) {
-  transform: rotateY(-10deg);
+  transform:rotateY(-10deg);
 }
 
 .Heidelberg-Page.is-active:nth-child(odd):hover {
-  transform: rotateY(-15deg);
+  transform:rotateY(-15deg);
+  /*-ms-transform:perspective(2000px) rotateY(-15deg);*/
 }
 
 .Heidelberg-Page.is-active:nth-child(odd) ~ .Heidelberg-Page:nth-child(even) {
-  transform: rotateY(180deg);
+  transform:rotateY(180deg);
 }
 
 .Heidelberg-Page.is-active:nth-child(odd) ~ .Heidelberg-Page:nth-child(odd) {
-  transform: rotateY(0);
+  transform:rotateY(0);
 }
 
 .Heidelberg-Page.was-active {
@@ -88,6 +94,7 @@
 
 .Heidelberg-Page.is-animating:nth-child(odd) {
   z-index: 4;
+
 }
 
 .Heidelberg-Page.is-animating:nth-child(odd) ~ .Heidelberg-Page.is-animating {
@@ -144,7 +151,7 @@
   /*background: #333;*/
 }
 
-.Heidelberg-Book:not(.with-Spreads):before {
+/*.Heidelberg-Book:not(.with-Spreads):before {
   content: 'Click the cover to open';
   position: absolute;
   width: 50%;
@@ -154,7 +161,7 @@
   line-height: 22px;
   font-size: 22px;
   color: #777;
-}
+}*/
 
 .Heidelberg-Book img {
   width: 100%;
