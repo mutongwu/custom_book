@@ -10,7 +10,7 @@
 	        thumbBase: './images/sample/',
 	        picBase: './images/sample/'
 	    },
-	    _activeIdx: 0,
+	    _activeIdx: 0, // 当前选择的字母/封面元素索引。
 	    _btnTpl: '<input type="button" class="ui-button change_btn" value="更改" />',
 	    _popTpl: (function(){
 	    	return [
@@ -37,7 +37,7 @@
 				'</div> '
 	    	].join('');
 	    })(),
-	    _baseTpl: (function(){
+	    _baseTpl: function(){
 	    	return [
 				'<div class="bookfxBox">',
 				'    <div class="hd">',
@@ -53,7 +53,59 @@
 				'        </ul>',
 				'    </div>',
 				'    <div class="bd">',
-				'        <div class="Heidelberg-Book with-Spreads ">',
+						this._getBookTpl(),
+				'    </div>',
+				'</div>'
+	    	].join('')
+	    },
+	    init: function(cfg){
+	        this.config = $.extend({},this.defaultCfg,cfg);
+	        this._initData();
+	        this._initDom();
+	        this._initEvent();
+	        this.start();
+	    },
+	    _isIE: function(){
+	    	return !!window.ActiveXObject || "ActiveXObject" in window;
+	    },
+	    _getBookTpl: function(){
+	    	return this._isIE() ? [
+	    		'        <div class="flipBook j_bookFx">',
+				'            <div class="flipItem j_flipItem">',
+				'				<div class="picBox">',
+				'              		<img src="images/sample/Front.jpg" class="pic"/>',
+				'            	</div>',
+				'            </div>',
+				'            <div class="flipItem j_flipItem">',
+				'				<div class="picBox">',
+				'              		<img src="images/sample/Intro_s_Page_1.jpg" class="pic"/>',
+				'            	</div>',
+				'            </div>',
+				'            {{each list as item}}',
+				'            <div class="flipItem j_flipItem">',
+				'				<div class="picBox">',
+				'              		<img src="./images/sample/{{item.pic[0]}}"  class="pic"/>',
+				'            	</div>',
+				'            </div>',
+				'            <div class="flipItem j_flipItem">',
+				'				<div class="picBox">',
+				'              		<img src="./images/sample/{{item.pic[1]}}"  class="pic"/>',
+				'            	</div>',
+				'            </div>',
+				'            {{/each}}',
+				'            <div class="flipItem j_flipItem">',
+				'				<div class="picBox">',
+				'              		<img src="images/sample/Outro_s_Page_1.jpg" class="pic"/>',
+				'            	</div>',
+				'            </div>',
+				'            <div class="flipItem j_flipItem">',
+				'				<div class="picBox">',
+				'              		<img src="images/sample/Back.jpg" class="pic"/>',
+				'            	</div>',
+				'            </div>',
+				'         </div>',
+	    	].join(''):[
+				'        <div class="Heidelberg-Book with-Spreads j_bookFx">',
 				'            <div class="Heidelberg-Spread">',
 				'              <img src="images/sample/Front.jpg" />',
 				'            </div>',
@@ -75,18 +127,8 @@
 				'              <img src="images/sample/Back.jpg" />',
 				'            </div>',
 				'         </div>',
-				'    </div>',
-				'</div>'
-	    	].join('')
-	    })(),
-	    init: function(cfg){
-	        this.config = $.extend({},this.defaultCfg,cfg);
-	        this._initData();
-	        this._initDom();
-	        this._initEvent();
-	        this.start();
+	    	].join('');
 	    },
-
 	    _initData: function(){
 	    	var bookData = this.config.data;
 	    	var globalData = window.globalAllData;
@@ -99,9 +141,9 @@
 	    	});
 	    },
 	    _initDom: function(){
-	    	this.config.$cnt.html(template.compile(this._baseTpl)(this.config.data));
+	    	this.config.$cnt.html(template.compile(this._baseTpl())(this.config.data));
 	    	this.config.$lettersBox = this.config.$cnt.find('.lettersBox');
-	        this.config.$bookBox = this.config.$cnt.find('.Heidelberg-Book');
+	        this.config.$bookBox = this.config.$cnt.find('.j_bookFx');
 	        this.config.$lettersBox.find('.letterItem').eq(0).addClass('active');
 	    },
 
@@ -148,11 +190,13 @@
 	    	}.bind(this));
 	    	
 	    	el.find('.pic').attr('src', this.config.thumbBase + item.thumb);
-	    	var rs = this.config.$bookBox.find('.Heidelberg-Page').filter(function(index){
+	    	var rs = this.config.$bookBox.find('.Heidelberg-Page,.j_flipItem').filter(function(index){
 	    		return (index === _this._activeIdx*4  || index === _this._activeIdx*4 + 1);
+	    		
 	    	}).find('img').attr('src',this.config.picBase + item.pic[0]);
-	    	this.config.$bookBox.find('.Heidelberg-Page').filter(function(index){
+	    	this.config.$bookBox.find('.Heidelberg-Page,.j_flipItem').filter(function(index){
 	    		return (index === _this._activeIdx*4 + 2 || index === _this._activeIdx*4 + 3);
+
 	    	}).find('img').attr('src',this.config.picBase + item.pic[1]);
 	    },
 	    _getOptions: function(ch){
@@ -162,7 +206,7 @@
 	    _showOptions: function(){
 	    	var el = this.config.$lettersBox.find('.letterItem').eq(this._activeIdx);
 	    	var item = this.config.data.list[this._activeIdx - 1];
-	    	if(!el.find('.picPopBox').size()){
+	    	if(item && !el.find('.picPopBox').size()){
 	    		// console.log(this._getOptions(item.ch))
     			el.append(template.compile(this._popTpl)({
     				roleList: this._getOptions(item.ch),
@@ -194,26 +238,56 @@
 	    		el.addClass('active').siblings('.letterItem').removeClass('active').find('.change_btn,.picPopBox').hide();
 	    	}
 	    	var idx = el.index();
-	    	// 介绍页
-	    	this.instance.turnPage( Math.max(idx * 4 + 1, 4));
-	    	this._activeIdx = idx;
+			this._activeIdx = idx;
+			
+	    	if(this._isIE()){
+	    		if(idx > 0){
+	    			idx = 2*idx + 1;
+	    		}else{
+	    			idx = 2; // 显示介绍页
+	    		}
+	    	}else{
+	    		idx = Math.max(idx * 4 + 1, 4)
+	    	}
+	    	this.instance.turnPage( idx );
+	    	
 	    },
 	    start: function(){
 	    	var _this = this;
-	    	this.instance = new Heidelberg(this.config.$bookBox, {
-              hasSpreads: true,
-              onPageTurn: function(el, els) {
-                var picIdx = els.pagesTarget.index();
-                var newIdx = Math.floor((picIdx - 1)/4);
-                
-                if(newIdx != _this._activeIdx){
-                	_this._activeIdx = newIdx;
-                	_this.config.$lettersBox.find('.letterItem').removeClass('active').eq(newIdx).addClass('active');
-                	_this.config.$lettersBox.find('.picPopBox').hide();
-                	_this._checkChangeBtn();
-                }
-              }
-            });
+	    	if(this._isIE()){
+	    		this.instance = new App.FlipBook({
+	    			$el: this.config.$bookBox,
+	    			onPageTurn: function(pageNo){
+	    				// pageNo 是图片页索引[每一页占用2张图片]，需转换成对应的 字母索引。
+	    				// pageNo 从1开始
+	    				
+	    				var newIdx = Math.max(pageNo - 2, 0);// 减去一张封面、一张介绍
+	    				newIdx = Math.ceil(newIdx / 2);
+	    				// console.log(pageNo , newIdx)
+	    				if(newIdx != _this._activeIdx){
+		                	_this._activeIdx = newIdx;
+		                	_this.config.$lettersBox.find('.letterItem').removeClass('active').eq(newIdx).addClass('active');
+		                	_this.config.$lettersBox.find('.picPopBox').hide();
+		                	_this._checkChangeBtn();
+		                }
+	    			}
+	    		});
+	    	}else{
+		    	this.instance = new Heidelberg(this.config.$bookBox, {
+	              hasSpreads: true,
+	              onPageTurn: function(el, els) {
+	                var picIdx = els.pagesTarget.index();
+	                var newIdx = Math.floor((picIdx - 1)/4);
+	                console.log(newIdx);
+	                if(newIdx != _this._activeIdx){
+	                	_this._activeIdx = newIdx;
+	                	_this.config.$lettersBox.find('.letterItem').removeClass('active').eq(newIdx).addClass('active');
+	                	_this.config.$lettersBox.find('.picPopBox').hide();
+	                	_this._checkChangeBtn();
+	                }
+	              }
+	            });
+	    	}
 	    }
 	});
 

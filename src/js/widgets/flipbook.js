@@ -21,7 +21,11 @@
 	        this._initEvent();
 	    },
 	    _initDom: function(){
-	    	this.config.$flipBook = this.config.$el.children('.j_flipBook');
+	    	this.config.$flipBook = this.config.$el.addClass('.flipBook');
+	        this.config.$flipBook.children('.j_flipItem').each(function(){
+	        	var el = $(this);
+	        	el.after(el.clone());
+	        });
 	        this.config.$flipItems = this.config.$flipBook.children('.j_flipItem');
 	        if(this.config.collapseCover){
 	        	this.config.$flipBook.addClass('collapseCover');
