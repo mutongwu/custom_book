@@ -20,7 +20,7 @@
 				'        <ol class="roleList">',
 				'           {{each roleList}}',
 				'        	<dd class="roleItem {{$value.id == currentId? "disable" : ""}} cf">',
-				'        		<img src="./images/sample/{{$value.thumb}}" class="pic fl"/>',
+				'        		<img src="{{_thumbBase}}{{$value.thumb}}" class="pic fl"/>',
 				'        		<strong>{{$value.name}}</strong>',
 				'                {{if $value.id === currentId}}',
 				'        		<input type="button" class="ui-button ui-button-L fr disable" value="已选" />',
@@ -46,7 +46,7 @@
 				'            {{each list as item}}',
 				'            <li class="letterItem tc" data-id="5">',
 				'                <div class="charBox"><strong>{{item.ch}}</strong></div>',
-				'                <div class="picBox"><img src="./images/sample/{{item.thumb}}" class="pic"/></div>',
+				'                <div class="picBox"><img src="{{_thumbBase}}{{item.thumb}}" class="pic"/></div>',
 				'            </li>',
 				'            {{/each}}',
 				'            <li class="letterItem cover back"><div class="coverDot"></div></li>',
@@ -73,58 +73,58 @@
 	    		'        <div class="flipBook j_bookFx">',
 				'            <div class="flipItem j_flipItem">',
 				'				<div class="picBox">',
-				'              		<img src="images/sample/Front.jpg" class="pic"/>',
+				'              		<img src="{{_picBase}}Front.jpg" class="pic"/>',
 				'            	</div>',
 				'            </div>',
 				'            <div class="flipItem j_flipItem">',
 				'				<div class="picBox">',
-				'              		<img src="images/sample/Intro_s_Page_1.jpg" class="pic"/>',
+				'              		<img src="{{_picBase}}Intro_s_Page_1.jpg" class="pic"/>',
 				'            	</div>',
 				'            </div>',
 				'            {{each list as item}}',
 				'            <div class="flipItem j_flipItem">',
 				'				<div class="picBox">',
-				'              		<img src="./images/sample/{{item.pic[0]}}"  class="pic"/>',
+				'              		<img src="{{_picBase}}{{item.pic[0]}}"  class="pic"/>',
 				'            	</div>',
 				'            </div>',
 				'            <div class="flipItem j_flipItem">',
 				'				<div class="picBox">',
-				'              		<img src="./images/sample/{{item.pic[1]}}"  class="pic"/>',
+				'              		<img src="{{_picBase}}{{item.pic[1]}}"  class="pic"/>',
 				'            	</div>',
 				'            </div>',
 				'            {{/each}}',
 				'            <div class="flipItem j_flipItem">',
 				'				<div class="picBox">',
-				'              		<img src="images/sample/Outro_s_Page_1.jpg" class="pic"/>',
+				'              		<img src="{{_picBase}}Outro_s_Page_1.jpg" class="pic"/>',
 				'            	</div>',
 				'            </div>',
 				'            <div class="flipItem j_flipItem">',
 				'				<div class="picBox">',
-				'              		<img src="images/sample/Back.jpg" class="pic"/>',
+				'              		<img src="{{_picBase}}Back.jpg" class="pic"/>',
 				'            	</div>',
 				'            </div>',
 				'         </div>',
 	    	].join(''):[
 				'        <div class="Heidelberg-Book with-Spreads j_bookFx">',
 				'            <div class="Heidelberg-Spread">',
-				'              <img src="images/sample/Front.jpg" />',
+				'              <img src="{{_picBase}}Front.jpg" />',
 				'            </div>',
 				'            <div class="Heidelberg-Spread">',
-				'              <img src="images/sample/Intro_s_Page_1.jpg" />',
+				'              <img src="{{_picBase}}Intro_s_Page_1.jpg" />',
 				'            </div>',
 				'            {{each list as item}}',
 				'            <div class="Heidelberg-Spread">',
-				'              <img src="./images/sample/{{item.pic[0]}}" />',
+				'              <img src="{{_picBase}}{{item.pic[0]}}" />',
 				'            </div>',
 				'            <div class="Heidelberg-Spread">',
-				'              <img src="./images/sample/{{item.pic[1]}}" />',
+				'              <img src="{{_picBase}}{{item.pic[1]}}" />',
 				'            </div>',
 				'            {{/each}}',
 				'            <div class="Heidelberg-Spread">',
-				'              <img src="images/sample/Outro_s_Page_1.jpg" />',
+				'              <img src="{{_picBase}}Outro_s_Page_1.jpg" />',
 				'            </div>',
 				'            <div class="Heidelberg-Spread">',
-				'              <img src="images/sample/Back.jpg" />',
+				'              <img src="{{_picBase}}Back.jpg" />',
 				'            </div>',
 				'         </div>',
 	    	].join('');
@@ -141,6 +141,8 @@
 	    	});
 	    },
 	    _initDom: function(){
+	    	this.config.data._picBase = this.config.picBase;
+	    	this.config.data._thumbBase = this.config.thumbBase;
 	    	this.config.$cnt.html(template.compile(this._baseTpl())(this.config.data));
 	    	this.config.$lettersBox = this.config.$cnt.find('.lettersBox');
 	        this.config.$bookBox = this.config.$cnt.find('.j_bookFx');
@@ -210,7 +212,8 @@
 	    		// console.log(this._getOptions(item.ch))
     			el.append(template.compile(this._popTpl)({
     				roleList: this._getOptions(item.ch),
-    				currentId: item.id
+    				currentId: item.id,
+    				_thumbBase: this.config.thumbBase
     			}));
     		}
     		el.find('.picPopBox').show();
