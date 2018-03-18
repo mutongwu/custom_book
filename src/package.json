@@ -8,7 +8,9 @@
     "fis3-hook-relative": "^2.0.0",
     "fis3-postpackager-loader": "^2.1.10"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "fis3-deploy-replace": "^1.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
