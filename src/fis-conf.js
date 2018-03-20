@@ -1,3 +1,6 @@
+fis.match('*.jsp', {
+    isHtmlLike:true
+});
 
 fis.match('*.scss', {
     parser: fis.plugin('node-sass'),
@@ -39,7 +42,7 @@ fis.match('**', {
 });
 
 /*页面访问的根路径(替换a标签页面 href属性)*/
-fis.match('*.html', {
+fis.match('**', {
     deploy: [
         fis.plugin('replace', {
             from: '@ROOT_PATH',
@@ -58,7 +61,7 @@ fis.media('prod').match('*.js', {
   useHash: true
 }).match('*', {
     // domain: '//www.sy111.com/book'
-}).match('*.html', {
+}).match('**', {
     deploy: [
         fis.plugin('replace', {
             from: '@ROOT_PATH',
