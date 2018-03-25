@@ -90,7 +90,8 @@
 			}
 			$flipEl.css({
 				width: 0,
-				left: '100%'
+				left: '100%',
+				height: this.config.h0
 			}).addClass('fliping');
 
 			var $nextEl = this.config.$flipItems.eq(num*2 - 1);

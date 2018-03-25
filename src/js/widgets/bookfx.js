@@ -198,7 +198,7 @@ function initGlobalData(){
 	    	return this.config.data.list;
 	    },
 	    _isIE: function(){
-	    	return true;//!!window.ActiveXObject || "ActiveXObject" in window;
+	    	return !!window.ActiveXObject || "ActiveXObject" in window;
 	    },
 	    _getBookTpl: function(){
 	    	return this._isIE() ? [
@@ -212,7 +212,7 @@ function initGlobalData(){
 				'            {{each _frontEnd.kaishi }}',
 				'            <div class="flipItem j_flipItem">',
 				'				<div class="picBox">',
-				'              		<img src="{{_picBase}}{{$value}}" />',
+				'              		<img src="{{_picBase}}{{$value}}" class="pic"/>',
 				'            	</div>',
 				'            </div>',
 				'            {{/each}}',
@@ -234,7 +234,7 @@ function initGlobalData(){
 				'            {{each _frontEnd.jiewei }}',
 				'            <div class="flipItem j_flipItem">',
 				'				<div class="picBox">',
-				'              		<img src="{{_picBase}}{{$value}}" />',
+				'              		<img src="{{_picBase}}{{$value}}" class="pic"/>',
 				'            	</div>',
 				'            </div>',
 				'            {{/each}}',
@@ -391,6 +391,25 @@ function initGlobalData(){
     				currentId: item.py,
     				_rootPath: globalData.getRootPath()
     			}));
+    			// 处理被隐藏的情况
+    			var tempEl = el.find('.picPopBox');
+    			var left = tempEl.offset().left;
+    			var bdWidth = Math.max($('body').width(), $('.container').width());
+    			if(left < 40){ //左侧必须大于40px才能完成显示
+    				left = 40 - left;//计算差距
+    				var marginLeft = parseInt(tempEl.css('marginLeft'), 10);
+    				tempEl.css('marginLeft',marginLeft+left);
+    				tempEl = el.find('.picPopBox').find('.ui-arrow');
+    				marginLeft = parseInt(tempEl.css('marginLeft'), 10);
+    				tempEl.css('marginLeft',marginLeft-left);
+    			}else if(left + tempEl.outerWidth() > bdWidth){
+    				left = left + tempEl.outerWidth() - bdWidth + 40;//计算差距
+    				var marginLeft = parseInt(tempEl.css('marginLeft'), 10);
+    				tempEl.css('marginLeft',marginLeft-left);
+    				tempEl = el.find('.picPopBox').find('.ui-arrow');
+    				marginLeft = parseInt(tempEl.css('marginLeft'), 10);
+    				tempEl.css('marginLeft',marginLeft+left);
+    			}
     		}
     		el.find('.picPopBox').show();
 	    },
@@ -422,16 +441,14 @@ function initGlobalData(){
 			
 	    	if(this._isIE()){
 	    		if(idx > 0){
-	    			idx = 2*idx + 1;
+	    			idx = idx*2 + 2; // 加上开始2页
 	    		}else{
 	    			idx = 2; // 显示介绍页
 	    		}
 	    	}else{
 	    		idx = (idx+1)*4 - 1;
 	    	}
-	    	console.log('turnPage',idx);
 	    	this.instance.turnPage( idx );
-	    	
 	    },
 	    start: function(){
 	    	var _this = this;
@@ -442,7 +459,7 @@ function initGlobalData(){
 	    				// pageNo 是图片页索引[每一页占用2张图片]，需转换成对应的 字母索引。
 	    				// pageNo 从1开始
 	    				
-	    				var newIdx = Math.max(pageNo - 2, 0);// 减去一张封面、一张介绍
+	    				var newIdx = Math.max(pageNo - 3, 0);// 减去一张封面、两张介绍
 	    				newIdx = Math.ceil(newIdx / 2);
 	    				console.log(pageNo , newIdx)
 	    				if(newIdx != _this._activeIdx){
@@ -466,7 +483,7 @@ function initGlobalData(){
 	                }
 	                newIdx = Math.max(newIdx, 0);
 	                newIdx = Math.min(newIdx, _this.config.$lettersBox.find('.letterItem').length - 1);
-	                console.log(picIdx, newIdx);
+	                // console.log(picIdx, newIdx);
 	                if(newIdx != _this._activeIdx){
 	                	_this._activeIdx = newIdx;
 	                	_this.config.$lettersBox.find('.letterItem').removeClass('active').eq(newIdx).addClass('active');
