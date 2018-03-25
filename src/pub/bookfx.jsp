@@ -38,12 +38,8 @@
 		}]
 	}
 	var bookData = {
-		nameStr: 'zhang',
-		sex: 1,// 男孩
-		list:[
-			{id: 'z1',ch:'Z'},{id: 'h2',ch:'H'},{id: 'a1',ch:'A'},
-			{id: 'n1',ch:'N'},{id: 'g1',ch:'G'}
-		]
+		nameStr: 'xiaonanhai',
+		sex: 1// 男孩
 	};
 		
 </script>

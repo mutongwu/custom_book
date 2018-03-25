@@ -1,3 +1,6 @@
+fis.set('project.ignore',  ['node_modules/**', 'output/**', '.git/**', 'fis-conf.js','rename.js','package*.json']); 
+
+
 fis.match('*.jsp', {
     isHtmlLike:true
 });
@@ -7,9 +10,7 @@ fis.match('*.scss', {
     rExt: '.css'
 });
 
-fis.match('package*.json', {
-  release: false
-});
+
 
 fis.match('*.{png,js,css,jpeg,jpg,gif}', {
   release: '/static/$0'
