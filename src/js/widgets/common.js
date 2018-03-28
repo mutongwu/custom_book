@@ -417,6 +417,7 @@ App.FormValidator.prototype = {
         });
         if(msg !== true){
             return {
+                FAILED:true,
                 el: el,
                 msg: msg
             };
@@ -1275,3 +1276,22 @@ $.extend(App.PageBar.prototype, {
         this.domEl.remove();
     }
 });
+
+
+App.ajax = function(config){
+    var dtd = new $.Deferred();
+    $.ajax($.extend({
+        url: '//www.sy111.com/book/a/c.do',
+        method: 'GET',
+        dataType: 'json'
+    },config)).done(function(res){
+        if(res && res.code == 1 || res.code === null){
+            dtd.resolve(res.data);
+        }else{
+            dtd.reject(res);
+        }
+    }).fail(function(res){
+        dtd.reject(res);
+    });
+    return dtd;
+}

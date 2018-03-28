@@ -19,23 +19,31 @@
                         <li class="tabItem"><a href="javascript:;">邮箱注册</a></li>
                     </ul>
                 </div>
-                <div class="ui-form-item">
+                <!-- <div class="ui-form-item">
                     <label class="ui-form-label">账号：</label>
                     <div class="ui-form-group">
-                        <input class="ui-input" name="username" placeholder="邮箱/手机号/用户名"/>
+                        <input required="required" class="ui-input" name="nickname" placeholder="邮箱/手机号/用户名"/>
+                        <p class="ui-field-error"></p>
+                    </div>
+                </div> -->
+                <div class="ui-form-item">
+                    <label class="ui-form-label">昵称：</label>
+                    <div class="ui-form-group">
+                        <input required="required" class="ui-input" name="nickname" placeholder="昵称"/>
+                        <p class="ui-field-error"></p>
                     </div>
                 </div>
                 <div class="ui-form-item">
                     <label class="ui-form-label">密码：</label>
                     <div class="ui-form-group">
-                        <input class="ui-input" name="pwd" placeholder="密码"/>
+                        <input type="password" required="required" class="ui-input" name="userPwd" placeholder="密码"/>
                         <span class="tip">6位以上字符</span>
                     </div>
                 </div>
                 <div class="ui-form-item">
                     <label class="ui-form-label">确认密码：</label>
                     <div class="ui-form-group">
-                        <input class="ui-input" name="pwd" placeholder="密码"/>
+                        <input type="password" required="required" class="ui-input" name="userPwd2" placeholder="密码"/>
                     </div>
                 </div>
 
@@ -43,15 +51,8 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">手机号码：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="pwd" placeholder="手机号码"/>
+                            <input vtype="phone" class="ui-input j_phone" name="phone" placeholder="手机号码"/>
                             <span class="tip">仅用于密码找回，不对外公开</span>
-                        </div>
-                    </div>
-                    <div class="ui-form-item">
-                        <label class="ui-form-label">验证码：</label>
-                        <div class="ui-form-group">
-                            <input class="ui-input" name="vcode" placeholder="验证码"/>
-                            <a href="javascript:;" class="ui-button">获取</a>
                         </div>
                     </div>
                 </div>
@@ -59,8 +60,18 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">电子邮箱：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="email" placeholder="电子邮箱"/>
+                            <input required="required" vtype="email" class="ui-input j_email disable" name="email" placeholder="电子邮箱"/>
+                            <p class="ui-field-error"></p>
                         </div>
+                    </div>
+                </div>
+                <div class="ui-form-item">
+                    <label class="ui-form-label">验证码：</label>
+                    <div class="ui-form-group">
+                        <input required="required"  class="ui-input" name="code" placeholder="验证码"/>
+                        <input type="hidden" name="verificationId" class="j_verificationId" />
+                        
+                        <a href="javascript:;" class="ui-button  j_getCode">获取</a>
                     </div>
                 </div>
                 <div class="ui-form-item">
@@ -72,7 +83,7 @@
                 <div class="ui-form-item">
                     <label class="ui-form-label">&nbsp;</label>
                     <div class="ui-form-group">
-                        <input  type="button" class="ui-button ui-button-L" value="注册"/>
+                        <input  type="button" class="ui-button ui-button-L" value="注册" id="j_submit" />
                     </div>
                 </div>
             </form>
@@ -80,6 +91,6 @@
     </div>
     <link rel="import" href="../pub/copyright.jsp?__inline">
 </div>
-<script src="js/login/register.js"></script>
+<script src="/js/login/register.js"></script>
 </body>
 </html>

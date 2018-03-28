@@ -58,7 +58,10 @@ $(function () {
         init: function(){
             // 轮播
             new App.SimpleSlider({
-                $sliderBox: $('.j_sliderBox')
+                $sliderBox: $('.j_commentSliderBox')
+            });
+            new App.SimpleSlider({
+                $sliderBox: $('.j_introSliderBox')
             });
             nameForm.init();
             // bookFx.init();

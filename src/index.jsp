@@ -78,7 +78,7 @@
             </ul>
         </div>
         <!-- 轮播图  -->
-        <div class="sliderBox">
+        <div class="sliderBox j_introSliderBox">
             <ul class="slider cf">
                 <li class="sliderItem"><a href="#"><img  class="pic" src="images/slider1.jpg"/>
                     <img class="s-text" src="images/s1_text.png" />
@@ -109,21 +109,21 @@
 
         <div class="userCommentBox">
             <h3 class="title tc">顾客的评价</h3>
-            <div class="sliderBox j_sliderBox">
+            <div class="sliderBox j_commentSliderBox">
                 <ul class="slider cf">
                     <li class="sliderItem">
                         <div class="commentItem tc">
                             <img src="./images/core/girl1.jpg" class="uPic" />
                             <p class="name">Linda</p>
                             <p class="text">
-                            儿子很喜欢这本书，天天看，还能看这书 上的图讲出故事 来。儿童阅读是一个积累和探究的过程，犹如成长一样。陪读和伴读，并不是要代替孩子阅读。选书方面也一样，帮孩子把关，而不是父母做主。
+                            1.儿子很喜欢这本书，天天看，还能看这书 上的图讲出故事 来。儿童阅读是一个积累和探究的过程，犹如成长一样。陪读和伴读，并不是要代替孩子阅读。选书方面也一样，帮孩子把关，而不是父母做主。
                             </p>
                         </div>
                         <div class="commentItem tc">
                             <img src="./images/core/girl1.jpg" class="uPic" />
                             <p class="name">Linda</p>
                             <p class="text">
-                            儿子很喜欢这本书，天天看，还能看这书 上的图讲出故事 来。儿童阅读是一个积累和探究的过程，犹如成长一样。陪读和伴读，并不是要代替孩子阅读。选书方面也一样，帮孩子把关，而不是父母做主。
+                            2.儿子很喜欢这本书，天天看，还能看这书 上的图讲出故事 来。儿童阅读是一个积累和探究的过程，犹如成长一样。陪读和伴读，并不是要代替孩子阅读。选书方面也一样，帮孩子把关，而不是父母做主。
                             </p>
                         </div>
                     </li>
@@ -132,14 +132,14 @@
                             <img src="./images/core/girl2.jpg" class="uPic" />
                             <p class="name">Linda</p>
                             <p class="text">
-                            儿子很喜欢这本书，天天看，还能看这书 上的图讲出故事 来。儿童阅读是一个积累和探究的过程，犹如成长一样。陪读和伴读，并不是要代替孩子阅读。选书方面也一样，帮孩子把关，而不是父母做主。
+                            3.儿子很喜欢这本书，天天看，还能看这书 上的图讲出故事 来。儿童阅读是一个积累和探究的过程，犹如成长一样。陪读和伴读，并不是要代替孩子阅读。选书方面也一样，帮孩子把关，而不是父母做主。
                             </p>
                         </div>
                         <div class="commentItem tc">
                             <img src="./images/core/girl2.jpg" class="uPic" />
                             <p class="name">Linda</p>
                             <p class="text">
-                            儿子很喜欢这本书，天天看，还能看这书 上的图讲出故事 来。儿童阅读是一个积累和探究的过程，犹如成长一样。陪读和伴读，并不是要代替孩子阅读。选书方面也一样，帮孩子把关，而不是父母做主。
+                            4.儿子很喜欢这本书，天天看，还能看这书 上的图讲出故事 来。儿童阅读是一个积累和探究的过程，犹如成长一样。陪读和伴读，并不是要代替孩子阅读。选书方面也一样，帮孩子把关，而不是父母做主。
                             </p>
                         </div>
                     </li>
