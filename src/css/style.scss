@@ -435,88 +435,88 @@
 //   }
 // }
 
-// // 消息列表
-// .msgListCnt{
-//     .table{
-//         td{text-align: left;border-bottom: 1px solid #ededed;}
-//     }
-//     .imgText{position: relative;
-//         .num{display:inline-block;text-align:center;line-height:2em;font-weight:bold;font-size:14px;width:2em;height:2em;background: #f00;color:#fff;border-radius: 100%;
-//             margin-left: 10px;
-//         }
-//         .icon-reply{position: absolute;bottom: 20px;left:90px;}
-//     }
-// }
-// // 消息
-// .msgCnt{
-//     .hd{width: 680px;margin:0px auto;
-//       .ui-textarea{width: 500px;height: 80px;margin-top: 10px;}
-//       .ui-button{position: relative;top:30px;}
-//     }
-//     .msgList{
-//       border-top:1px solid #ededed;
-//       padding: 20px 0;
-//       li{
-//         margin-bottom: 20px;
-//         .userBox,.dateBox{width: 236px;float:left;}
-//         .dateBox{float: right;vertical-align: middle;}
-//         .contentBox{width: 500px;margin-left:250px;}
-//       }
+// 消息列表
+.msgListCnt{
+    .table{
+        td{text-align: left;border-bottom: 1px solid #ededed;}
+    }
+    .imgText{position: relative;
+        .num{display:inline-block;text-align:center;line-height:2em;font-weight:bold;font-size:14px;width:2em;height:2em;background: #f00;color:#fff;border-radius: 100%;
+            margin-left: 10px;
+        }
+        .icon-reply{position: absolute;bottom: 20px;left:90px;}
+    }
+}
+// 消息
+.msgCnt{
+    .hd{width: 680px;margin:0px auto;
+      .ui-textarea{width: 500px;height: 80px;margin-top: 10px;}
+      .ui-button{position: relative;top:30px;}
+    }
+    .msgList{
+      border-top:1px solid #ededed;
+      padding: 20px 0;
+      li{
+        margin-bottom: 20px;
+        .userBox,.dateBox{width: 236px;float:left;}
+        .dateBox{float: right;vertical-align: middle;}
+        .contentBox{width: 500px;margin-left:250px;}
+      }
 
-//       .imgText{border: none;margin-bottom: 0;}
-//       .ui-arrow-box{
-//           padding: 0;width: 90%;
-//           border-radius: 8px;
-//           border-color:#9a9696;
-//           background: #edfcf6;
-//           box-shadow: 2px 3px 5px #C7C6C6;
-//           .ui-arrow{top:20px;
-//             em{color:#9a9696;}
-//             i{color:#edfcf6;}
-//           }
+      .imgText{border: none;margin-bottom: 0;}
+      .ui-arrow-box{
+          padding: 0;width: 90%;
+          border-radius: 8px;
+          border-color:#9a9696;
+          background: #edfcf6;
+          box-shadow: 2px 3px 5px #C7C6C6;
+          .ui-arrow{top:20px;
+            em{color:#9a9696;}
+            i{color:#edfcf6;}
+          }
 
-//           .ui-arrow-content{
-//             min-height: 50px;
-//             padding:10px 20px;
-//           }
-//       }
-//       li.myMsg{
-//         .dateBox{float:left;}
-//         .userBox{float: right;}
-//         .ui-arrow-box{
-//           background: #fff;
-//           i{color:#fff;}
-//         }
-//       }
-//     }
-// }
+          .ui-arrow-content{
+            min-height: 50px;
+            padding:10px 20px;
+          }
+      }
+      li.myMsg{
+        .dateBox{float:left;}
+        .userBox{float: right;}
+        .ui-arrow-box{
+          background: #fff;
+          i{color:#fff;}
+        }
+      }
+    }
+}
 
-// .payCnt{
-//   .hd{
-//     .title{line-height: 30px;border-bottom: 1px solid #a09d9d;margin-bottom: 10px;}
-//     .addrInfo{
-//       margin-left: 40px;
-//       >p{margin-left: 80px;}
-//       .ui-button{margin: 15px 0 0 30px;}
-//     }
-//   }
-//   .tableTitle{margin:20px 0;}
-//   .table{
-//     td,th{
-//       width: 120px;
-//       &:nth-of-type(1){width: 200px;text-align: left;}
-//     }
-//     td:nth-of-type(1){padding: 15px;}
-//     tfoot{
-//       tr:first-of-type td{
-//         border-bottom-color: #fff;
-//       }
-//       tr:last-of-type td{
-//         border-top-color: #fff;
-//       }
-//       td{background:#c6eaea !important;}
-//     }
-//   }
+.payCnt{
+  .hd{
+    .title{line-height: 30px;border-bottom: 1px solid #a09d9d;margin-bottom: 10px;}
+    .addrInfo{
+      margin-left: 40px;
+      >p{margin-left: 80px;}
+      .ui-button{margin: 15px 0 0 30px;}
+    }
+  }
+  .tableTitle{margin:20px 0;}
+  .table{
+    td,th{
+      width: 120px;
+      &:nth-of-type(1){width: 200px;text-align: left;}
+    }
+    td:nth-of-type(1){padding: 15px;}
+    tfoot{
+      tr:first-of-type td{
+        border-bottom-color: #fff;
+      }
+      tr:last-of-type td{
+        border-top-color: #fff;
+      }
+      td{background:#c6eaea !important;}
+    }
+  }
 
-// }
+}
 

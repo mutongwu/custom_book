@@ -22,13 +22,13 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">账号：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="username" placeholder="邮箱/手机号/用户名"/>
+                            <input required="required" class="ui-input" name="login" placeholder="邮箱/手机号/用户名"/>
                         </div>
                     </div>
                     <div class="ui-form-item">
                         <label class="ui-form-label">密码：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="pwd" placeholder="密码"/>
+                            <input type="password" required="required" class="ui-input" name="userPwd" placeholder="密码"/>
                         </div>
                     </div>
                     <div class="ui-form-item">
@@ -41,13 +41,13 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">&nbsp;</label>
                         <div class="ui-form-group">
-                            <input type="button" class="ui-button ui-button-yellow   ui-button-XL" value="登录"/>
+                            <input type="button" class="ui-button ui-button-yellow   ui-button-XL" value="登录" id="j_submit" />
                         </div>
                     </div>
                     <div class="ui-form-item registTip">
                         <label class="ui-form-label">&nbsp;</label>
                         <div class="ui-form-group">
-                            <p class="">还没有账号？请<a href="./login/register.html">注册。</a></p>
+                            <p class="">还没有账号？请<a href="./register.jsp">注册。</a></p>
                         </div>
                     </div>
                 </form>
@@ -57,6 +57,6 @@
     </div>
     <link rel="import" href="../pub/copyright.jsp?__inline">
 </div>
-<script type="text/javascript" src="../js/login/login.js"></script>
+<script type="text/javascript" src="/js/login/login.js"></script>
 </body>
 </html>

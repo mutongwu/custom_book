@@ -59,14 +59,14 @@ fis.media('prod').match('*.js', {
 }).match('*.css', {
   optimizer: fis.plugin('clean-css')
 }).match('*.{js,css,png,jpeg,jpg,gif}', {
-  useHash: true
+  // useHash: true
 }).match('*', {
-    // domain: '//www.sy111.com/book'
+    domain: '//www.sy111.com/book'
 }).match('**', {
     deploy: [
         fis.plugin('replace', {
             from: '@ROOT_PATH',
-            to: ''
+            to: '/book'
         }),
         fis.plugin('local-deliver') //must add a deliver, such as http-push, local-deliver
     ]

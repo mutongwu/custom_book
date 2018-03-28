@@ -2,7 +2,10 @@
 <meta charset="UTF-8">
 <title>书友</title>
 <script type="text/javascript">
-	var globalRootPath = '@ROOT_PATH/'
+	var GlobalData = {
+		"rootPath" :'@ROOT_PATH/',
+		"userId" : "${userId}"
+	};
 </script>
 <link type="text/css" href="/css/common.css" rel="stylesheet" />
 <link type="text/css" href="/css/style.scss" rel="stylesheet" />

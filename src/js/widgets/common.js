@@ -308,11 +308,11 @@ App.FormValidator.prototype = {
     },
 
     validateField: function(item){
-        if(!item.name || item.disabled){
+        var el = $(item);
+        if(!item.name || item.disabled || el.hasClass('disable')){
             return true;
         }
         var _this = this,
-            el = $(item),
             val = item.value,
             msg = _this._getLabel(el);
         msg = msg.replace(/^\*/,'').replace(/[:：]$/,'');
@@ -1277,7 +1277,17 @@ $.extend(App.PageBar.prototype, {
     }
 });
 
-
+App.onceAjax = (function(){
+    var dtd = null;
+    return function(config){
+        if(!dtd){
+            dtd = App.ajax(config).always(function(){
+                dtd = null;
+            });
+        }
+        return dtd;
+    };
+})();
 App.ajax = function(config){
     var dtd = new $.Deferred();
     $.ajax($.extend({
@@ -1294,4 +1304,10 @@ App.ajax = function(config){
         dtd.reject(res);
     });
     return dtd;
-}
+};
+App.goHome = function(){
+    window.location.href = '@ROOT_PATH/index.jsp';
+};
+App.goLogin = function(){
+    window.location.href = '@ROOT_PATH/login/login.jsp';
+};

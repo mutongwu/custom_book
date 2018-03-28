@@ -3,6 +3,7 @@
 <html>
 <head lang="en">
     <link rel="import" href="./pub/res.jsp?__inline">
+    <link rel="import" href="./pub/require_login.jsp?__inline">
 </head>
 <body>
 <div class="wrapper">

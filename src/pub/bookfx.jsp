@@ -2,7 +2,7 @@
 <script>
 	
 	var bookData = {
-		nameStr: 'xiaonanguvb',
+		nameStr: 'xiaonanhai',
 		sex: 1// 男孩
 	};
 		

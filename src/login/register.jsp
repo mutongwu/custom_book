@@ -16,20 +16,13 @@
                 <div class="ui-tab">
                     <ul class="cf">
                         <li class="tabItem active" type="phone"><a href="javascript:;">手机注册</a></li>
-                        <li class="tabItem"><a href="javascript:;">邮箱注册</a></li>
+                        <li class="tabItem" type="email"><a href="javascript:;">邮箱注册</a></li>
                     </ul>
                 </div>
-                <!-- <div class="ui-form-item">
+                <div class="ui-form-item">
                     <label class="ui-form-label">账号：</label>
                     <div class="ui-form-group">
-                        <input required="required" class="ui-input" name="nickname" placeholder="邮箱/手机号/用户名"/>
-                        <p class="ui-field-error"></p>
-                    </div>
-                </div> -->
-                <div class="ui-form-item">
-                    <label class="ui-form-label">昵称：</label>
-                    <div class="ui-form-group">
-                        <input required="required" class="ui-input" name="nickname" placeholder="昵称"/>
+                        <input required="required" class="ui-input" name="userName" placeholder="邮箱/手机号/用户名" maxlength="18" />
                         <p class="ui-field-error"></p>
                     </div>
                 </div>
@@ -51,7 +44,7 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">手机号码：</label>
                         <div class="ui-form-group">
-                            <input vtype="phone" class="ui-input j_phone" name="phone" placeholder="手机号码"/>
+                            <input vtype="phone" required="required" class="ui-input j_phone" name="mobile" placeholder="手机号码"/>
                             <span class="tip">仅用于密码找回，不对外公开</span>
                         </div>
                     </div>
@@ -77,7 +70,7 @@
                 <div class="ui-form-item">
                     <label class="ui-form-label">&nbsp;</label>
                     <div class="ui-form-group">
-                        <label><input type="checkbox" class="ui-checkbox" name="agree" />我已阅读并同意<a href="" target="_blank">《网站服务协议》</a></label>
+                        <label><input type="checkbox" class="ui-checkbox" name="agree" checked />我已阅读并同意<a href="" target="_blank">《网站服务协议》</a></label>
                     </div>
                 </div>
                 <div class="ui-form-item">

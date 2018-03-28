@@ -90,10 +90,9 @@ function initGlobalData(){
 	var getBase = function(opt){
 		opt = $.extend({
 			'sex':'boy',
-			'type':'type_1',
 			'v':'v1'
 		},opt);
-		return [rootPath,opt.v,opt.type,opt.sex].join('/');
+		return [rootPath,opt.v,opt.sex].join('/');
 	};
 
 	var getRootPath = function(){

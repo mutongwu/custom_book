@@ -38,11 +38,11 @@
     <div class="navMenu">
         <div class="bd">
             <ul class="cf">
-                <li class="fl active"><a href="/index.jsp">首页</a></li>
-                <li class="fl"><a href="/index.jsp">产品中心</a></li>
-                <li class="fl"><a href="/index.jsp">阅读推荐</a></li>
-                <li class="fl"><a href="/index.jsp">合作伙伴</a></li>
-                <li class="fl last"><a href="/help/help.jsp">帮助</a></li>
+                <li class="fl active"><a href="@ROOT_PATH/index.jsp">首页</a></li>
+                <li class="fl"><a href="@ROOT_PATH/index.jsp">产品中心</a></li>
+                <li class="fl"><a href="@ROOT_PATH/index.jsp">阅读推荐</a></li>
+                <li class="fl"><a href="@ROOT_PATH/index.jsp">合作伙伴</a></li>
+                <li class="fl last"><a href="@ROOT_PATH/help/help.jsp">帮助</a></li>
                 <!-- <li class="fr quickBtn">
                     <a href="/addBook.html">添加图书</a>
                     <a href="/pubBook.html">上架图书</a>
