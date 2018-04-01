@@ -1,4 +1,4 @@
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -29,14 +29,14 @@
                 <div class="ui-form-item">
                     <label class="ui-form-label">密码：</label>
                     <div class="ui-form-group">
-                        <input type="password" required="required" class="ui-input" name="userPwd" placeholder="密码"/>
+                        <input type="password" required="required" class="ui-input" name="userPwd" placeholder="密码" minlength="6" maxlength="18" />
                         <span class="tip">6位以上字符</span>
                     </div>
                 </div>
                 <div class="ui-form-item">
                     <label class="ui-form-label">确认密码：</label>
                     <div class="ui-form-group">
-                        <input type="password" required="required" class="ui-input" name="userPwd2" placeholder="密码"/>
+                        <input type="password" required="required" class="ui-input" name="userPwd2" placeholder="密码"  minlength="6"  maxlength="18" />
                     </div>
                 </div>
 

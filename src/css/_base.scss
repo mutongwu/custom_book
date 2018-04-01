@@ -336,6 +336,10 @@ p.txt{text-indent: 2em;line-height: 1.8;}
     height: 38px;
     border: 2px solid #a8a8a8;
     font-size: 24px;
+    &.ui-input-error{
+      border-color: #ED3633;
+      background:rgba(255, 0, 0, 0.1);
+    }
   }
   .sex{
     width: 100px;

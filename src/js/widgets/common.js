@@ -1277,6 +1277,45 @@ $.extend(App.PageBar.prototype, {
     }
 });
 
+App.Cookie = {
+    set : function(/*String*/name, /*String*/value,/*Number?*/days, /*String?*/path,/*String?*/domain,/*boolean?*/secure){
+        var expires = -1,d = new Date();
+
+        if(value == null){
+            d.setTime(d.getTime() - (24*60*60*1000));
+            expires = d.toGMTString();
+        } else if((typeof days == "number")&&(days >= 0)){
+            d.setTime(d.getTime()+(days*24*60*60*1000));
+            expires = d.toGMTString();
+        }
+        document.cookie = name + "=" + value + ";"
+            + (expires !== -1 ? " expires=" + expires + ";" : "")
+            + (path ? "path=" + path : "")
+            + (domain ? "; domain=" + domain : "")
+            + (secure ? "; secure" : "");
+    },
+    /*得到cookie值*/
+    get: function(/*String*/name) {
+        var cookieValue = null; 
+        if (document.cookie && document.cookie != '') { 
+            var cookies = document.cookie.split(';'); 
+            for (var i = 0; i < cookies.length; i++) { 
+                var cookie = cookies[i].replace(/(^\s*)|(\s*$)/g,   "");
+                // Does this cookie string begin with the name we want? 
+                if (cookie.substring(0, name.length + 1) == (name + '=')) { 
+                    cookieValue = unescape(cookie.substring(name.length + 1)); 
+                    break; 
+                } 
+            } 
+        } 
+        return cookieValue; 
+    },
+    del: function(name){
+        this.set(name, null, -1);
+    }
+};
+
+
 App.onceAjax = (function(){
     var dtd = null;
     return function(config){
@@ -1288,6 +1327,7 @@ App.onceAjax = (function(){
         return dtd;
     };
 })();
+
 App.ajax = function(config){
     var dtd = new $.Deferred();
     $.ajax($.extend({
@@ -1305,9 +1345,20 @@ App.ajax = function(config){
     });
     return dtd;
 };
-App.goHome = function(){
-    window.location.href = '@ROOT_PATH/index.jsp';
-};
-App.goLogin = function(){
-    window.location.href = '@ROOT_PATH/login/login.jsp';
+App.linkTo = function(path, data){
+    var url = '@ROOT_PATH' + path;
+    if(data){
+        if(url.indexOf('?') === -1){
+            url += '?'
+        }
+        if(typeof data === 'object'){
+            url += $.param(data);
+        }else{
+            url += data;
+        }
+    }
+    if(!/^(https?:|\/\/)/.test(url)){
+        url = '@ROOT_PATH' + url;
+    }
+    window.location.href = url;
 };

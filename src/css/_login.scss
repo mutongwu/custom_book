@@ -43,3 +43,13 @@
     .btnBox{margin-top: 30px;}
   }
 }
+.findPwdCnt{
+  min-height:350px;
+  .ui-form{
+    width: 600px;
+    margin: auto
+  }
+  .findPwdForm{
+    display: none;
+  }
+}

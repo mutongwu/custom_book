@@ -1,4 +1,4 @@
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -17,17 +17,17 @@
                         <img class="pic" src="../images/core/book.png" />
                     </div>
                     <div class="pure-u-12-24">
-                         <h4>《找朋友-张三的神奇之旅》</h4>
-                         <p class="text">zhang san</p>
+                         <h4>《找朋友-<span class="j_zhName"></span>的神奇之旅》</h4>
+                         <p class="text j_pyName"></p>
                     </div>
                     <div class="pure-u-7-24">
                         <div class="moreBox">
                             <strong class="price">168元</strong>
                             <p>带礼品包装</p>
-                            <a href="./book/editname.html">编辑图书</a>
+                            <a class="j_goEdit">编辑图书</a>
                         </div>
                     </div>
-                    <a class="delBox"></a>
+                    <!-- <a class="delBox"></a> -->
                 </li>
             </ul>
         </div>
@@ -35,13 +35,13 @@
             <link rel="import" href="../pub/partial_memopic.jsp?__inline">
         </div>
         <div class="btnBox tc">
-            <a class="ui-button ui-button-green ui-button-XL" href="./book/preview.html">返回预览</a>
-            <a class="ui-button ui-button-yellow ui-button-XL" href="./cart/cart.html">加入购物车</a>
+            <a class="ui-button ui-button-green ui-button-XL" href="javascript:history.back()">返回预览</a>
+            <a class="ui-button ui-button-yellow ui-button-XL" id="j_addToCart">加入购物车</a>
         </div>
     </div><!-- END container-->
 
     <link rel="import" href="../pub/copyright.jsp?__inline">
 </div>
-<script src="../js/book/book.js"></script>
+<script src="../js/book/memoedit.js"></script>
 </body>
 </html>

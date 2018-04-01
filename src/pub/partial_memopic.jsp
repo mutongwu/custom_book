@@ -5,11 +5,11 @@
 		    <li class="pure-u-14-24 item">
 		    	<h3>写下你的独特寄语吧</h3>
 		    	<p>我们将印刷在绘本的第2页上</p>
-		    	<textarea class="ui-textarea memo"></textarea>
+		    	<textarea class="ui-textarea memo j_memoInput" name="memo" maxlength="300" label="寄语"></textarea>
 		    	<p>只能写300字以内</p>
 		    </li>
 		    <li class="pure-u-10-24 item">
-		    	
+		    	<link rel="import" href="/pub/partial_photoUpload.jsp?__inline">
 		    	<h3>需要包装成礼品吗？</h3>
 		    	<p>我们为您提供精致的礼品包装</p>
 		    	<div class="giftBox">

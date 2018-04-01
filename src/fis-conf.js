@@ -11,7 +11,6 @@ fis.match('*.scss', {
 });
 
 
-
 fis.match('*.{png,js,css,jpeg,jpg,gif}', {
   release: '/static/$0'
 });
@@ -34,12 +33,6 @@ fis.match('::package', {
   packTo: '/pkg/aio.css'
 }).match('common.css', {
   packOrder: -100
-});
-
-fis.match('**', {
-    deploy: [
-        fis.plugin('local-deliver')
-    ]
 });
 
 /*页面访问的根路径(替换a标签页面 href属性)*/

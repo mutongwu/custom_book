@@ -1,4 +1,4 @@
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -35,7 +35,7 @@
                         <label class="ui-form-label">&nbsp;</label>
                         <div class="ui-form-group">
                             <label><input type="checkbox" class="ui-checkbox" name="remember" />记住密码</label>
-                            <a class="forget fs12">忘记密码？</a>
+                            <a class="forget fs12" href="./findPwd.jsp">忘记密码？</a>
                         </div>
                     </div>
                     <div class="ui-form-item">

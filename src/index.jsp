@@ -1,5 +1,5 @@
 
-<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" isELIgnored="false" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -18,49 +18,13 @@
         </div>
         <div class="nameFormBox" id="j_nameFormBox">
             <h3>输入小朋友的名字，开启神奇之旅</h3>
-            <form class="nameForm tc" action="book/preview.html" target="_self">
+            <form class="nameForm tc"  target="_self">
                 <div class="fieldBox cf">
-                    <input type="text" name="cn_name" placeholder="中文名字"  class="fl item tc ui-input" maxlength="16" />
-                    <input type="text" name="py_name" placeholder="名字拼音"  class="fl item tc ui-input" maxlength="16" />
-                    <div class="fl item charatorBox">
-                        <div class="sex ui-button ui-button-XL">男孩</div>
-                        <div class="charatorPopBox ui-arrow-box ui-arrow-box-gray border-radius size-xl">
-                            <div class="contentBox cf">
-                                <div class="picBox fl active">
-                                    <img class="charator" src="./images/core/boy1.jpg"/>
-                                </div>
-                                <div class="picBox fl ">
-                                    <img class="charator" src="./images/core/boy2.jpg"/>
-                                </div>
-                                <div class="picBox fl ">
-                                    <img class="charator" src="./images/core/boy3.jpg"/>
-                                </div>
-                            </div>
-                            <div class="ui-arrow ui-arrow-up">
-                               <em>◆</em><i>◆</i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="fl item charatorBox">
-                        <div class="sex ui-button ui-button-gray ui-button-XL">女孩</div>
-                        <div class="charatorPopBox ui-arrow-box ui-arrow-box-gray border-radius size-xl">
-                            <div class="contentBox cf">
-                                <div class="picBox fl active">
-                                    <img class="charator" src="./images/core/girl1.jpg"/>
-                                </div>
-                                <div class="picBox fl ">
-                                    <img class="charator" src="./images/core/girl2.jpg"/>
-                                </div>
-                                <div class="picBox fl ">
-                                    <img class="charator" src="./images/core/girl3.jpg"/>
-                                </div>
-                            </div>
-                            <div class="ui-arrow ui-arrow-up">
-                               <em>◆</em><i>◆</i>
-                            </div>
-                        </div>    
-                    </div>
-                    <a  class="fl ui-button ui-button-yellow ui-button-XL submit_btn" href="./book/preview.html">马上定制绘本</a>
+                    <input type="text" name="zh" placeholder="中文名字"  class="fl item tc ui-input j_zhInput" maxlength="16" required="required" label="中文名字"/>
+                    <input type="text" name="py" placeholder="名字拼音"  class="fl item tc ui-input j_pyInput" maxlength="16" required="required" label="名字拼音"/>
+                    <link rel="import" href="./pub/partial_boyPop.html?__inline">
+                    <link rel="import" href="./pub/partial_girlPop.html?__inline">
+                    <a  class="fl ui-button ui-button-yellow ui-button-XL submit_btn" id="j_submitBtn">马上定制绘本</a>
                 </div>
             </form>
         </div>

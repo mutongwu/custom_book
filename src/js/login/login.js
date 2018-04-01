@@ -14,7 +14,7 @@ $(function(){
     			'data':result,
     			'method': 'POST'
     		}).done(function(){
-    			App.goHome();
+    			App.linkTo('/index.jsp');
     		}).fail(function(res){
     			App.tip(res && res.message,'error');
     		});

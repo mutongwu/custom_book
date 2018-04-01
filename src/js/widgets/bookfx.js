@@ -89,8 +89,8 @@ function initGlobalData(){
 	var rootPath = '//www.sy111.com/book/samples/cn';
 	var getBase = function(opt){
 		opt = $.extend({
-			'sex':'boy',
-			'v':'v1'
+			'sex':'boy',// boy|girl
+			'v':'v1'	// v1|v2|v3
 		},opt);
 		return [rootPath,opt.v,opt.sex].join('/');
 	};
@@ -110,17 +110,48 @@ function initGlobalData(){
 		});
 		return result;
 	};
+    function checkValid(nameStr){
+    	// 通用图出现不能大于4.
+    	var arr = nameStr.split('');
+    	var chMap = {};
+    	var count = 0;
+    	var MAX = 4;
+    	$.each(arr, function(i, ch){
+    		if(!chMap[ch]){
+    			chMap[ch] = 1;
+    		}else{
+    			chMap[ch] += 1;
+    			if(chMap[ch] > 2){
+    				count += 1;
+    			}
+    		}
+    		if(count > MAX){
+    			return false;
+    		}
+    	});
+    	return count <= MAX;
+    }
+    var KEY = 'BOOK_INSTANCE';
 	return  {
 		getRootPath: getRootPath,
 		getNextTy: getNextTy,
 		getNextRole: getNextRole,
 		getBase:getBase,
 		getFrontEnd:getFrontEnd,
-		getRoleOptionsByChar: getRoleOptionsByChar
+		getRoleOptionsByChar: getRoleOptionsByChar,
+		checkValid: checkValid,
+		getInstance: function(){
+			var val = sessionStorage.getItem(KEY);
+			return val ? JSON.parse(val): null;
+		},
+		setInstance: function(val){
+			sessionStorage.setItem(KEY, JSON.stringify(val));
+		}
 	};
 }
+App.BookData = initGlobalData();
 (function(mod){
-	var globalData = initGlobalData();
+	var globalData = App.BookData;
 	function BookFx(cfg){
 	    this.init(cfg);
 	    return this;
@@ -184,7 +215,8 @@ function initGlobalData(){
 	    },
 	    init: function(cfg){
 	        this.config = $.extend({},this.defaultCfg,cfg);
-	        if(!this._checkValid(cfg.data.nameStr)){
+	        cfg.data.nameStrTrim = cfg.data.nameStr.replace(/\s/g,'');
+	        if(!globalData.checkValid(cfg.data.nameStrTrim)){
 	        	this.config.onError && this.config.onError();
 	        	return;
 	        }
@@ -277,32 +309,11 @@ function initGlobalData(){
 				'         </div>',
 	    	].join('');
 	    },
-	    _checkValid: function(nameStr){
-	    	// 通用图出现不能大于4.
-	    	var arr = nameStr.split('');
-	    	var chMap = {};
-	    	var count = 0;
-	    	var MAX = 4;
-	    	$.each(arr, function(i, ch){
-	    		if(!chMap[ch]){
-	    			chMap[ch] = 1;
-	    		}else{
-	    			chMap[ch] += 1;
-	    			if(chMap[ch] > 2){
-	    				count += 1;
-	    			}
-	    		}
-	    		if(count > MAX){
-	    			return false;
-	    		}
-	    	});
-	    	return count <= MAX;
-	    },
 	    _initData: function(){
 	    	var bookData = this.config.data;
 	    	if(!bookData.list){
 	    		bookData.list = [];
-	    		$.each(bookData.nameStr.split(''), function(i, ch){
+	    		$.each(bookData.nameStrTrim.split(''), function(i, ch){
 		    		var item = globalData.getNextRole(ch) || globalData.getNextTy(ch);
 		    		if(item){
 		    			item.ch = ch.toUpperCase();
@@ -422,7 +433,7 @@ function initGlobalData(){
 	    	}
 	    	// 存在重复的字母
 	    	var repeatReg = new RegExp(item.ch + '([^' + item.ch +'])*' + item.ch,'i');
-	    	if(!repeatReg.test(this.config.data.nameStr)){
+	    	if(!repeatReg.test(this.config.data.nameStrTrim)){
 	    		if(!el.find('.change_btn').size()){
 	    			el.append(this._btnTpl);
 	    		}

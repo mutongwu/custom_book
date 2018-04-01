@@ -34,7 +34,7 @@ $(function(){
     			'method': 'POST'
     		}).done(function(){
     			App.alert('您的账号已注册成功，请前往登陆页面登陆！',function(){
-    				App.goLogin();
+                    App.linkTo('/login/login.jsp');
     			},'success');
     		}).fail(function(res){
     			App.tip(res && res.message,'error');
