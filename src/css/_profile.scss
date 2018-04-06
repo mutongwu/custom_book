@@ -1,7 +1,10 @@
-.accountCnt{
+
+.accountCnt,.addressCnt,.modifyPwdCnt{
     width: 1000px;
     .bd{width:650px;margin:0 auto;}
-    .accountForm{
+    .ui-form{
+        padding-top: 30px;
+        .headPic{max-width: 100px;}
         .ui-input{width:400px;}
         .ui-select{width: 133px;}
         .ui-textarea{width: 400px;}

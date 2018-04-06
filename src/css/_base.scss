@@ -89,17 +89,26 @@ p.txt{text-indent: 2em;line-height: 1.8;}
 .topNav{
    background: #fff;
     .bd{width: 980px;margin: 0 auto; }
-    .userInfo{position:relative;height: 60px;line-height: 60px;vertical-align: middle;
+    .userInfo{
+      position:relative;height: 60px;line-height: 60px;vertical-align: middle;
       // .bd{background: #ededed;}
       .logo{width:120px;text-indent: -99em;overflow: hidden;background:url(../images/logo.png) no-repeat 0 50%;}
+      .userEntry{display: block;}
+      .guestEntry{display:none ;}
+      &.noLogin{
+        overflow: hidden;
+        .userEntry{display: none;}
+        .guestEntry{display:block ;}
+      }
       .userName{display:inline-block;width: 150px;}
-      .msg,.cart{display: inline-block;padding-left: 35px;background:url(../images/icon_msg.png) no-repeat 0 50%;color:#444;
+      .msg,.cart,.login,.register{display: inline-block;padding-left: 35px;background:url(../images/icon_msg.png) no-repeat 0 50%;color:#444;
         em{color:#f00;}
       }
       .cart{background-image: url(../images/icon_cart.png);margin-left:10px;}
-
+      .login,.register{background: none;color:#f81157;font-size: 16px;}
       .userBox{
          position: relative;cursor: pointer;width: 210px;
+         .pic{width: 50px;height:50px;}
         .userMenu{
           position: absolute;
           z-index: 2;

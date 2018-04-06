@@ -244,7 +244,7 @@ App.FormValidator.prototype = {
         $form: null,
 
         //jquery支持的selector
-        selector: '.ui-input,.ui-select,input[type="hidden"]',
+        selector: '.ui-input,.ui-textarea,.ui-select,input[type="hidden"]',
 
         //清除错误样式函数
         clearInvalidFn: null,
@@ -274,6 +274,7 @@ App.FormValidator.prototype = {
     POSTCODE:  /^[1-9][0-9]{5}$/,
     IDCARD:/^((1[1-5])|(2[1-3])|(3[1-7])|(4[1-6])|(5[0-4])|(6[1-5])|71|(8[12])|91)\d{4}((19\d{2}(0[13-9]|1[012])(0[1-9]|[12]\d|30))|(19\d{2}(0[13578]|1[02])31)|(19\d{2}02(0[1-9]|1\d|2[0-8]))|(19([13579][26]|[2468][048]|0[48])0229))\d{3}(\d|X|x)?$/,
     PASSPORT: /^1[45][0-9]{7}|G[0-9]{8}|P[0-9]{7}|S[0-9]{7,8}|D[0-9]+$/,
+    URL: /^((http|https):\/\/([\w\-]+\.)+[\w\-]+(\/[\w\u4e00-\u9fa5\-\.\/?\@\%\!\&=\+\~\:\#\;\,]*)?)/i,
     setConfig: function(args){
         this.config = $.extend({},this.defaultCfg,args);
     },
@@ -352,6 +353,9 @@ App.FormValidator.prototype = {
                 return msg = _this.config.errorTxt + msg;
             }
             if(vtype === "passport" && !_this.PASSPORT.test(val)){
+                return msg = _this.config.errorTxt + msg;
+            }
+            if(vtype === "url" && !_this.URL.test(val)){
                 return msg = _this.config.errorTxt + msg;
             }
         }
@@ -1277,45 +1281,6 @@ $.extend(App.PageBar.prototype, {
     }
 });
 
-App.Cookie = {
-    set : function(/*String*/name, /*String*/value,/*Number?*/days, /*String?*/path,/*String?*/domain,/*boolean?*/secure){
-        var expires = -1,d = new Date();
-
-        if(value == null){
-            d.setTime(d.getTime() - (24*60*60*1000));
-            expires = d.toGMTString();
-        } else if((typeof days == "number")&&(days >= 0)){
-            d.setTime(d.getTime()+(days*24*60*60*1000));
-            expires = d.toGMTString();
-        }
-        document.cookie = name + "=" + value + ";"
-            + (expires !== -1 ? " expires=" + expires + ";" : "")
-            + (path ? "path=" + path : "")
-            + (domain ? "; domain=" + domain : "")
-            + (secure ? "; secure" : "");
-    },
-    /*得到cookie值*/
-    get: function(/*String*/name) {
-        var cookieValue = null; 
-        if (document.cookie && document.cookie != '') { 
-            var cookies = document.cookie.split(';'); 
-            for (var i = 0; i < cookies.length; i++) { 
-                var cookie = cookies[i].replace(/(^\s*)|(\s*$)/g,   "");
-                // Does this cookie string begin with the name we want? 
-                if (cookie.substring(0, name.length + 1) == (name + '=')) { 
-                    cookieValue = unescape(cookie.substring(name.length + 1)); 
-                    break; 
-                } 
-            } 
-        } 
-        return cookieValue; 
-    },
-    del: function(name){
-        this.set(name, null, -1);
-    }
-};
-
-
 App.onceAjax = (function(){
     var dtd = null;
     return function(config){
@@ -1333,7 +1298,10 @@ App.ajax = function(config){
     $.ajax($.extend({
         url: '//www.sy111.com/book/a/c.do',
         method: 'GET',
-        dataType: 'json'
+        dataType: 'json',
+        xhrFields: {
+            withCredentials: true
+        }
     },config)).done(function(res){
         if(res && res.code == 1 || res.code === null){
             dtd.resolve(res.data);
@@ -1346,7 +1314,7 @@ App.ajax = function(config){
     return dtd;
 };
 App.linkTo = function(path, data){
-    var url = '@ROOT_PATH' + path;
+    var url = path;
     if(data){
         if(url.indexOf('?') === -1){
             url += '?'

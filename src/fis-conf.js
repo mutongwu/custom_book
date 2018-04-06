@@ -33,6 +33,8 @@ fis.match('::package', {
   packTo: '/pkg/aio.css'
 }).match('common.css', {
   packOrder: -100
+}).match('*', {
+    domain: '/book'
 });
 
 /*页面访问的根路径(替换a标签页面 href属性)*/
@@ -40,7 +42,7 @@ fis.match('**', {
     deploy: [
         fis.plugin('replace', {
             from: '@ROOT_PATH',
-            to: ''
+            to: '/book'
         }),
         fis.plugin('local-deliver')
     ]
@@ -60,6 +62,10 @@ fis.media('prod').match('*.js', {
         fis.plugin('replace', {
             from: '@ROOT_PATH',
             to: '/book'
+        }),
+        fis.plugin('replace', {
+            from: '@DEBUG',
+            to: ''
         }),
         fis.plugin('local-deliver') //must add a deliver, such as http-push, local-deliver
     ]

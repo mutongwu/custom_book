@@ -20,31 +20,10 @@
                     <th class="tc">日期</th>
                     <th class="tc">订单号</th>
                     <th class="tc">返利金额</th>
+                    <th class="tc">状态</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        2016-09-08 12:11:11
-                    </td>
-                    <td>
-                        345678
-                    </td>
-                    <td>
-                        <strong class="price">34</strong> 元
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        2016-09-08 12:11:11
-                    </td>
-                    <td>
-                        345678
-                    </td>
-                    <td>
-                        <strong class="price">34</strong> 元
-                    </td>
-                </tr>
+                <tbody class="j_dataTBody">
                 </tbody>
             </table>
             <div class="pageBox" id="j_pageBox">
@@ -55,6 +34,24 @@
 
     <link rel="import" href="../pub/copyright.jsp?__inline">
 </div>
-<script src="../js/agency/agency.js"></script>
+<script type="text/html" id="recordTpl">
+{{each data}}
+<tr>
+    <td>
+        {{$value._dateStr}}
+    </td>
+    <td>
+        {{$value.orderNo}}
+    </td>
+    <td>
+        <strong class="price">{{$value.rebateAmount}}</strong> 元
+    </td>
+    <td>
+        {{$value._statusTxt}}
+    </td>
+</tr>
+{{/each}}
+</script>
+<script src="../js/agency/record.js"></script>
 </body>
 </html>

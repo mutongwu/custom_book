@@ -1,18 +1,16 @@
 $(function(){
     var $form = $('.loginForm');
-
     var validator = new App.FormValidator({
     	'$form': $form
     });
-    
+
     // 注册
     function doLogin(){
     	var result = validator.validate();
     	if(!result.FAILED){
     		result['call'] = 'user.login';
     		App.onceAjax({
-    			'data':result,
-    			'method': 'POST'
+    			'data':result
     		}).done(function(){
     			App.linkTo('/index.jsp');
     		}).fail(function(res){
