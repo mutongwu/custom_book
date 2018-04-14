@@ -3,12 +3,14 @@
 <div class="photoBox" id="j_phoneBox">
 	<div class="photoPreview">
 		<img src="/images/user-L.jpg" class="photo j_phone" />
+        <span class="progress-bar"></span>
 	</div>
 	<div class="fieldItem">
 		<div class="fileBox clearfix">
 			<span class="fl fakeInput"></span>
 			<a class="ui-button ui-button-green ui-button-L" >上传照片</a>
 			<input type="file" name="bytes" class="uploadfile" id="fileupload" />
+            <input type="hidden" name="attachmentId" class="attachmentId" />
 		</div>
 	</div>
 </div>
@@ -22,20 +24,18 @@
 	$('#fileupload').fileupload({
         url: '@ROOT_PATH/u/f.do',
         formData:{
-        	"call": 'attachment.upload',
-        	"userId": App.User.userId
+        	"call": 'attachment.upload'
         },
         dataType: 'json',
         done: function (e, data) {
         	var result = data.result;
             $('#j_phoneBox .j_phone').attr('src','@ROOT_PATH/u/s.do?attachmentId=' + result.data);
+            $('#j_phoneBox .progress-bar').hide();
+            $('#j_phoneBox .attachmentId').val(result.data);
         },
         progressall: function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
-            $('#progress .progress-bar').css(
-                'width',
-                progress + '%'
-            );
+            $('#j_phoneBox .progress-bar').show().html('正在上传' + progress + '%');
         }
     });
 </script>

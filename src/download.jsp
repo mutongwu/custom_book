@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="wrapper appDownload">
-    <link rel="import" href="./pub/top.jsp?__inline">
+    <link rel="import" href="./pub/top.html?__inline">
 
     <div class="bannerBox">
         <img src="images/banner.jpg" class="banner"/>

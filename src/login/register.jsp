@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <link rel="import" href="../pub/top.jsp?__inline">
+    <link rel="import" href="../pub/top_unlogin.jsp?__inline">
 
     <div class="container registerCnt" >
         <h1 class="title tc green">注册</h1>

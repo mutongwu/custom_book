@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <link rel="import" href="./pub/top.jsp?__inline" />
+    <link rel="import" href="./pub/top.html?__inline" />
     <div class="container indexCnt">
         <div class="infoBox">
             <h1 class="tc">为孩子定制独一无二、珍藏一生的礼物</h1>

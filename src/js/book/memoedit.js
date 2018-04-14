@@ -1,16 +1,39 @@
 $(function(){
 	var params = App.params();
-	var $box = $('.bookEditCnt');
+	var $page = $('.bookEditCnt');
+	var validator = new App.FormValidator({
+		$form: $page.find('.bookEdit')
+	});
 
-	$box.find('.j_pyName').text(params['py']);
-	$box.find('.j_zhName').text(params['zh']);
+	$page.find('.j_pyName').text(params['py']);
+	$page.find('.j_zhName').text(params['zh']);
 
 	function addToCart(){
-		var memo = $box.find('.j_memoInput').val();
-		var isGift = $box.find('[name="gift"]:checked').val();
-		
+		var result = validator.validate();
+		result.isPacking = $page.find('[name="gift"]:checked').val();
+		var data = $.extend({
+			goodsId: 1,
+			storyId: params['v'],
+			chineseName: params['zh'],
+			pinyinName : params['py'],
+			gender: params['sex'] === 'boy'? 1: 0,
+			lead: params['v'],
+			nameInfo: JSON.stringify(App.BookData.getInstance()),
+			call: 'shopCart.add'
+		},result);
+		console.log(data);
+		App.onceAjax({
+			method: 'POST',
+			data: data
+		}).done(function(){
+			App.tip('加入购物车成功~');
+			setTimeout(function(){App.linkTo('/cart/cart.jsp')},1000);
+		})
+		.fail(function(res){
+			App.tip(res && res.message, 'error');
+		});
 	}
-	$box.on('click', '.j_goEdit', function(){
+	$page.on('click', '.j_goEdit', function(){
 		App.linkTo('/book/editname.jsp', params);
 	}).on('click','#j_addToCart',function(){
 		addToCart();

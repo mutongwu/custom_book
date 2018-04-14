@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <link rel="import" href="./pub/top.jsp?__inline">
+    <link rel="import" href="./pub/top.html?__inline">
     <div class="container">
         <p class="tc"><img src="/images/404.jpg" class="pic404" /></p>
     </div><!-- END container-->

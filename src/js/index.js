@@ -6,7 +6,7 @@ $(function () {
             py:'',
             zh:'',
             sex: 'boy',
-            v: 1
+            v: 'v1'
         },
         $box: $('#j_nameFormBox'),
         validator: null,

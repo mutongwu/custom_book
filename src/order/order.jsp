@@ -12,17 +12,17 @@
     	<h1 class="tc">我的订单</h1>
     	<div class="couponInfo fs18 cf">
             <div class="fl">
-                你的优惠码<strong class="red">123</strong>&nbsp;<a href="./help/help.jsp?t=coupon" target="_blank">优惠码有什么用？</a>
+                你的优惠码<strong class="red">123</strong>&nbsp;<a href="@ROOT_PATH/help/help.jsp?t=coupon" target="_blank">优惠码有什么用？</a>
             </div>
             <div class="fr">
-                <a href="./profile.html?t=addr">管理我的收货地址</a>
+                <a href="@ROOT_PATH/profile/address.jsp">管理我的收货地址</a>
             </div>
         </div>
         <div class="ui-tab ">
             <ul class="cf">
-                <li class="tabItem fs18 active"><a href="profile.html">全部订单</a></li>
-                <li class="tabItem fs18"><a href="recvComments.html">未支付</a></li>
-                <li class="tabItem fs18"><a href="profile.html">已完成</a></li>
+                <li class="tabItem fs18 active"><a href="#" class="j_order" data-status="">全部订单</a></li>
+                <li class="tabItem fs18"><a href="#" class="j_order" data-status="0">未支付</a></li>
+                <li class="tabItem fs18"><a href="#" class="j_order" data-status="4">已完成</a></li>
             </ul>
         </div>
         <div class="orderData fs16">
@@ -36,42 +36,7 @@
                     <th class="tc">订单状态</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <a href="./order/orderdetail.html">234567</a>
-                    </td>
-                    <td class="tl">
-                        <p><a href="./book/preview.html">zhangsan 《找朋友-张三的神奇之旅》</a></p>
-                        <p><a href="./book/preview.html">lisi 《找朋友-李四的神奇之旅》</a></p>
-                    </td>
-                    <td>
-                        <strong class="price">345元</strong>
-                    </td>
-                    <td>
-                        2016-12-21 11:22
-                    </td>
-                    <td>
-                        <strong class="red">未支付</strong>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="./order/orderdetail.html">234567</a>
-                    </td>
-                    <td class="tl">
-                        <p><a href="./book/preview.html">zhangsan 《找朋友-张三的神奇之旅》</a></p>
-                    </td>
-                    <td>
-                        <strong class="price">115元</strong>
-                    </td>
-                    <td>
-                        2016-12-21 11:22
-                    </td>
-                    <td>
-                        <strong class="green">已完成</strong>
-                    </td>
-                </tr>
+                <tbody class="j_tbdBox">
                 </tbody>
             </table>
             <div class="pageBox" id="j_pageBox">
@@ -82,6 +47,43 @@
 
     <link rel="import" href="../pub/copyright.jsp?__inline">
 </div>
+<script type="text/html" id="orderTpl">
+{{each list as item}}
+<tr>
+    <td>
+        <a href="./order/orderdetail.html">{{item.orderId}}</a>
+    </td>
+    <td class="tl">
+        <p><a href="@ROOT_PATH/order/orderItem.jsp?orderId={{item.orderId}}&orderNo={{item.orderNo}}">{{item.summary}}</a></p>
+    </td>
+    <td>
+        <strong class="price">{{item.statementPrice | priceFormat}}元</strong>
+    </td>
+    <td>
+        {{item.createTime | dateFormat}}
+    </td>
+    <td>
+        {{if item.status == 0}}
+        <strong class="red">未支付</strong>
+        {{else if item.status == 1}}
+        <strong class="green">已支付</strong>
+        {{else if item.status == 2}}
+        <strong class="yellow">制作中</strong>
+        {{else if item.status == 3}}
+        <strong class="yellow">已发货</strong>
+        {{else if item.status == 4}}
+        <strong class="green">交易成功</strong>
+        {{else if item.status == -3}}
+        <strong class="red">订单取消</strong>
+         {{else if item.status == -2}}
+        <strong class="red">订单作废</strong>
+        {{else if item.status == -1}}
+        <strong class="red">退货退款</strong>
+        {{/if}}
+    </td>
+</tr>
+{{/each}}
+</script>
 <script src="../js/order/order.js"></script>
 </body>
 </html>
