@@ -1,5 +1,10 @@
 fis.set('project.ignore',  ['node_modules/**', 'output/**', '.git/**', 'fis-conf.js','rename.js','package*.json']); 
 
+fis.match('/modules/**.js', {
+  isMod: true
+});
+
+fis.hook('commonjs');
 
 fis.match('*.jsp', {
     isHtmlLike:true

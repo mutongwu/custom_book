@@ -11,7 +11,7 @@
     <div class="container orderCnt">
     	<h1 class="tc">我的订单</h1>
     	<div class="couponInfo fs18 cf">
-            <div class="fl">
+            <div class="fl j_couponInfo none">
                 你的优惠码<strong class="red">123</strong>&nbsp;<a href="@ROOT_PATH/help/help.jsp?t=coupon" target="_blank">优惠码有什么用？</a>
             </div>
             <div class="fr">
@@ -20,9 +20,9 @@
         </div>
         <div class="ui-tab ">
             <ul class="cf">
-                <li class="tabItem fs18 active"><a href="#" class="j_order" data-status="">全部订单</a></li>
-                <li class="tabItem fs18"><a href="#" class="j_order" data-status="0">未支付</a></li>
-                <li class="tabItem fs18"><a href="#" class="j_order" data-status="4">已完成</a></li>
+                <li class="tabItem fs18 active"><a  class="j_order" data-status="">全部订单</a></li>
+                <li class="tabItem fs18"><a  class="j_order" data-status="0">未支付</a></li>
+                <li class="tabItem fs18"><a  class="j_order" data-status="4">已完成</a></li>
             </ul>
         </div>
         <div class="orderData fs16">

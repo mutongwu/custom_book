@@ -338,7 +338,7 @@ App.BookData = initGlobalData();
 	        var _this = this;
 
             // hide picPopBox
-            $(document).on('click',function(event){
+            $(document).on('click.bookFxHide',function(event){
             	var picPopBox = _this.config.$lettersBox.find('.letterItem').eq(_this._activeIdx).find('.picPopBox');
             	// console.log(picPopBox.size(), event.target)
                 if(picPopBox.size() && !$.contains(picPopBox[0], event.target) && !$(event.target).hasClass('change_btn')){
@@ -503,7 +503,13 @@ App.BookData = initGlobalData();
 	              }
 	            });
 	    	}
-	    }
+	    },
+		destroy: function(){
+			$(document).off('click.bookFxHide');
+			if(this.instance.destroy){
+				this.instance.destroy();
+			}
+		}
 	});
 
 

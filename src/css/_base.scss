@@ -415,14 +415,16 @@ p.txt{text-indent: 2em;line-height: 1.8;}
   }
 }
 .bookList{
-  .item{
-    position: relative;
-    padding: 1% 10%;
+  .bookList-item{
     background: #fff;
     border:1px solid $border-color;
-    border-radius: 5px;
-    font-size:24px;
     margin-bottom: 30px;
+    border-radius: 5px;
+  }
+  .bookList-inner{
+    padding: 1% 10%;
+    position: relative;
+    font-size:24px;
     h4{
       margin: 40px 0 10px;
     }

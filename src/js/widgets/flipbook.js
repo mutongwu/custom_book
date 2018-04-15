@@ -142,7 +142,7 @@
 		},
 	    _initEvent: function(){
 	        var _this = this;
-            $(window).resize(function(){
+            $(window).on('resize.flipBook',function(){
 		        _this._initWH();
 		    });
 
@@ -177,7 +177,10 @@
 	    	}else if(num < this.config.curr){
 	    		this._flipBack(num);
 	    	}
-	    }
+	    },
+		destroy: function(){
+			$(window).off('resize.flipBook');
+		}
 	});
 
 

@@ -49,6 +49,6 @@
 
     <link rel="import" href="../pub/copyright.jsp?__inline">
 </div>
-<script src="../js/cart/cart.js"></script>
+<!-- <script src="../js/cart/cart.js"></script> -->
 </body>
 </html>

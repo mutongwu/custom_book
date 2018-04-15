@@ -35,10 +35,9 @@ $(function(){
 			return;
 		}
 		var data = $.extend({
-
+			'call': 'agent.applyAgent'
 		},result,contact);
-		console.log(data);
-		return;
+
 		App.onceAjax({
 			data: data,
 			method:'POST'
@@ -50,6 +49,25 @@ $(function(){
 		});
 	}	
 
+	function loadApplyInfo(){
+		return App.ajax({
+			data:{
+				call: 'agent.getApplyAgentInfo'
+			}
+		})
+	}
+	function loadParterInfo(){
+		return App.ajax({
+			data:{
+				call: 'agent.getPartnerInfo'
+			}
+		})
+	}
+	function initInfo(){
+		$.when(loadApplyInfo(), loadParterInfo()).done(function(applyInfo , partnerInfo){
+			console.log(applyInfo , partnerInfo);
+		});
+	}
 	$page.on('change', '.j_typeRadio',function(){
 		var val = $(this).val();
 		if(this.checked){
@@ -69,4 +87,6 @@ $(function(){
 	$page.find('.j_typeRadio[value="'+currentLevel+'"]').click();
 
 	$('.j_distSelect').distpicker();
+
+	initInfo();
 })

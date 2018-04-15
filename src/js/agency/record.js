@@ -18,8 +18,8 @@ $(function(){
 				pageSize: pageSize
 			}
 		}).done(function(json){
-			var data = json.data;
-			var total = json.total;
+			var data = json.list;
+			var total = json.count;
 			if(data){
 				$.each(data, function(i, item){
 					item._dateStr = App.Format.fmDate(item.rebateTime,'yyyy-MM-dd hh:mm:ss');

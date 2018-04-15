@@ -75,27 +75,46 @@
 <script type="text/html" id="itemTpl">
 <ul>
 {{each}}
-<li class="pure-g item" data-orderId="{{$value.orderId}}" data-idx="{{$index}}">
-    <div class="pure-u-5-24">
-        <img class="pic" src="/images/core/book.png" />
-    </div>
-    <div class="pure-u-12-24">
-         <h4>《找朋友-<span>{{$value.chineseName}}</span>的神奇之旅》</h4>
-         <p class="text">{{$value.pinyinName}}</p>
-    </div>
-    <div class="pure-u-7-24">
-        <div class="moreBox">
-            <strong class="price">{{$value.price | priceFormat}} 元</strong>
-            {{if $value.isPacking}}
-            <p>带礼品包装</p>
-            {{/if}}
-            <a href="./cartItem.html">编辑图书</a>
+<li class="bookList-item j_cartItem" data-orderId="{{$value.orderId}}" data-idx="{{$index}}">
+    <div class="pure-g bookList-inner">
+        <div class="pure-u-5-24">
+            <img class="pic" src="/images/core/book.png" />
         </div>
+        <div class="pure-u-12-24">
+            <h4>《找朋友-<span>{{$value.chineseName}}</span>的神奇之旅》</h4>
+            <p class="text">{{$value.pinyinName}}</p>
+        </div>
+        <div class="pure-u-7-24">
+            <div class="moreBox">
+                <strong class="price">{{$value.price | priceFormat}} 元</strong>
+                {{if $value.isPacking}}
+                <p>带礼品包装</p>
+                {{/if}}
+                <a class="j_cartItemEdit"  data-idx="{{$index}}">编辑图书</a>
+            </div>
+        </div>
+        <a class="delBox j_delItem" data-idx="{{$index}}"></a>
     </div>
-    <a class="delBox j_delItem" data-idx="{{$index}}"></a>
+    <div class="pure-u-1-1 editItemCnt j_editItemCnt">
+
+    </div>
 </li>
 {{/each}}
 </ul>
+</script>
+
+<script type="text/html" id="editItemTpl">
+<div class="bookPreview">
+    <div id="j_bookCnt"></div>
+</div>
+<div class="bookEdit">
+    <link rel="import" href="../pub/partial_nameform.jsp?__inline">
+    <link rel="import" href="../pub/partial_memopic.jsp?__inline">
+</div>
+<div class="btnBox tc">
+    <a class="ui-button ui-button-green ui-button-XL disable" id="j_cancelUpdate">取消修改</a>
+    <a class="ui-button ui-button-yellow ui-button-XL" id="j_updateCartItem">确认修改</a>
+</div>
 </script>
 <script src="/js/cart/cart.js"></script>
 </body>

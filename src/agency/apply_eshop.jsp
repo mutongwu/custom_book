@@ -51,15 +51,15 @@
                     <div class="ui-form-group">
                         <div class="uploadBox cf">
                             <div class="uploadItem fl">
-                                <img src="./images/core/boy1.jpg" class="pic" />
+                                <img src="/images/core/boy1.jpg" class="pic" />
                                 <input type="file" name="pic1" class="uploadInput" />
                             </div>
                             <div class="uploadItem fl">
-                                <img src="./images/core/boy1.jpg" class="pic" />
+                                <img src="/images/core/boy1.jpg" class="pic" />
                                 <input type="file" name="pic1" class="uploadInput" />
                             </div>
                             <div class="uploadItem fl">
-                                <img src="./images/core/boy1.jpg" class="pic" />
+                                <img src="/images/core/boy1.jpg" class="pic" />
                                 <input type="file" name="pic1" class="uploadInput" />
                             </div>
                         </div>

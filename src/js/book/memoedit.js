@@ -1,4 +1,5 @@
 $(function(){
+	var PhotoUpload = require('/modules/photoUpload/index');
 	var params = App.params();
 	var $page = $('.bookEditCnt');
 	var validator = new App.FormValidator({
@@ -21,7 +22,7 @@ $(function(){
 			nameInfo: JSON.stringify(App.BookData.getInstance()),
 			call: 'shopCart.add'
 		},result);
-		console.log(data);
+		
 		App.onceAjax({
 			method: 'POST',
 			data: data
@@ -33,6 +34,8 @@ $(function(){
 			App.tip(res && res.message, 'error');
 		});
 	}
+
+	new PhotoUpload($('.j_photoUploadDiv'))
 	$page.on('click', '.j_goEdit', function(){
 		App.linkTo('/book/editname.jsp', params);
 	}).on('click','#j_addToCart',function(){

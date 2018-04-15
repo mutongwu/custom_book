@@ -9,7 +9,8 @@
 		    	<p>只能写300字以内</p>
 		    </li>
 		    <li class="pure-u-10-24 item">
-		    	<link rel="import" href="/pub/partial_photoUpload.jsp?__inline">
+		    	<!--<link rel="import" href="/pub/partial_photoUpload.jsp?__inline">-->
+				<div class="j_photoUploadDiv"></div>
 		    	<h3>需要包装成礼品吗？</h3>
 		    	<p>我们为您提供精致的礼品包装</p>
 		    	<div class="giftBox">

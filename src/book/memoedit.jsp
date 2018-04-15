@@ -12,22 +12,23 @@
         <h1 class="tc">确认订单</h1>
         <div class="bookList">
             <ul>
-                <li class="pure-g item">
-                    <div class="pure-u-5-24">
-                        <img class="pic" src="../images/core/book.png" />
-                    </div>
-                    <div class="pure-u-12-24">
-                         <h4>《找朋友-<span class="j_zhName"></span>的神奇之旅》</h4>
-                         <p class="text j_pyName"></p>
-                    </div>
-                    <div class="pure-u-7-24">
-                        <div class="moreBox">
-                            <strong class="price">168元</strong>
-                            <p>带礼品包装</p>
-                            <a class="j_goEdit">编辑图书</a>
+                <li class=" bookList-item">
+                    <div class=" pure-g bookList-inner">
+                        <div class="pure-u-5-24">
+                            <img class="pic" src="../images/core/book.png" />
+                        </div>
+                        <div class="pure-u-12-24">
+                            <h4>《找朋友-<span class="j_zhName"></span>的神奇之旅》</h4>
+                            <p class="text j_pyName"></p>
+                        </div>
+                        <div class="pure-u-7-24">
+                            <div class="moreBox">
+                                <strong class="price">168元</strong>
+                                <p>带礼品包装</p>
+                                <a class="j_goEdit">编辑图书</a>
+                            </div>
                         </div>
                     </div>
-                    <!-- <a class="delBox"></a> -->
                 </li>
             </ul>
         </div>

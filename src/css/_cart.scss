@@ -31,15 +31,9 @@
 		.icon-question{position: relative;top: -5px;margin-left: 10px;cursor: pointer;}
 	}
 }
-.cartItemCnt{
-	.innerBox{
-		border: 1px solid $border-color;
-		border-radius: 5px;
-		background: #fff;
-		padding: 0 2%;
-		.bookList .item{border:none;border-bottom: 1px solid $border-color;border-radius: 0;}	
-		.bookEdit{border-bottom: 1px solid $border-color;}
-		.memoPicBox{border:none;border-bottom: 1px solid $border-color;}
-		.btnBox {margin: 30px auto 60px;}
-	}
+.editItemCnt{
+	display: none;
+	.bookEdit{border-top: 1px solid $border-color;}
+	.memoPicBox{border:none;border-top: 1px solid $border-color;}
+	.btnBox {margin: 30px auto 60px;}
 }
