@@ -164,6 +164,7 @@ App.BookData = initGlobalData();
 	        	opt:{
 	        	}
 	        },
+			editable:true
 	    },
 	    _activeIdx: 0, // 当前选择的字母/封面元素索引。
 	    _btnTpl: '<input type="button" class="ui-button change_btn" value="更改" />',
@@ -424,7 +425,9 @@ App.BookData = initGlobalData();
     		el.find('.picPopBox').show();
 	    },
 	    _checkChangeBtn: function(){
-	    	
+	    	if(this.config.editable === false){
+				return;
+			}
 	    	var el = this.config.$lettersBox.find('.letterItem').eq(this._activeIdx);
 	    	var item = this.config.data.list[this._activeIdx - 1];
 	    	el.siblings().find('.change_btn').fadeOut();

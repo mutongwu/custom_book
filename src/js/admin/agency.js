@@ -1,21 +1,17 @@
 $(function(){
-	var orderStatusData = {
-		'0':'未支付',
-		'1':'已支付',
-		'2':'制作中',
-		'3':'已发货',
-		'4':'交易成功',
-		'-1':'退货退款',
-		'-2':'订单作废',
-		'-3':'订单取消'
+	var agencyStatusData = {
+		'-2': '停止合作',
+		'-1': '不通过',
+		'0': '待审核',
+		'1': '审核通过'
 	};
 
-	var $page = $('.adminOrderCnt');
+	var $page = $('.adminAgencyCnt');
 	var validator = new App.FormValidator({
 		$form: $page.find('.queryForm')
 	});
 	var defaultParams = {
-		'call': 'admin.listOrder',
+		'call': 'admin.listPartnerInfo',
 		pageNo:1,
 		pageSize: 10
 	};
@@ -44,10 +40,10 @@ $(function(){
 			data:params
 		}).done(function(json){
 			if(json && json.list){
-				$page.find('.j_tbdBox').html(template('orderTpl', json));
+				$page.find('.j_tbdBox').html(template('itemTpl', json));
 				initPageBar(json, params);
 			}else{
-				$page.find('.j_tbdBox').html('<tr><td colspan="8"><p class="tc">暂无订单~</p></td></tr>');
+				$page.find('.j_tbdBox').html('<tr><td colspan="'+$page.find('thead th').length+'"><p class="tc">暂无代理~</p></td></tr>');
 			}
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');
@@ -55,10 +51,10 @@ $(function(){
 	}
 	function initStatusSelect(){
 		var str = '';
-		$.each(orderStatusData, function(key, val){
+		$.each(agencyStatusData, function(key, val){
 			str += '<option value="'+key+'">'+val+'</option>';
 		});
-		$page.find('.j_orderStatusSel').append(str);
+		$page.find('.j_agencyStatus').append(str);
 	}
 	function initDatePicker(){
 		var $begin = $page.find('.j_beginTime');
@@ -98,9 +94,10 @@ $(function(){
 		if(result.endTime){
 			result.endTime = new Date(result.endTime).getTime();
 		}
-		loadData($.extend({},defaultParams, filterEmpty(result)));
+		loadData($.extend({},defaultParams,filterEmpty(result)));
 		resetPager();
 	});
 	initDatePicker();
 	initStatusSelect();
+	$('.j_distinctSelect').distpicker();
 })

@@ -10,23 +10,27 @@ $(function(){
 			totalNum: json.count,
 			jumpTo: false,
 			onPage: function(p){
-				loadData(p, pageSize);
+				loadData({
+					pageNo:p,
+					pageSize:pageSize
+				});
 			}
 		})
 	}
 	function resetPager(){
 		if(pageBar){
 			pageBar.destroy();
+			pageBar = null;
 		}
 	}
-	function formatRmb(price) {
-	    return (price/100).toFixed(2);
-	}
-	function dateFormat(val) {
-	    return App.Format.fmDate(val, 'yyyy-MM-dd hh:mm:ss');
-	}
-	template.helper('dateFormat', dateFormat);
-	template.helper('priceFormat', formatRmb);
+	// function formatRmb(price) {
+	//     return (price/100).toFixed(2);
+	// }
+	// function dateFormat(val) {
+	//     return App.Format.fmDate(val, 'yyyy-MM-dd hh:mm:ss');
+	// }
+	// template.helper('dateFormat', dateFormat);
+	// template.helper('priceFormat', formatRmb);
 	function loadData(params){
 		App.ajax({
 			data:{
@@ -40,7 +44,7 @@ $(function(){
 				$page.find('.j_tbdBox').html(template('orderTpl', json));
 				initPageBar(json, params.pageSize);
 			}else{
-				$page.find('.j_tbdBox').html('<tr><td class="5"><p class="tc">暂无订单~</p></td></tr>');
+				$page.find('.j_tbdBox').html('<tr><td colspan="5"><p class="tc">暂无订单~</p></td></tr>');
 			}
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');

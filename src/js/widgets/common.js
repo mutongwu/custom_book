@@ -244,7 +244,7 @@ App.FormValidator.prototype = {
         $form: null,
 
         //jquery支持的selector
-        selector: '.ui-input,.ui-textarea,.ui-select,input[type="hidden"]',
+        selector: '.ui-input,.ui-textarea,.ui-select,input[type="hidden"],.ui-radio',
 
         //清除错误样式函数
         clearInvalidFn: null,
@@ -291,6 +291,10 @@ App.FormValidator.prototype = {
                 _this.clearInvalid(this);
             }
         });
+    },
+    destroy: function(){
+        this.config.$form.off();
+        this.config = null;
     },
     _getLabel: function(el){
         if(this.config.getLabelFn){
@@ -690,7 +694,7 @@ $.extend(App.DatePicker.prototype,{
         id: null,
         el: null,
         val: null,
-
+        cls:'ui_datePicker_L',
         zIndex: 100,
 
         //显示时分秒选项。
@@ -781,6 +785,8 @@ $.extend(App.DatePicker.prototype,{
     createDay: function(curr,i,date,aCls){
         curr.setDate(i);
         var cls = [];
+        var y = curr.getFullYear(),
+            m = curr.getMonth();
         if(curr.getDay() === 0 || curr.getDay() === 6){
             cls.push("weeken");
         }
@@ -794,7 +800,7 @@ $.extend(App.DatePicker.prototype,{
         if( currTime <  this.minTime || currTime > this.maxTime){
             cls.push("inValid");
         }
-        return '<td class="ui_datePicker_td '+cls.join(" ")+'">'+i+'</td>';
+        return '<td class="ui_datePicker_td '+cls.join(" ")+'" y="'+y+'" m="'+m+'">'+i+'</td>';
     },
 
     createDays: function(year,mon,date){
@@ -863,7 +869,7 @@ $.extend(App.DatePicker.prototype,{
 
     },
     createFt: function(){
-        return '<tfoot class="ui_datePicker_ft"><tr><td colspan="2"><span class="set_clear">清空</span></td><td colspan="3"><span class="set_today">今天</span></td><td colspan="2"><span class="set_ok">确定</span></td></tr></tfoot>';
+        return '<tfoot class="ui_datePicker_ft"><tr><td colspan="2"><span class="ui_datePicker_btn set_clear">清空</span></td><td colspan="3"><span class="ui_datePicker_btn set_today">今天</span></td><td colspan="2"><span class="ui_datePicker_btn set_ok">确定</span></td></tr></tfoot>';
     },
 
     createSelectDom: function(st,end,cls,val){
@@ -899,7 +905,7 @@ $.extend(App.DatePicker.prototype,{
         var timeBd = this.config.hasTime ? this.createTimeBd(): '';
 
         var _html = [
-                '<div class="ui_datePicker_box" id="'+this.config.id+'"><table>',
+                '<div class="ui_datePicker_box '+ this.config.cls+'" id="'+this.config.id+'"><table>',
             hd,
             bd,
             timeBd,
@@ -994,10 +1000,9 @@ $.extend(App.DatePicker.prototype,{
             return;
         }else if(t.hasClass("ui_datePicker_td")){
             this.val.setDate(t.html());
-            if(t.hasClass("preMDay")){
-                this.val.setMonth(this.val.getMonth() - 1);
-            }else if(t.hasClass("nextMDay")){
-                this.val.setMonth(this.val.getMonth() + 1);
+            if(t.hasClass("preMDay") || t.hasClass("nextMDay")){
+                this.val.setFullYear(t.attr('y'));
+                this.val.setMonth(t.attr('m'));
             }
 
             this.updateValue(this.val);
@@ -1026,18 +1031,20 @@ $.extend(App.DatePicker.prototype,{
                     this.val.setMonth(this.val.getMonth()+1);
                     this.update();
                     break;
-                case "set_clear":
-                    this.updateValue(null);
-                    this.domEl.hide();
-                    break;
-                case "set_today":
-                    this.updateValue(this.todayDt);
-                    this.domEl.hide();
-                    break;
-                case "set_ok":
-                    this.updateValue(this.val);
-                    this.domEl.hide();
-                    break;
+                default:
+                    if(cls.indexOf('ui_datePicker_btn') !== -1){
+                        if(cls.indexOf("set_clear") !==-1){
+                            this.updateValue(null);
+                        }
+                        if(cls.indexOf("set_today") !==-1){
+                            this.updateValue(this.todayDt);
+                        }
+                        if(cls.indexOf("set_ok") !==-1){
+                            this.updateValue(this.val);
+                        }
+                        this.domEl.hide();
+                        break;
+                    }
             }
         }
     },
@@ -1330,3 +1337,11 @@ App.linkTo = function(path, data){
     }
     window.location.href = url;
 };
+function formatRmb(price) {
+    return (price/100).toFixed(2);
+}
+function dateFormat(val) {
+    return App.Format.fmDate(val, 'yyyy-MM-dd hh:mm:ss');
+}
+template.helper('dateFormat', dateFormat);
+template.helper('priceFormat', formatRmb);

@@ -3,40 +3,39 @@
 <html>
 <head lang="en">
     <link rel="import" href="../pub/res.jsp?__inline">
-    <link rel="stylesheet" type="text/css" href="/css/admin/member.scss" />
+    <link rel="stylesheet" type="text/css" href="./css/admin/admin.scss" />
 </head>
 <body>
 <div class="wrapper adminPage">
     <link rel="import" href="../pub/admin/top.jsp?__inline">
 
-    <div class="container adminMemberCnt">
-        <h1 class="tc">会员管理</h1>
+    <div class="container adminAgencyCnt">
+        <h1 class="tc">合作伙伴管理</h1>
     	<div class="queryBox">
             <form class="queryForm ui-form">
                 <div class="pure-g">
-                    <!--<div class="pure-u-3-24">
-                    </div>-->
-                    <div class="pure-u-8-24">
+                    
+                    <div class="pure-u-1-3">
                         <div class="ui-form-item">
-                            <label class="ui-form-label">用户名：</label>
+                            <label class="ui-form-label">代理名称：</label>
                             <div class="ui-form-group">
-                                <input class="ui-input" name="username" placeholder="用户名"/>
+                                <input class="ui-input" name="name" placeholder="代理名称/店铺名"/>
                             </div>
                         </div>
                     </div>
-                    <div class="pure-u-8-24">
+                    <div class="pure-u-1-3">
                         <div class="ui-form-item">
-                            <label class="ui-form-label">手机号：</label>
+                            <label class="ui-form-label">联系人：</label>
                             <div class="ui-form-group">
-                                <input class="ui-input" name="mobile" placeholder="手机号"/>
+                                <input class="ui-input" name="contact" placeholder="联系人"/>
                             </div>
                         </div>
                     </div>
-                    <div class="pure-u-8-24">
+                    <div class="pure-u-1-3">
                         <div class="ui-form-item">
                             <label class="ui-form-label">状态：</label>
                             <div class="ui-form-group">
-                                <select class="ui-select j_memberStatusSel" name="status">
+                                <select class="ui-select j_agencyStatus" name="status">
                                     <option value="" selected>请选择</option>
                                 </select>
                             </div>
@@ -44,8 +43,6 @@
                     </div>
                 </div>
                 <div class="pure-g">
-                    <!--<div class="pure-u-3-24">
-                    </div>-->
                     <div class="pure-u-10-24">
                         <div class="ui-form-item">
                             <label class="ui-form-label">所在地区：</label>
@@ -66,7 +63,7 @@
                     </div>
                     <div class="pure-u-10-24">
                         <div class="ui-form-item">
-                            <label class="ui-form-label">注册时间：</label>
+                            <label class="ui-form-label">申请时间：</label>
                             <div class="ui-form-group">
                                 <input class="ui-input timeInput j_beginTime" name="beginTime" placeholder="开始时间"/>
                                 &nbsp;&nbsp;
@@ -91,19 +88,15 @@
                 <thead>
                 <tr>
                     <th class="tc">用户ID</th>
-                    <th class="tc">用户名</th>
-                    <th class="tc">手机号</th>
-                    <th class="tc">电子邮箱</th>
-                    <th class="tc">注册来源</th>
-                    <th class="tc">注册时间</th>
-                    <th class="tc">角色</th>
-                    <th class="tc">所在地区</th>
+                    <th class="tc">代理名称</th>
+                    <th class="tc">类型</th>
+                    <th class="tc">所在城市</th>
+                    <th class="tc">申请时间</th>
                     <th class="tc">状态</th>
                     <th class="tc">操作</th>
                 </tr>
                 </thead>
                 <tbody class="j_tbdBox">
-                
                 </tbody>
             </table>
             <div class="pageBox" id="j_pageBox">
@@ -121,48 +114,45 @@
         <a>{{item.userId}}</a>
     </td>
     <td>
-        {{item.userName}}
+        {{user.name}}
     </td>
     <td>
-        {{item.mobile}}
+        {{if user.level == 1}}
+            <span>个人</span>
+        {{else if user.level == 2}}
+            <span>网店</span>
+        {{else}}
+            <span>实体店</span>
+        {{/if}}
     </td>
     <td class="tl">
-        {{item.email}}
+        {{user.province}}{{user.city}}{{user.county}}
     </td>
     <td>
-        {{item.source}}
+        {{user.applyTime | dateFormat}}
     </td>
     <td>
-        {{item.createTime|dateFormat}}
-    </td>
-    <td>
-       {{if item.role == 0}}
-        <span class="green">普通会员</span>
+        {{if item.status == -2}}
+        <span class="red">停止合作</span>
+        {{else if item.status == -1}}
+        <span class="red">不通过</span>
+        {{else if item.status == 0}}
+        <span class="yellow">待审核</span>
         {{else}}
-        <span class="red">管理员</span>
+        <span class="green">审核通过</span>
         {{/if}}
     </td>
     <td>
-        {{item.province}}{{item.city}}{{item.county}}
-    </td>
-    <td>
-        {{if item.status == 1}}
-        <span class="green">有效</span>
-        {{else}}
-        <span class="red">无效</span>
-        {{/if}}
-    </td>
-    <td>
-        {{if item.status == 1}}
-        <input type="button" class="ui-button ui-button-yellow" value="锁定" />
-        {{else}}
-        <input type="button" class="ui-button ui-button-yellow" value="解锁" />
+        {{else if item.status == -2}}
+            <input type="button" class="ui-button" value="审核通过" />
+            <input type="button" class="ui-button ui-button-yellow" value="不通过" />
+        {{else if item.status == 1}}
+            <input type="button" class="ui-button ui-button-red" value="停止合作" />
         {{/if}}
     </td>
 </tr>
-
 {{/each}}
 </script>
-<script src="../js/admin/member.js"></script>
+<script src="../js/admin/agency.js"></script>
 </body>
 </html>

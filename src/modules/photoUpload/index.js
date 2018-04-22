@@ -1,18 +1,27 @@
 
-function PhotoUpload($container){
-    
+function PhotoUpload(config){
+    this.config = $.extend({
+        $container:null,
+        attachmentId:null
+    },config);
     this._id = new Date().getTime();
-    this.init($container);
+    this.init();
 }
 PhotoUpload.prototype = {
-    init: function($container){
-        this.$container = $container;
+    init: function(){
+        
         this.style();
         this.dom();
         this.event();
+        if(this.config.attachmentId){
+            this.config.$container.find('.j_photo').attr('src','@ROOT_PATH/u/s.do?attachmentId=' +this.config.attachmentId);
+        }
+    },
+    getResult: function(){
+        return this.config.$container.find('.attachmentId').val() || this.config.attachmentId;
     },
     event: function(){
-        var $box = this.$container;
+        var $box = this.config.$container;
         this.$fileupload = $box.find('.j_fileupload').fileupload({
             url: '@ROOT_PATH/u/f.do',
             formData:{
@@ -34,16 +43,16 @@ PhotoUpload.prototype = {
     dom: function(){
         var dom = __inline('./dom.html');
         this.domId = this._id + '_dom';
-        this.$container.append('<div id="' + this.domId + '">' + dom + '</div>');
+        this.config.$container.append('<div id="' + this.domId + '">' + dom + '</div>');
     },
     style: function(){
         var css = __inline('./style.scss');
         this.styleId = this._id + '_style';
-        this.$container.append('<style id="' + this.styleId + '">'+css+'</style>');
+        this.config.$container.append('<style id="' + this.styleId + '">'+css+'</style>');
     },
     destroy: function(){
         this.$fileupload.fileupload('destroy');
-        this.$container.empty();
+        this.config.$container.empty();
     }
 }
 

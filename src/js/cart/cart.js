@@ -1,5 +1,6 @@
 $(function(){
 	var PhotoUpload = require('/modules/photoUpload/index');
+	// var NameRoleForm = require('/modules/nameRoleForm/index');
 
 	var $page = $('.cartCnt');
 	var $form = $page.find('.j_addressForm');
@@ -165,7 +166,10 @@ $(function(){
 			var currCart = cartData[this.currIdx];
 
 			$editItemCnt.html(template('editItemTpl')).show();
-			this.currUpload = new PhotoUpload($editItemCnt.find('.j_photoUploadDiv'));
+			this.currUpload = new PhotoUpload({
+				$container:$editItemCnt.find('.j_photoUploadDiv'),
+				attachmentId: currCart.attachmentId
+			});
 			this.currBookFx = new App.BookFx({
 				$cnt: $('#j_bookCnt'),
 				data:  {
@@ -177,13 +181,37 @@ $(function(){
 					list: JSON.parse(currCart.nameInfo)
 				}
 			});
+			// this.currNameRoleForm = new NameRoleForm({
+			// 	$container: $editItemCnt.find('#j_nameRoleDiv'),
+			// 	py:currCart.pinyinName,
+			// 	zh: currCart.chineseName,
+			// 	sex: currCart.gender == 1 ?'boy':'girl',
+			// 	v:  currCart.storyId
+			// });
+			this.$box.find('.ui-textarea').val(currCart.message);
 			this.initEvent();
 		},
-		destroy: function(){
-			this.currBookFx.destroy();
-			this.currUpload.destroy();
-			this.currUpload = this.currBookFx = this.currIdx = null;
-			this.$box.off().empty().hide();
+		saveItem:function(){
+			var self = this;
+			var currCart = cartData[this.currIdx];
+			currCart.attachmentId = this.currUpload.getResult();
+			currCart.isPacking = this.$box.find('[name="gift"]:checked').val();
+			var message = this.$box.find('.ui-textarea').val();
+			if(!message){
+				return App.tip('请先填写寄语.','error');
+			}
+			currCart.message = message;
+			currCart.nameInfo = JSON.stringify(this.currBookFx.getResult());
+			currCart['call'] = 'shopCart.modify';
+			App.onceAjax({
+				data: currCart,
+				method:'POST'
+			}).done(function(res){
+				App.tip(res && res.message || '商品修改成功！');
+				self.destroy();
+			}).fail(function(res){
+				App.tip(res && res.message, 'error');
+			});
 		},
 		initEvent: function(){
 			var self = this;
@@ -192,6 +220,12 @@ $(function(){
 			}).on('click', '#j_updateCartItem', function(){
 				self.saveItem();
 			});
+		},
+		destroy: function(){
+			this.currBookFx.destroy();
+			this.currUpload.destroy();
+			this.currUpload = this.currBookFx = this.currIdx = null;
+			this.$box.off().empty().hide();
 		}
 	}
 })

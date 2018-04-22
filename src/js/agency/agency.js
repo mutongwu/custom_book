@@ -1,17 +1,20 @@
 $(function(){
-	var pager = {
-		init: function(){
-			new App.PageBar({
-				el: $('#j_pageBox'),
-				cls: 'ui_pageBar_L',
-				totalNum: 40,
-				jumpTo: false
-			})
-		}
+	var $page = $('.agencyCnt');
+	function loadParterInfo(){
+		return App.ajax({
+			data:{
+				call: 'agent.getPartnerInfo'
+			}
+		})
 	}
 
-	if($('.recordCnt').size()){
-		pager.init();	
-	}
-	
+	loadParterInfo().done(function(res){
+		if(res){
+			$page.find('.agencyBox').html(template('agencyTpl'), res);
+		}else{
+			$page.find('.agencyBox').html('<p class="notAgency">您还未成为代理.</p>');
+		}
+	}).fail(function(res){
+		App.tip(res && res.message,'error');
+	});
 })

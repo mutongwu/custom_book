@@ -3,11 +3,11 @@
 <html>
 <head lang="en">
     <link rel="import" href="../pub/res.jsp?__inline">
-    <link rel="stylesheet" type="text/css" href="./css/admin.css" />
+    <link rel="stylesheet" type="text/css" href="/css/admin/order.scss" />
 </head>
 <body>
 <div class="wrapper adminPage">
-    <link rel="import" href="../pub/admin/top.jsp?__inline">
+    <link rel="import" href="/pub/admin/top.jsp?__inline">
 
     <div class="container adminOrderCnt">
         <h1 class="tc">订单管理</h1>
@@ -17,7 +17,7 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">订单号：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="ordersn" placeholder="订单号"/>
+                            <input class="ui-input" name="orderId" placeholder="订单号"/>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">商品名：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="product" placeholder="商品名"/>
+                            <input class="ui-input" name="summary" placeholder="商品名"/>
                         </div>
                     </div>
                 </div>
@@ -34,9 +34,9 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">下单时间：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input " name="start" placeholder="开始时间"/>
+                            <input class="ui-input j_beginTime" name="beginTime" placeholder="开始时间"/>
                             &nbsp;&nbsp;
-                            <input class="ui-input ml10" name="end" placeholder="结束时间"/>
+                            <input class="ui-input ml10 j_endTime" name="endTime" placeholder="结束时间"/>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">收货人：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="receiver" placeholder="收货人"/>
+                            <input class="ui-input" name="name" placeholder="收货人"/>
                         </div>
                     </div>
                 </div>
@@ -61,8 +61,8 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">订单状态：</label>
                         <div class="ui-form-group">
-                            <select class="ui-select" name="status">
-                                <option>请选择</option>
+                            <select class="ui-select j_orderStatusSel" name="status">
+                                <option value="" selected>请选择</option>
                             </select>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label"></label>
                         <div class="ui-form-group">
-                            <input type="button" class="ui-button" name="ordersn" value="搜索"/>
+                            <input type="button" class="ui-button j_queryBtn" value="搜索"/>
                         </div>
                     </div>
                 </div>
@@ -91,62 +91,7 @@
                     <th class="tc">操作</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        <a href="./admin/orderdetail.html">234567</a>
-                    </td>
-                    <td>
-                        张三
-                    </td>
-                    <td>
-                        李四
-                    </td>
-                    <td class="tl">
-                        <p><a href="./book/preview.html">zhangsan 《找朋友-张三的神奇之旅》</a></p>
-                        <p><a href="./book/preview.html">lisi 《找朋友-李四的神奇之旅》</a></p>
-                    </td>
-                    <td>
-                        <strong class="price">345元</strong>
-                    </td>
-                    <td>
-                        2016-12-21 11:22
-                    </td>
-                    <td>
-                        <strong class="red">未支付</strong>
-                    </td>
-                    <td>
-                        <input type="button" class="ui-button" value="取消" />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="./admin/orderdetail.html">234567</a>
-                    </td>
-                    <td>
-                        张三
-                    </td>
-                    <td>
-                        李四
-                    </td>
-                    <td class="tl">
-                        <p><a href="./book/preview.html">zhangsan 《找朋友-张三的神奇之旅》</a></p>
-                        <p><a href="./book/preview.html">lisi 《找朋友-李四的神奇之旅》</a></p>
-                    </td>
-                    <td>
-                        <strong class="price">345元</strong>
-                    </td>
-                    <td>
-                        2016-12-21 11:22
-                    </td>
-                    <td>
-                        <strong class="red">未支付</strong>
-                    </td>
-                    <td>
-                        <input type="button" class="ui-button" value="发货" />
-                        <input type="button" class="ui-button ui-button-yellow" value="删除" />
-                    </td>
-                </tr>
+                <tbody class="j_tbdBox">
                 </tbody>
             </table>
             <div class="pageBox" id="j_pageBox">
@@ -155,8 +100,63 @@
         </div>
     </div><!-- END container-->
 
-    <link rel="import" href="../pub/copyright.jsp?__inline">
+    <link rel="import" href="/pub/copyright.jsp?__inline">
 </div>
-<script src="../js/admin/order.js"></script>
+
+<script type="text/html" id="orderTpl">
+{{each list as item}}
+<tr>
+    <td>
+        <a href="./order/orderdetail.jsp">{{item.orderId}}</a>
+    </td>
+    <td>
+        <p><a>{{item.userId}}</a></p>
+    </td>
+    <td>
+        <p>{{item.name}}</p>
+    </td>
+    <!--<td>
+        <p>{{item.province}}{{item.city}}{{item.county}}{{item.address}}</p>
+    </td>-->
+    <td class="tl">
+        <p>{{item.summary}}</p>
+    </td>
+    <td>
+        <strong class="price">{{item.statementPrice | priceFormat}}元</strong>
+    </td>
+    <td>
+        {{item.createTime | dateFormat}}
+    </td>
+    <td>
+        {{if item.status == 0}}
+        <strong class="red">未支付</strong>
+        {{else if item.status == 1}}
+        <strong class="green">已支付</strong>
+        {{else if item.status == 2}}
+        <strong class="yellow">制作中</strong>
+        {{else if item.status == 3}}
+        <strong class="yellow">已发货</strong>
+        {{else if item.status == 4}}
+        <strong class="green">交易成功</strong>
+        {{else if item.status == -3}}
+        <strong class="red">订单取消</strong>
+         {{else if item.status == -2}}
+        <strong class="red">订单作废</strong>
+        {{else if item.status == -1}}
+        <strong class="red">退货退款</strong>
+        {{/if}}
+    </td>
+    <td>
+        {{if item.status == 0}}
+            <input type="button" class="ui-button" value="取消" />
+        {{/if}}
+        {{if ['1','2'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button" value="发货" />
+        {{/if}}
+    </td>
+</tr>
+{{/each}}
+</script>
+<script src="/js/admin/order.js"></script>
 </body>
 </html>

@@ -9,7 +9,7 @@
     <link rel="import" href="../pub/top.jsp?__inline">
 
     <div class="container applyCnt">
-        <h1 class="tc">代理资料</h1>
+        <h1 class="tc">代理申请</h1>
     	<div class="tabBox">
             <link rel="import" href="../pub/partial_agency.jsp?__inline">
         </div>
@@ -55,7 +55,7 @@
                             <select class="ui-select" name="city">
                                 <option>请选择城市</option>
                             </select>
-                            <select class="ui-select" name="contry">
+                            <select class="ui-select" name="county">
                                 <option>请选择区县</option>
                             </select>
                             <p class="ui-field-error"></p>
@@ -91,17 +91,17 @@
                                 <div class="uploadItem fl">
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
-                                    <input type="hidden" name="pic1" class="attchementId" />
+                                    <input type="hidden" name="pic1" class="attachmentId" />
                                 </div>
                                 <div class="uploadItem fl">
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
-                                    <input type="hidden" name="pic2" class="attchementId" />
+                                    <input type="hidden" name="pic2" class="attachmentId" />
                                 </div>
                                 <div class="uploadItem fl">
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
-                                    <input type="hidden" name="pic3" class="attchementId" />
+                                    <input type="hidden" name="pic3" class="attachmentId" />
                                 </div>
                             </div>
                             <p class="ui-field-error">请上传带网店名称的管理后台截图，需要3张图。</p>
@@ -116,7 +116,7 @@
                             <select required class="ui-select" name="city">
                                 <option>请选择城市</option>
                             </select>
-                            <select required class="ui-select" name="contry">
+                            <select required class="ui-select" name="county">
                                 <option>请选择区县</option>
                             </select>
                             <p class="ui-field-error"></p>
@@ -158,17 +158,17 @@
                                 <div class="uploadItem fl">
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
-                                    <input type="hidden" name="pic1" class="attchementId" />
+                                    <input type="hidden" name="pic1" class="attachmentId" />
                                 </div>
                                 <div class="uploadItem fl">
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
-                                    <input type="hidden" name="pic2" class="attchementId" />
+                                    <input type="hidden" name="pic2" class="attachmentId" />
                                 </div>
                                 <div class="uploadItem fl">
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
-                                    <input type="hidden" name="pic3" class="attchementId" />
+                                    <input type="hidden" name="pic3" class="attachmentId" />
                                 </div>
                             </div>
                             <p class="ui-field-error">请上传带店铺名称的实体店照片，需要3张图。</p>
@@ -183,7 +183,7 @@
                             <select required class="ui-select" name="city">
                                 <option>请选择城市</option>
                             </select>
-                            <select required class="ui-select" name="contry">
+                            <select required class="ui-select" name="county">
                                 <option>请选择区县</option>
                             </select>
                             <p class="ui-field-error"></p>
@@ -218,7 +218,7 @@
                         <select required class="ui-select" name="contactCity">
                             <option>请选择城市</option>
                         </select>
-                        <select required class="ui-select" name="contactContry">
+                        <select required class="ui-select" name="contactCounty">
                             <option>请选择区县</option>
                         </select>
                         <p class="ui-field-error"></p>

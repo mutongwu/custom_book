@@ -35,7 +35,9 @@ $(function(){
 		});
 	}
 
-	new PhotoUpload($('.j_photoUploadDiv'))
+	new PhotoUpload({
+		$container:$('.j_photoUploadDiv')
+	});
 	$page.on('click', '.j_goEdit', function(){
 		App.linkTo('/book/editname.jsp', params);
 	}).on('click','#j_addToCart',function(){

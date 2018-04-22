@@ -51,10 +51,10 @@
 {{each list as item}}
 <tr>
     <td>
-        <a href="./order/orderdetail.html">{{item.orderId}}</a>
+        <a href="">{{item.orderId}}</a>
     </td>
     <td class="tl">
-        <p><a href="@ROOT_PATH/order/orderItem.jsp?orderId={{item.orderId}}&orderNo={{item.orderNo}}">{{item.summary}}</a></p>
+        <p><a href="">{{item.summary}}</a></p>
     </td>
     <td>
         <strong class="price">{{item.statementPrice | priceFormat}}元</strong>

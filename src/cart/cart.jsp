@@ -90,7 +90,7 @@
                 {{if $value.isPacking}}
                 <p>带礼品包装</p>
                 {{/if}}
-                <a class="j_cartItemEdit"  data-idx="{{$index}}">编辑图书</a>
+                <div><a class="j_cartItemEdit"  data-idx="{{$index}}">编辑图书</a></div>
             </div>
         </div>
         <a class="delBox j_delItem" data-idx="{{$index}}"></a>
@@ -108,8 +108,7 @@
     <div id="j_bookCnt"></div>
 </div>
 <div class="bookEdit">
-    <link rel="import" href="../pub/partial_nameform.jsp?__inline">
-    <link rel="import" href="../pub/partial_memopic.jsp?__inline">
+    <link rel="import" href="/pub/partial_memopic.jsp?__inline">
 </div>
 <div class="btnBox tc">
     <a class="ui-button ui-button-green ui-button-XL disable" id="j_cancelUpdate">取消修改</a>

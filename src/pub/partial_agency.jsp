@@ -2,7 +2,7 @@
 <div class="ui-tab mb30">
     <ul class="cf j_agencyTab">
         <li class="tabItem"><a href="./coupon.jsp">优惠码</a></li>
-        <li class="tabItem"><a href="./apply.jsp">代理资料</a></li>
+        <li class="tabItem"><a href="./agency.jsp">代理资料</a></li>
         <li class="tabItem"><a href="./record.jsp">返利记录</a></li>
         <li class="tabItem"><a href="./mybank.jsp">结算银行</a></li>
     </ul>
