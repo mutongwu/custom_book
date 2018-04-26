@@ -13,6 +13,7 @@ $(function(){
 		pageNo:1,
 		pageSize: 10
 	};
+	var queryParams = null;
 	var pageBar = null;
 	function initPageBar(json,params){
 		if(pageBar){return;}
@@ -22,7 +23,7 @@ $(function(){
 			totalNum: json.count,
 			jumpTo: false,
 			onPage: function(p){
-				params.p = p;
+				params.pageNo = p;
 				loadData(params);
 			}
 		})
@@ -33,11 +34,14 @@ $(function(){
 			pageBar = null;
 		}
 	}
+	function reloadData(){
+		loadData(queryParams);
+	}
 	function loadData(params){
 		App.ajax({
 			data:params
 		}).done(function(json){
-			if(json && json.list){
+			if(json && json.list  && json.list.length){
 				$page.find('.j_tbdBox').html(template('itemTpl', json));
 				initPageBar(json, params);
 			}else{
@@ -46,6 +50,7 @@ $(function(){
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');
 		});
+		queryParams = params;
 	}
 	function initStatusSelect(){
 		var str = '';

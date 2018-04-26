@@ -1,0 +1,55 @@
+
+.loginCnt{
+  .formBox{
+      width: 400px;
+      margin: auto;
+  }
+  .loginForm{
+    margin-left: -90px;
+    .forget{margin-left: 120px;}
+    .registTip p{border-top:1px solid #ededed;margin-top: 20px;}
+  }
+  .thirdLoginBox{
+    text-align: center;
+    .thirdLogin{
+      display: inline-block;width: 260px;height: 52px;background: url(//www.sy111.com/book/static/images/qq_login.jpg) no-repeat 0 0;overflow: hidden;
+      margin-bottom: 10px;
+      &.wb{background-image: url(//www.sy111.com/book/static/images/wb_login.jpg);}
+      &.wx{background-image: url(//www.sy111.com/book/static/images/wx_login.jpg);}
+    }
+    .tip{margin-bottom: 10px;}
+  }
+
+}
+
+.registerCnt{
+  .registerForm{
+    width: 600px;
+    display: inline-block;
+    .ui-form-group{position: relative;
+      .tip{position: absolute;left:270px;}
+    }
+    .ui-tab{margin-bottom: 20px;}
+  }
+}
+
+
+
+.inviteCnt{
+  .tip{margin:0 0 20px 80px;}
+  .inviteForm{
+    width: 600px;
+    display: inline-block;
+    .btnBox{margin-top: 30px;}
+  }
+}
+.findPwdCnt{
+  min-height:350px;
+  .ui-form{
+    width: 600px;
+    margin: auto
+  }
+  .findPwdForm{
+    display: none;
+  }
+}

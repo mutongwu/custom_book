@@ -5,7 +5,7 @@
 	var GlobalData = {
 		"rootPath" :'@ROOT_PATH/',
 		"userId" : "${userId}",
-		"admin":"${userMap.role}"
+		"type":"${userMap.role}"
 	};
 </script>
 <link type="text/css" href="/css/common.css" rel="stylesheet" />

@@ -42,6 +42,9 @@ $(function(){
 		
 		if(data.pic1 && data.pic2 && data.pic3){
 			data.attachmentIds = [data.pic1, data.pic2, data.pic3].join(',');
+			delete data.pic1;
+			delete data.pic2;
+			delete data.pic3;
 		}
 		if(data.level != '1' && !data.attachmentIds){
 			return App.tip('请先上传3张店铺(网店)图片资料','error');
@@ -51,7 +54,7 @@ $(function(){
 			method:'POST'
 		}).done(function(json){
 			App.tip('申请成功，请等待审核');
-			$('#j_submit').addClass('disable');
+			// $('#j_submit').addClass('disable');
 		}).fail(function(res){
 			App.tip(res && res.message,'error');
 		});
@@ -106,9 +109,12 @@ $(function(){
 		$applyBox.not(level - 1).find('.j_distSelect').distpicker();
 		if(level > 1){
 			$.each(res.picInfoVoList, function(i, item){
-				$box.find('.attachmentId').filter('[name="' + (i+1) + '"]').val(item)
-				.siblings('.pic').attr('src','@ROOT_PATH/u/s.do?attachmentId=' + item);
+				$box.find('.attachmentId').filter('[name="pic' + (i+1) + '"]').val(item.attachmentId)
+				.siblings('.pic').attr('src','@ROOT_PATH/u/s.do?attachmentId=' + item.attachmentId);
 			});
+		}
+		if(data.status == 0){
+			$page.find('.j_status').text('等待审核中').closest('.ui-form-item').removeClass('none');
 		}
 	}
 	function initInfo(){

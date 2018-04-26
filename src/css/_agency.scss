@@ -31,3 +31,25 @@
 	    display: inline-block;
 	}
 }
+.agencyCnt{
+	width: 980px;
+	.agencyInfoForm{
+		width: 80%;
+		margin:  auto;
+		.ui-form-label{
+			width: 120px;
+		}
+		.ui-form-group{
+			margin-left: 140px;
+		}
+		.pic{
+			width: 120px;
+			height: 120px;
+		}
+	}
+	.sectionTitle{
+		font-size: 18px;
+		font-weight: bold;
+		border-bottom: 1px solid #ccc;
+	}
+}

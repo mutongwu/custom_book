@@ -15,6 +15,7 @@ $(function(){
 		pageNo:1,
 		pageSize: 10
 	};
+	var queryParams = null;
 	var pageBar = null;
 	function initPageBar(json,params){
 		if(pageBar){return;}
@@ -24,7 +25,7 @@ $(function(){
 			totalNum: json.count,
 			jumpTo: false,
 			onPage: function(p){
-				params.p = p;
+				params.pageNo = p;
 				loadData(params);
 			}
 		})
@@ -34,12 +35,15 @@ $(function(){
 			pageBar.destroy();
 			pageBar = null;
 		}
+	}	
+	function reloadData(){
+		loadData(queryParams);
 	}
 	function loadData(params){
 		App.ajax({
 			data:params
 		}).done(function(json){
-			if(json && json.list){
+			if(json && json.list  && json.list.length){
 				$page.find('.j_tbdBox').html(template('itemTpl', json));
 				initPageBar(json, params);
 			}else{
@@ -48,6 +52,7 @@ $(function(){
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');
 		});
+		queryParams = params;
 	}
 	function initStatusSelect(){
 		var str = '';
@@ -86,6 +91,41 @@ $(function(){
 		}
 		return obj;
 	}
+
+	function auditApply(applyId, isAccept){
+		new App.LightBox({
+			type:'confirm',
+			title: '填写('+ (isAccept ? '通过' : '不通过') + ')审核意见',
+			msg: $('#popFormTpl').html(),
+			msgType:'none',
+			timeout:null,
+			confirmFn: function(){
+				var validator = new App.FormValidator({
+					$form: $page.find('.popForm')
+				});
+				var result = validator.validate();
+				
+				if(!result.FAILED){
+					var data = $.extend({
+						'call': isAccept? 'admin.approvePartnerInfo' : 'admin.disagreePartnerInfo',
+						'partnerInfoId':applyId
+					},result);
+					App.onceAjax({
+						data:data
+					}).done(function(data){
+						if(data == 1){
+							App.tip('申请信息审核成功！');
+							reloadData();
+						}else{
+							App.tip('申请信息审核失败！','error');
+						}
+					}).fail(function(res){
+						App.tip(res && res.message || '申请信息审核失败！', 'error');
+					});
+				}
+			}
+		}).show();
+	}
 	$page.on('click', '.j_queryBtn',function(){
 		var result = validator.validate();
 		if(result.beginTime){
@@ -96,6 +136,14 @@ $(function(){
 		}
 		loadData($.extend({},defaultParams,filterEmpty(result)));
 		resetPager();
+	}).on('click', '.j_accept',function(){
+		var $tr = $(this).closest('tr');
+		var id = $tr.data('id');
+		auditApply(id,true);
+	}).on('click', '.j_deny',function(){
+		var $tr = $(this).closest('tr');
+		var id = $tr.data('id');
+		auditApply(id, false);
 	});
 	initDatePicker();
 	initStatusSelect();

@@ -3,7 +3,7 @@
 <html>
 <head lang="en">
     <link rel="import" href="../pub/res.jsp?__inline">
-    <link rel="stylesheet" type="text/css" href="./css/admin/admin.scss" />
+    <link rel="stylesheet" type="text/css" href="/css/admin/admin.scss" />
 </head>
 <body>
 <div class="wrapper adminPage">
@@ -109,27 +109,27 @@
 </div>
 <script type="text/html" id="itemTpl">
 {{each list as item}}
-<tr>
+<tr data-id="{{item.partnerInfoId}}">
     <td>
         <a>{{item.userId}}</a>
     </td>
     <td>
-        {{user.name}}
+        {{item.name}}
     </td>
     <td>
-        {{if user.level == 1}}
+        {{if item.level == 1}}
             <span>个人</span>
-        {{else if user.level == 2}}
+        {{else if item.level == 2}}
             <span>网店</span>
         {{else}}
             <span>实体店</span>
         {{/if}}
     </td>
     <td class="tl">
-        {{user.province}}{{user.city}}{{user.county}}
+        {{item.province}}{{item.city}}{{item.county}}
     </td>
     <td>
-        {{user.applyTime | dateFormat}}
+        {{dateFormat(item.applyTime)}}
     </td>
     <td>
         {{if item.status == -2}}
@@ -143,15 +143,25 @@
         {{/if}}
     </td>
     <td>
-        {{else if item.status == -2}}
-            <input type="button" class="ui-button" value="审核通过" />
-            <input type="button" class="ui-button ui-button-yellow" value="不通过" />
+        {{if item.status == 0}}
+            <input type="button" class="ui-button j_accept" value="审核通过" />
+            <input type="button" class="ui-button ui-button-yellow j_deny" value="不通过" />
         {{else if item.status == 1}}
-            <input type="button" class="ui-button ui-button-red" value="停止合作" />
+            <input type="button" class="ui-button ui-button-red j_lock" value="停止合作" />
         {{/if}}
     </td>
 </tr>
 {{/each}}
+</script>
+<script type="text/html" id="popFormTpl">
+<form class="ui-form popForm">
+    <div class="ui-form-item">
+        <label class="ui-form-label">审核意见：</label>
+        <div class="ui-form-group">
+            <textarea class="ui-textarea" name="reviewInfo" id="" cols="30" rows="10"  placeholder="审核意见" maxlength="32"></textarea>
+        </div>
+    </div>
+</form>    
 </script>
 <script src="../js/admin/agency.js"></script>
 </body>

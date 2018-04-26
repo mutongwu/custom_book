@@ -133,7 +133,7 @@
         {{item.source}}
     </td>
     <td>
-        {{item.createTime|dateFormat}}
+        {{dateFormat(item.createTime)}}
     </td>
     <td>
        {{if item.role == 0}}

@@ -17,7 +17,7 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">订单号：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="orderId" placeholder="订单号"/>
+                            <input class="ui-input" name="orderNo" placeholder="订单号"/>
                         </div>
                     </div>
                 </div>
@@ -105,9 +105,9 @@
 
 <script type="text/html" id="orderTpl">
 {{each list as item}}
-<tr>
+<tr data-orderid="{{item.orderId}}" data-orderno="{{item.orderNo}}">
     <td>
-        <a href="./order/orderdetail.jsp">{{item.orderId}}</a>
+        <a href="./orderdetail.jsp?orderId={{item.orderId}}">{{item.orderNo}}</a>
     </td>
     <td>
         <p><a>{{item.userId}}</a></p>
@@ -122,10 +122,10 @@
         <p>{{item.summary}}</p>
     </td>
     <td>
-        <strong class="price">{{item.statementPrice | priceFormat}}元</strong>
+        <strong class="price">{{priceFormat(item.statementPrice)}}元</strong>
     </td>
     <td>
-        {{item.createTime | dateFormat}}
+        {{dateFormat(item.createTime)}}
     </td>
     <td>
         {{if item.status == 0}}
@@ -148,14 +148,42 @@
     </td>
     <td>
         {{if item.status == 0}}
-            <input type="button" class="ui-button" value="取消" />
+            <input type="button" class="ui-button j_cancelOrder" value="取消" />
+        {{else if ['1'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button j_acceptOrder" value="确认订单" />
+        {{else if ['2'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button j_sendGoods" value="发货" />
+        {{else if ['3'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button j_sendGoods" value="更改物流" />
         {{/if}}
-        {{if ['1','2'].indexOf(item.status) !== -1}}
-            <input type="button" class="ui-button" value="发货" />
+        {{if ['1','2','3','4'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button j_refundOrder" value="退货退款" />
         {{/if}}
     </td>
 </tr>
 {{/each}}
+</script>
+<script type="text/html" id="logisticsTpl">
+<form class="ui-form logisticsForm">
+    <div class="ui-form-item">
+        <label class="ui-form-label">物流公司：</label>
+        <div class="ui-form-group">
+            <input required="required" class="ui-input" name="logisticsCompany" placeholder="物流公司" maxlength="32"/>
+        </div>
+    </div>
+    <div class="ui-form-item">
+        <label class="ui-form-label">物流单号：</label>
+        <div class="ui-form-group">
+            <input type="text" required="required" class="ui-input" name="trackingNumber" placeholder="物流单号"  maxlength="32"/>
+        </div>
+    </div>
+    <div class="ui-form-item">
+        <label class="ui-form-label">备注：</label>
+        <div class="ui-form-group">
+            <input type="text" class="ui-input" name="note" placeholder="备注"/>
+        </div>
+    </div>
+</form>    
 </script>
 <script src="/js/admin/order.js"></script>
 </body>

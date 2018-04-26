@@ -1,0 +1,50 @@
+
+.indexCnt{
+  .infoBox{
+    margin-top: 50px;
+    h1{font-size:38px;color:#f81157;}
+    h2{font-size:24px;color:#747474;}
+  }
+  .featureBox{
+    background: #fff;
+    .item{
+      h3{color: #e8a910;margin-top:50px;font-size:30px;}
+      p{font-family:"SimSun";font-size:20px;text-indent:2em;text-align:justify;margin:30px 50px 50px;}
+    }
+  }
+  .userCommentBox{
+    padding: 0px 90px 90px;
+    .slider{
+      height: 530px;
+    }
+    .title{
+      font-size: 30px;
+      font-weight: bold;
+      margin: 30px auto;
+    }
+    .commentItem{
+      width: 420px;
+      height: 508px;
+      padding: 20px 40px 0;
+      border: 1px solid #a8a8a8;
+      margin-right: 96px;
+      float: left;
+      background: #fff;
+      &:nth-of-type(even){
+        margin-right: 0;
+      }
+    }
+    .uPic{
+      width: 150px;height: 150px;border-radius:150px;
+    }
+    .name{
+      color: #d8245b;font-size:30px;
+    }
+    .text{
+      text-indent: 2em;
+      text-align: justify;
+      font-size: 22px;
+      margin-top: 30px
+    }
+  }
+}

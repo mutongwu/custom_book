@@ -152,7 +152,7 @@ App.Format = {
         return false;
     },
     fmDate:function(dt,format){
-        if(!dt || dt instanceof Date === false){
+        if(!dt){
             dt = new Date();
         }else if(!isNaN(dt)){
             dt = new Date(+dt);

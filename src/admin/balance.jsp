@@ -3,7 +3,7 @@
 <html>
 <head lang="en">
     <link rel="import" href="../pub/res.jsp?__inline">
-    <link rel="stylesheet" type="text/css" href="./css/admin.css" />
+    <link rel="stylesheet" type="text/css" href="/css/admin/admin.scss" />
 </head>
 <body>
 <div class="wrapper adminPage">
@@ -14,9 +14,7 @@
     	<div class="queryBox">
             <form class="queryForm ui-form">
                 <div class="pure-g">
-                    <div class="pure-u-3-24">
-                    </div>
-                    <div class="pure-u-1-4">
+                    <div class="pure-u-1-3">
                         <div class="ui-form-item">
                             <label class="ui-form-label">合作伙伴：</label>
                             <div class="ui-form-group">
@@ -24,35 +22,31 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pure-u-1-4">
+                    <div class="pure-u-1-3">
                         <div class="ui-form-item">
                             <label class="ui-form-label">收款人：</label>
                             <div class="ui-form-group">
-                                <input class="ui-input" name="mobile" placeholder="收款人"/>
+                                <input class="ui-input" name="name" placeholder="收款人"/>
                             </div>
                         </div>
                     </div>
-                    <div class="pure-u-1-4">
+                    <div class="pure-u-1-3">
                         <div class="ui-form-item">
                             <label class="ui-form-label">汇入银行：</label>
                             <div class="ui-form-group">
-                                <select class="ui-select" name="bank">
-                                    <option>请选择</option>
-                                </select>
+                                <input class="ui-input" name="source" placeholder="汇入银行"/>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="pure-g">
-                    <div class="pure-u-3-24">
-                    </div>
-                    <div class="pure-u-2-4">
+                    <div class="pure-u-1-2">
                         <div class="ui-form-item">
                             <label class="ui-form-label">汇款日期：</label>
                             <div class="ui-form-group">
-                                <input class="ui-input" name="start" placeholder="开始时间"/>
+                                <input class="ui-input j_beginTime" name="beginTime" placeholder="开始时间"/>
                                 &nbsp;&nbsp;
-                                <input class="ui-input" name="end" placeholder="结束时间"/>
+                                <input class="ui-input j_endTime" name="endTime" placeholder="结束时间"/>
                             </div>
                         </div>
                     </div>
@@ -60,8 +54,8 @@
                         <div class="ui-form-item">
                             <label class="ui-form-label"></label>
                             <div class="ui-form-group cf">
-                                <a href="./admin/balancedetail.html" class="ui-button ui-button-yellow fr">+新增汇款记录</a>
-                                <input type="button" class="ui-button" value="搜索"/>
+                                <a href="./balancedetail.jsp" class="ui-button ui-button-yellow fr">+新增汇款记录</a>
+                                <input type="button" class="ui-button j_queryBtn" value="搜索"/>
                             </div>
                         </div>
                     </div>
@@ -81,47 +75,7 @@
                     <th class="tc">结算金额</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <td>
-                        12345
-                    </td>
-                    <td>
-                        张三
-                    </td>
-                    <td>
-                        张三2
-                    </td>
-                    <td >
-                        2017-01-02
-                    </td>
-                    <td>
-                        中国银行
-                    </td>
-                    <td>
-                        <strong class="price">123</strong> 元
-                    </td>
-                </tr>
-                <tr>
-                   <td>
-                        12345
-                    </td>
-                    <td>
-                        张三
-                    </td>
-                    <td>
-                        张三2
-                    </td>
-                    <td >
-                        2017-01-02
-                    </td>
-                    <td>
-                        中国银行
-                    </td>
-                    <td>
-                        <strong class="price">123</strong> 元
-                    </td>
-                </tr>
+                <tbody class="j_tbdBox">
                 </tbody>
             </table>
             <div class="pageBox" id="j_pageBox">
@@ -132,6 +86,20 @@
 
     <link rel="import" href="../pub/copyright.jsp?__inline">
 </div>
-<script src="../js/admin/balance.js"></script>
+<script type="text/html" id="itemTpl">
+{{each list as item}}
+<tr>
+    <td>{{item.statementId}}</td>
+    <td>{{item.accountNumber}}</td>
+    <td>{{item.name}}</td>
+    <td>{{dateFormat(item.statementTime)}}</td>
+    <td>{{item.source}}</td>
+    <td>
+        <strong class="price">{{priceFormat(item.statementAmount)}}</strong> 元
+    </td>
+</tr>
+{{/each}}
+</script>
+<script src="/js/admin/balance.js"></script>
 </body>
 </html>

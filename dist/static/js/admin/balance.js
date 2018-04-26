@@ -1,0 +1,1 @@
+$(function(){var a={init:function(){new App.PageBar({el:$("#j_pageBox"),cls:"ui_pageBar_L",totalNum:40,jumpTo:!1})}};$(".adminBalanceCnt").size()&&a.init()});

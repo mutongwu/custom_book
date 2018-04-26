@@ -29,10 +29,10 @@
                         <strong class="red j_typeName">个人代理</strong>
                     </div>
                 </div>
-                <div class="ui-form-item j_status none">
+                <div class="ui-form-item none">
                     <label class="ui-form-label">状态：</label>
                     <div class="ui-form-group">
-                        <strong  class="green">申请中</strong>
+                        <strong  class="red j_status">申请中</strong>
                     </div>
                 </div>
                 <p class="sectionTitle">合作伙伴信息：</p>

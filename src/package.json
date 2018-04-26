@@ -13,6 +13,8 @@
     "fis3-hook-commonjs": "^0.1.26"
   },
   "scripts": {
+    "dev":"fis3 release -w",
+    "build":"fis3 release prod -d ../dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

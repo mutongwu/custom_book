@@ -19,6 +19,7 @@ $(function(){
 		pageNo:1,
 		pageSize: 10
 	};
+	var queryParams = null;
 	var pageBar = null;
 	function initPageBar(json,params){
 		if(pageBar){return;}
@@ -28,7 +29,7 @@ $(function(){
 			totalNum: json.count,
 			jumpTo: false,
 			onPage: function(p){
-				params.p = p;
+				params.pageNo = p;
 				loadData(params);
 			}
 		})
@@ -39,11 +40,14 @@ $(function(){
 			pageBar = null;
 		}
 	}
+	function reloadData(){
+		loadData(queryParams);
+	}
 	function loadData(params){
 		App.ajax({
 			data:params
 		}).done(function(json){
-			if(json && json.list){
+			if(json && json.list && json.list.length){
 				$page.find('.j_tbdBox').html(template('orderTpl', json));
 				initPageBar(json, params);
 			}else{
@@ -52,6 +56,7 @@ $(function(){
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');
 		});
+		queryParams = params;
 	}
 	function initStatusSelect(){
 		var str = '';
@@ -90,6 +95,45 @@ $(function(){
 		}
 		return obj;
 	}
+
+	function sendGoods(orderId, logisticsId){
+		
+		new App.LightBox({
+			type:'confirm',
+			title: '填写物流信息',
+			msg: $('#logisticsTpl').html(),
+			msgType:'none',
+			timeout:null,
+			confirmFn: function(){
+				var validator = new App.FormValidator({
+					$form: $page.find('.logisticsForm')
+				});
+				var result = validator.validate();
+				
+				if(!result.FAILED){
+					var data = $.extend({
+						'call': logisticsId? 'admin.modifyLogistics' : 'admin.addLogistics',
+						'orderId':orderId
+					},result);
+					if(logisticsId){
+						data.logisticsId = logisticsId;
+					}
+					App.onceAjax({
+						data:data
+					}).done(function(data){
+						if(data == 1){
+							App.tip('物流信息填写成功！');
+							reloadData();
+						}else{
+							App.tip('物流信息填写失败！','error');
+						}
+					}).fail(function(res){
+						App.tip(res && res.message || '物流信息填写失败！', 'error');
+					});
+				}
+			}
+		});
+	}
 	$page.on('click', '.j_queryBtn',function(){
 		var result = validator.validate();
 		if(result.beginTime){
@@ -100,7 +144,77 @@ $(function(){
 		}
 		loadData($.extend({},defaultParams, filterEmpty(result)));
 		resetPager();
+	}).on('click','.j_cancelOrder',function(){
+		var $tr = $(this).closest('tr');
+		var orderId = $tr.data('orderid'),
+			orderNo = $tr.data('orderno');
+		App.confirm('确定取消订单号为['+ orderNo +']的订单吗？',function(){
+			App.onceAjax({
+				data:{
+					'call': 'admin.cancelOrder',
+					'orderId': orderId
+				}
+			}).done(function(data){
+				if(data == 1){
+					App.tip('订单取消成功！');
+					reloadData();
+				}else{
+					App.tip('订单取消失败！','error');
+				}
+			}).fail(function(res){
+				App.tip(res && res.message || '订单取消失败！', 'error');
+			});
+		});
+	}).on('click','.j_sendGoods',function(){
+		var $tr = $(this).closest('tr');
+		var orderId = $tr.data('orderid');
+		App.onceAjax({
+			data:{
+				'call': 'admin.getLogistics',
+				'orderId': orderId
+			}
+		}).done(function(json){
+			sendGoods(orderId, json && json.logisticsId);
+		}).fail(function(res){
+			App.tip(res && res.message, 'error');
+		});
+	}).on('click','.j_acceptOrder',function(){
+		var $tr = $(this).closest('tr');
+		var orderId = $tr.data('orderid');
+		App.onceAjax({
+			data:{
+				'call': 'admin.workingOrder',
+				'orderId': orderId
+			}
+		}).done(function(data){
+			if(data == 1){
+				App.tip('订单确认成功！');
+				reloadData();
+			}else{
+				App.tip('订单确认失败！','error');
+			}
+		}).fail(function(res){
+			App.tip(res && res.message, 'error');
+		});
+	}).on('click','.j_refundOrder',function(){
+		var $tr = $(this).closest('tr');
+		var orderId = $tr.data('orderid');
+		App.onceAjax({
+			data:{
+				'call': 'admin.refundOrder',
+				'orderId': orderId
+			}
+		}).done(function(data){
+			if(data == 1){
+				App.tip('订单退货退款成功！');
+				reloadData();
+			}else{
+				App.tip('订单退货退款失败！','error');
+			}
+		}).fail(function(res){
+			App.tip(res && res.message, 'error');
+		});
 	});
 	initDatePicker();
 	initStatusSelect();
-})
+});
