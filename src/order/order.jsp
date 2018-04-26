@@ -51,7 +51,7 @@
 {{each list as item}}
 <tr>
     <td>
-        <a href="">{{item.orderId}}</a>
+        <a href="">{{item.orderNo}}</a>
     </td>
     <td class="tl">
         <p><a href="">{{item.summary}}</a></p>

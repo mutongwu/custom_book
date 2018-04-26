@@ -110,33 +110,33 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 </div>
 </div>
 <script type="text/html" id="agencyTpl">
-<form class="ui-form applyForm tl">
+<form class="ui-form agencyInfoForm tl">
     <div class="ui-form-item">
         <label class="ui-form-label">代理类型：</label>
         <div class="ui-form-group">
             <strong class="red">
-                {{if level == 1}}
+                {{if partnerInfoVo.level == 1}}
                     个人代理
-                {{else if level == 2}}
+                {{else if partnerInfoVo.level == 2}}
                     网店代理
-                {{else if level == 3}}
+                {{else if partnerInfoVo.level == 3}}
                     实体店代理
                 {{/if}}
             </strong>
         </div>
     </div>
     <p class="sectionTitle">合作伙伴信息：</p>
-    {{if level == 1}}
+    {{if partnerInfoVo.level == 1}}
     <div class="ui-form-item">
         <label class="ui-form-label">代理人姓名：</label>
         <div class="ui-form-group">
-            <p class="ui-text">{{name}}</p>
+            <p class="ui-text">{{partnerInfoVo.name}}</p>
         </div>
     </div>
     <div class="ui-form-item">
         <label class="ui-form-label">代理人地址：</label>
         <div class="ui-form-group">
-            <p class="ui-text">{{province}}{{city}}{{county}}{{address}}</p>
+            <p class="ui-text">{{partnerInfoVo.province}}{{partnerInfoVo.city}}{{partnerInfoVo.county}}{{partnerInfoVo.address}}</p>
         </div>
     </div>
     {{else}}
@@ -144,26 +144,26 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
     <div class="ui-form-item">
         <label class="ui-form-label">店铺名称：</label>
         <div class="ui-form-group">
-            <p class="ui-text">{{name}}</p>
+            <p class="ui-text">{{partnerInfoVo.name}}</p>
         </div>
     </div>
 
     <div class="ui-form-item">
         <label class="ui-form-label">店铺地址：</label>
         <div class="ui-form-group">
-            <p class="ui-text">{{province}}{{city}}{{county}}{{address}}</p>
+            <p class="ui-text">{{partnerInfoVo.province}}{{partnerInfoVo.city}}{{partnerInfoVo.county}}{{partnerInfoVo.address}}</p>
         </div>
     </div>
     <div class="ui-form-item">
         <label class="ui-form-label">网店地址：</label>
         <div class="ui-form-group">
-            <p class="ui-text">{{shopURL}}</p>
+            <p class="ui-text">{{partnerInfoVo.shopURL}}</p>
         </div>
     </div>                
     <div class="ui-form-item">
         <label class="ui-form-label">官网地址：</label>
         <div class="ui-form-group">
-            <p class="ui-text">{{webSiteURL}}</p>
+            <p class="ui-text">{{partnerInfoVo.webSiteURL}}</p>
         </div>
     </div>
     
@@ -185,37 +185,38 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
         <div class="ui-form-item">
             <label class="ui-form-label">联系人姓名：</label>
             <div class="ui-form-group">
-                <p class="ui-text">{{contact}}</p>
+                <p class="ui-text">{{partnerInfoVo.contact}}</p>
             </div>
         </div>
         <div class="ui-form-item">
             <label class="ui-form-label">联系人地址：</label>
             <div class="ui-form-group">
-                <p class="ui-text">{{contactProvince}}{{contactCity}}{{contactCounty}}{{contactAddress}}</p>
+                <p class="ui-text">{{partnerInfoVo.contactProvince}}{{partnerInfoVo.contactCity}}
+                    {{partnerInfoVo.contactCounty}}{{partnerInfoVo.contactAddress}}</p>
             </div>
         </div>
         <div class="ui-form-item">
             <label class="ui-form-label">联系手机：</label>
             <div class="ui-form-group">
-                <p class="ui-text">{{contactMobile}}</p>
+                <p class="ui-text">{{partnerInfoVo.contactMobile}}</p>
             </div>
         </div>
         <div class="ui-form-item">
             <label class="ui-form-label">联系电话：</label>
             <div class="ui-form-group">
-                <p class="ui-text">{{contactTelephone}}</p>
+                <p class="ui-text">{{partnerInfoVo.contactTelephone}}</p>
             </div>
         </div>
         <div class="ui-form-item">
             <label class="ui-form-label">联系QQ：</label>
             <div class="ui-form-group">
-                <p class="ui-text">{{contactQQ}}</p>
+                <p class="ui-text">{{partnerInfoVo.contactQQ}}</p>
             </div>
         </div>
         <div class="ui-form-item">
             <label class="ui-form-label">联系电子邮箱：</label>
             <div class="ui-form-group">
-                <p class="ui-text">contactEmail</p>
+                <p class="ui-text">{{partnerInfoVo.contactEmail}}</p>
             </div>
         </div>
     </div><!--contactBox -->
@@ -226,7 +227,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 	var GlobalData = {
 		"rootPath" :'/book/',
 		"userId" : "${userId}",
-		"admin":"${userMap.role}"
+		"type":"${userMap.role}"
 	};
 </script>
 <script src="//www.sy111.com/book/static/pkg/aio.js"></script>
@@ -241,7 +242,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                 App.User = json;
                 var $box = $('#j_topNav .j_userInfo');
                 $box.find('.j_userName').text(json.nickname || '书友会员');
-                $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
+                json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
                 $box.removeClass('noLogin');
             }
         });

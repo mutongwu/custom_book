@@ -147,7 +147,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 	var GlobalData = {
 		"rootPath" :'/book/',
 		"userId" : "${userId}",
-		"admin":"${userMap.role}"
+		"type":"${userMap.role}"
 	};
 </script>
 <script src="//www.sy111.com/book/static/pkg/aio.js"></script>
@@ -162,7 +162,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                 App.User = json;
                 var $box = $('#j_topNav .j_userInfo');
                 $box.find('.j_userName').text(json.nickname || '书友会员');
-                $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
+                json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
                 $box.removeClass('noLogin');
             }
         });

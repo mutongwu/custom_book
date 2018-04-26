@@ -12,7 +12,7 @@ p.txt{text-indent: 2em;line-height: 1.8;}
 
 .table{width: 100%;text-align: center;
   thead{
-    th{font-weight: bold;font-size: 18px;font-family: "MICROSOFT YAHEI";color: #444;padding:20px;}
+    th{font-weight: bold;font-size: 18px;font-family: "MICROSOFT YAHEI";color: #444;padding:20px;white-space: nowrap;}
 
   }
   &.thBg{

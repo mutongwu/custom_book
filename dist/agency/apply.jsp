@@ -106,10 +106,10 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                         <strong class="red j_typeName">个人代理</strong>
                     </div>
                 </div>
-                <div class="ui-form-item j_status none">
+                <div class="ui-form-item none">
                     <label class="ui-form-label">状态：</label>
                     <div class="ui-form-group">
-                        <strong  class="green">申请中</strong>
+                        <strong  class="red j_status">申请中</strong>
                     </div>
                 </div>
                 <p class="sectionTitle">合作伙伴信息：</p>
@@ -365,7 +365,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 	var GlobalData = {
 		"rootPath" :'/book/',
 		"userId" : "${userId}",
-		"admin":"${userMap.role}"
+		"type":"${userMap.role}"
 	};
 </script>
 <script src="//www.sy111.com/book/static/pkg/aio.js"></script>
@@ -380,7 +380,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                 App.User = json;
                 var $box = $('#j_topNav .j_userInfo');
                 $box.find('.j_userName').text(json.nickname || '书友会员');
-                $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
+                json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
                 $box.removeClass('noLogin');
             }
         });

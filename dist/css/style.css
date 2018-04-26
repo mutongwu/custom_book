@@ -335,6 +335,7 @@ p.txt {
   font-family: "MICROSOFT YAHEI";
   color: #444;
   padding: 20px;
+  white-space: nowrap;
 }
 
 .table.thBg th {
@@ -1701,6 +1702,34 @@ p.txt {
 .myBankCnt .bankForm {
   width: 600px;
   display: inline-block;
+}
+
+.agencyCnt {
+  width: 980px;
+}
+
+.agencyCnt .agencyInfoForm {
+  width: 80%;
+  margin: auto;
+}
+
+.agencyCnt .agencyInfoForm .ui-form-label {
+  width: 120px;
+}
+
+.agencyCnt .agencyInfoForm .ui-form-group {
+  margin-left: 140px;
+}
+
+.agencyCnt .agencyInfoForm .pic {
+  width: 120px;
+  height: 120px;
+}
+
+.agencyCnt .sectionTitle {
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
 }
 
 .flipBook {

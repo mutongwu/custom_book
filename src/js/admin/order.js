@@ -132,7 +132,7 @@ $(function(){
 					});
 				}
 			}
-		});
+		}).show();
 	}
 	$page.on('click', '.j_queryBtn',function(){
 		var result = validator.validate();

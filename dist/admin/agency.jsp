@@ -13,23 +13,30 @@
 <div class="wrapper adminPage">
     
 <!-- 公共顶部 -->
-<div class="topNav">
-    <div class="userInfo ">
+<div class="topNav" id="j_topNav">
+    <div class="userInfo j_userInfo">
         <div class="bd cf">
             <h1 class="fl logo">书友</h1>
+            <div class="fr userEntry">
+                <div class="userBox fl">
+                    <img src="//www.sy111.com/book/static/images/user.jpg" class="pic j_headPic" />
+                    <span class="userName j_userName"></span>
+                </div>
+                <a  class="j_logout">退出</a>
+            </div>
         </div>
     </div>
     <div class="navMenu">
         <div class="bd">
             <ul class="cf">
-                <!-- <li class="fl active"><a href="./admin/order.html">首页</a></li> -->
                 <li class="fl active"><a href="./order.jsp" class="link">订单管理</a></li>
                 <li class="fl"><a href="./member.jsp"  class="link">会员管理</a></li>
                 <li class="fl"><a href="./agency.jsp"  class="link">合作伙伴管理</a></li>
-                <li class="fl last"><a href="./balance.jsp" class="link">结算列表</a></li>
-                 <!--<li class="fr quickBtn">
-                    <a href="./addBook.jsp">退出登陆</a>
-                </li> -->
+                <li class="fl"><a href="./rebate.jsp" class="link">返利列表</a></li>
+                <li class="fl"><a href="./balance.jsp" class="link">结算列表</a></li>
+                 <li class="fr quickBtn">
+                    <a href="/book/index.jsp">定制书首页</a>
+                </li> 
             </ul>
         </div>
     </div>
@@ -149,27 +156,27 @@
 </div>
 <script type="text/html" id="itemTpl">
 {{each list as item}}
-<tr>
+<tr data-id="{{item.partnerInfoId}}">
     <td>
         <a>{{item.userId}}</a>
     </td>
     <td>
-        {{user.name}}
+        {{item.name}}
     </td>
     <td>
-        {{if user.level == 1}}
+        {{if item.level == 1}}
             <span>个人</span>
-        {{else if user.level == 2}}
+        {{else if item.level == 2}}
             <span>网店</span>
         {{else}}
             <span>实体店</span>
         {{/if}}
     </td>
     <td class="tl">
-        {{user.province}}{{user.city}}{{user.county}}
+        {{item.province}}{{item.city}}{{item.county}}
     </td>
     <td>
-        {{user.applyTime | dateFormat}}
+        {{dateFormat(item.applyTime)}}
     </td>
     <td>
         {{if item.status == -2}}
@@ -183,22 +190,32 @@
         {{/if}}
     </td>
     <td>
-        {{else if item.status == -2}}
-            <input type="button" class="ui-button" value="审核通过" />
-            <input type="button" class="ui-button ui-button-yellow" value="不通过" />
+        {{if item.status == 0}}
+            <input type="button" class="ui-button j_accept" value="审核通过" />
+            <input type="button" class="ui-button ui-button-yellow j_deny" value="不通过" />
         {{else if item.status == 1}}
-            <input type="button" class="ui-button ui-button-red" value="停止合作" />
+            <input type="button" class="ui-button ui-button-red j_lock" value="停止合作" />
         {{/if}}
     </td>
 </tr>
 {{/each}}
+</script>
+<script type="text/html" id="popFormTpl">
+<form class="ui-form popForm">
+    <div class="ui-form-item">
+        <label class="ui-form-label">审核意见：</label>
+        <div class="ui-form-group">
+            <textarea class="ui-textarea" name="reviewInfo" id="" cols="30" rows="10"  placeholder="审核意见" maxlength="32"></textarea>
+        </div>
+    </div>
+</form>    
 </script>
 
 <script>
 	var GlobalData = {
 		"rootPath" :'/book/',
 		"userId" : "${userId}",
-		"admin":"${userMap.role}"
+		"type":"${userMap.role}"
 	};
 </script>
 <script src="//www.sy111.com/book/static/pkg/aio.js"></script>
@@ -210,6 +227,27 @@
             page = RegExp.$1;
         }
         $('.topNav .link').filter('[href*='+page+']').closest('li').addClass('active').siblings().removeClass('active');
+    });
+
+
+    $(function(){
+        App.ajax({
+            data: {
+                'call': 'user.getUserInfo'
+            }
+        }).done(function(json){
+            if(json && json.userId){
+                App.User = json;
+                var $box = $('#j_topNav .j_userInfo');
+                $box.find('.j_userName').text(json.nickname || '书友管理员');
+                json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
+            }
+        });
+        $('.j_logout').on('click',function(){
+            Cookies.remove('onlineId',{path:'/',domain:'.sy111.com'});
+            Cookies.remove('user',{path:'/',domain:'.sy111.com'});
+            App.linkTo('/index.jsp');
+        });
     });
 </script>
 <script src="//www.sy111.com/book/static/js/admin/agency.js"></script>

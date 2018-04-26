@@ -19,6 +19,7 @@
                 <li class="fl active"><a href="./order.jsp" class="link">订单管理</a></li>
                 <li class="fl"><a href="./member.jsp"  class="link">会员管理</a></li>
                 <li class="fl"><a href="./agency.jsp"  class="link">合作伙伴管理</a></li>
+                <li class="fl"><a href="./rebate.jsp" class="link">返利列表</a></li>
                 <li class="fl"><a href="./balance.jsp" class="link">结算列表</a></li>
                  <li class="fr quickBtn">
                     <a href="@ROOT_PATH/index.jsp">定制书首页</a>

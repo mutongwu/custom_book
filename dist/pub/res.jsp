@@ -5,7 +5,7 @@
 	var GlobalData = {
 		"rootPath" :'/book/',
 		"userId" : "${userId}",
-		"admin":"${userMap.role}"
+		"type":"${userMap.role}"
 	};
 </script>
 <link type="text/css" href="//www.sy111.com/book/static/css/common.css" rel="stylesheet" />

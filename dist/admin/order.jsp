@@ -13,23 +13,30 @@
 <div class="wrapper adminPage">
     
 <!-- 公共顶部 -->
-<div class="topNav">
-    <div class="userInfo ">
+<div class="topNav" id="j_topNav">
+    <div class="userInfo j_userInfo">
         <div class="bd cf">
             <h1 class="fl logo">书友</h1>
+            <div class="fr userEntry">
+                <div class="userBox fl">
+                    <img src="//www.sy111.com/book/static/images/user.jpg" class="pic j_headPic" />
+                    <span class="userName j_userName"></span>
+                </div>
+                <a  class="j_logout">退出</a>
+            </div>
         </div>
     </div>
     <div class="navMenu">
         <div class="bd">
             <ul class="cf">
-                <!-- <li class="fl active"><a href="./admin/order.html">首页</a></li> -->
                 <li class="fl active"><a href="./order.jsp" class="link">订单管理</a></li>
                 <li class="fl"><a href="./member.jsp"  class="link">会员管理</a></li>
                 <li class="fl"><a href="./agency.jsp"  class="link">合作伙伴管理</a></li>
-                <li class="fl last"><a href="./balance.jsp" class="link">结算列表</a></li>
-                 <!--<li class="fr quickBtn">
-                    <a href="./addBook.jsp">退出登陆</a>
-                </li> -->
+                <li class="fl"><a href="./rebate.jsp" class="link">返利列表</a></li>
+                <li class="fl"><a href="./balance.jsp" class="link">结算列表</a></li>
+                 <li class="fr quickBtn">
+                    <a href="/book/index.jsp">定制书首页</a>
+                </li> 
             </ul>
         </div>
     </div>
@@ -44,7 +51,7 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label">订单号：</label>
                         <div class="ui-form-group">
-                            <input class="ui-input" name="orderId" placeholder="订单号"/>
+                            <input class="ui-input" name="orderNo" placeholder="订单号"/>
                         </div>
                     </div>
                 </div>
@@ -145,9 +152,9 @@
 
 <script type="text/html" id="orderTpl">
 {{each list as item}}
-<tr>
+<tr data-orderid="{{item.orderId}}" data-orderno="{{item.orderNo}}">
     <td>
-        <a href="./order/orderdetail.jsp">{{item.orderId}}</a>
+        <a href="./orderdetail.jsp?orderId={{item.orderId}}">{{item.orderNo}}</a>
     </td>
     <td>
         <p><a>{{item.userId}}</a></p>
@@ -162,10 +169,10 @@
         <p>{{item.summary}}</p>
     </td>
     <td>
-        <strong class="price">{{item.statementPrice | priceFormat}}元</strong>
+        <strong class="price">{{priceFormat(item.statementPrice)}}元</strong>
     </td>
     <td>
-        {{item.createTime | dateFormat}}
+        {{dateFormat(item.createTime)}}
     </td>
     <td>
         {{if item.status == 0}}
@@ -188,21 +195,49 @@
     </td>
     <td>
         {{if item.status == 0}}
-            <input type="button" class="ui-button" value="取消" />
+            <input type="button" class="ui-button j_cancelOrder" value="取消" />
+        {{else if ['1'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button j_acceptOrder" value="确认订单" />
+        {{else if ['2'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button j_sendGoods" value="发货" />
+        {{else if ['3'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button j_sendGoods" value="更改物流" />
         {{/if}}
-        {{if ['1','2'].indexOf(item.status) !== -1}}
-            <input type="button" class="ui-button" value="发货" />
+        {{if ['1','2','3','4'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button j_refundOrder" value="退货退款" />
         {{/if}}
     </td>
 </tr>
 {{/each}}
+</script>
+<script type="text/html" id="logisticsTpl">
+<form class="ui-form logisticsForm">
+    <div class="ui-form-item">
+        <label class="ui-form-label">物流公司：</label>
+        <div class="ui-form-group">
+            <input required="required" class="ui-input" name="logisticsCompany" placeholder="物流公司" maxlength="32"/>
+        </div>
+    </div>
+    <div class="ui-form-item">
+        <label class="ui-form-label">物流单号：</label>
+        <div class="ui-form-group">
+            <input type="text" required="required" class="ui-input" name="trackingNumber" placeholder="物流单号"  maxlength="32"/>
+        </div>
+    </div>
+    <div class="ui-form-item">
+        <label class="ui-form-label">备注：</label>
+        <div class="ui-form-group">
+            <input type="text" class="ui-input" name="note" placeholder="备注"/>
+        </div>
+    </div>
+</form>    
 </script>
 
 <script>
 	var GlobalData = {
 		"rootPath" :'/book/',
 		"userId" : "${userId}",
-		"admin":"${userMap.role}"
+		"type":"${userMap.role}"
 	};
 </script>
 <script src="//www.sy111.com/book/static/pkg/aio.js"></script>
@@ -214,6 +249,27 @@
             page = RegExp.$1;
         }
         $('.topNav .link').filter('[href*='+page+']').closest('li').addClass('active').siblings().removeClass('active');
+    });
+
+
+    $(function(){
+        App.ajax({
+            data: {
+                'call': 'user.getUserInfo'
+            }
+        }).done(function(json){
+            if(json && json.userId){
+                App.User = json;
+                var $box = $('#j_topNav .j_userInfo');
+                $box.find('.j_userName').text(json.nickname || '书友管理员');
+                json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
+            }
+        });
+        $('.j_logout').on('click',function(){
+            Cookies.remove('onlineId',{path:'/',domain:'.sy111.com'});
+            Cookies.remove('user',{path:'/',domain:'.sy111.com'});
+            App.linkTo('/index.jsp');
+        });
     });
 </script>
 <script src="//www.sy111.com/book/static/js/admin/order.js"></script>
