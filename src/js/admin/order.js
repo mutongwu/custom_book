@@ -14,6 +14,7 @@ $(function(){
 	var validator = new App.FormValidator({
 		$form: $page.find('.queryForm')
 	});
+	var urlParams = App.params();
 	var defaultParams = {
 		'call': 'admin.listOrder',
 		pageNo:1,
@@ -57,6 +58,17 @@ $(function(){
 			App.tip(res && res.message, 'error');
 		});
 		queryParams = params;
+		try{
+			history.replaceState({},document.title,'?'+ $.param(params));
+		}catch(e){
+
+		}
+	}
+	function initQueryForm(){
+		var $form = $page.find('.queryForm');
+		for(var p in urlParams){
+			$form.find('[name="' + p + '"]').val(urlParams[p]);
+		}
 	}
 	function initStatusSelect(){
 		var str = '';
@@ -73,14 +85,14 @@ $(function(){
 		begin.setDate(begin.getDate() - 7);
 		var beginPicker = new App.DatePicker({
           	el: $begin,
-			val:begin,
+			val: $begin.val() ? null : begin,
 			hasTime: true,
 			format: "yyyy-MM-dd hh:mm:ss",
 			beforeEl:$end
 		});
 		var endPicker = new App.DatePicker({
           	el: $end,
-			val: end,
+			val: $end.val() ? null : end,
 			hasTime: true,
 			format: "yyyy-MM-dd hh:mm:ss",
 			afterEl:$begin
@@ -96,17 +108,17 @@ $(function(){
 		return obj;
 	}
 
-	function sendGoods(orderId, logisticsId){
-		
+	function sendGoods(orderId, logistics){
+		var logisticsId = logistics.logisticsId;
 		new App.LightBox({
 			type:'confirm',
 			title: '填写物流信息',
-			msg: $('#logisticsTpl').html(),
+			msg: template('logisticsTpl',logistics),
 			msgType:'none',
 			timeout:null,
-			confirmFn: function(){
+			confirmFn: function(lightBox){
 				var validator = new App.FormValidator({
-					$form: $page.find('.logisticsForm')
+					$form: lightBox.domEl.find('.logisticsForm')
 				});
 				var result = validator.validate();
 				
@@ -121,7 +133,7 @@ $(function(){
 					App.onceAjax({
 						data:data
 					}).done(function(data){
-						if(data == 1){
+						if(data && (data == 1 || data.logisticsId)){
 							App.tip('物流信息填写成功！');
 							reloadData();
 						}else{
@@ -174,7 +186,7 @@ $(function(){
 				'orderId': orderId
 			}
 		}).done(function(json){
-			sendGoods(orderId, json && json.logisticsId);
+			sendGoods(orderId, json);
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');
 		});
@@ -215,6 +227,11 @@ $(function(){
 			App.tip(res && res.message, 'error');
 		});
 	});
-	initDatePicker();
+	
 	initStatusSelect();
+	initQueryForm();
+	initDatePicker();
+	if(urlParams.call){
+		$page.find('.j_queryBtn').click();
+	}
 });

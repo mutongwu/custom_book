@@ -132,9 +132,6 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                     </tbody>
                 </table>
             </div>
-
-            
-<div class="pageBox" id="j_pageBox"></div>
         </div>
     </div>
     
@@ -161,7 +158,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 	};
 </script>
 <script src="//www.sy111.com/book/static/pkg/aio.js"></script>
-<script>
+<script type="text/javascript">
     $(function(){
         App.ajax({
             data: {
@@ -181,15 +178,6 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
             Cookies.remove('user',{path:'/',domain:'.sy111.com'});
             App.linkTo('/index.jsp');
         })
-    });
-
-
-    $(function(){
-        new App.PageBar({
-            el: $("#j_pageBox"),
-            jumpTo: false,
-            totalNum: 90
-        });
     });
 </script>
 </body>

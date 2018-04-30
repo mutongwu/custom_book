@@ -195,13 +195,13 @@
     </td>
     <td>
         {{if item.status == 0}}
-            <input type="button" class="ui-button j_cancelOrder" value="取消" />
-        {{else if ['1'].indexOf(item.status) !== -1}}
-            <input type="button" class="ui-button j_acceptOrder" value="确认订单" />
-            <input type="button" class="ui-button j_refundOrder" value="退货退款" />
-        {{else if ['2'].indexOf(item.status) !== -1}}
+            <input type="button" class="ui-button ui-button-red j_cancelOrder" value="取消" />
+        {{else if [1].indexOf(item.status) !== -1}}
+            <div class="mb5"><input type="button" class="ui-button j_acceptOrder" value="确认订单" /></div>
+            <input type="button" class="ui-button ui-button-red j_refundOrder" value="退货退款" />
+        {{else if [2].indexOf(item.status) !== -1}}
             <input type="button" class="ui-button j_sendGoods" value="发货" />
-        {{else if ['3'].indexOf(item.status) !== -1}}
+        {{else if [3].indexOf(item.status) !== -1}}
             <input type="button" class="ui-button j_sendGoods" value="更改发货单" />
         {{/if}}
     </td>
@@ -213,19 +213,19 @@
     <div class="ui-form-item">
         <label class="ui-form-label">物流公司：</label>
         <div class="ui-form-group">
-            <input required="required" class="ui-input" name="logisticsCompany" placeholder="物流公司" maxlength="32"/>
+            <input required="required" class="ui-input" name="logisticsCompany" placeholder="物流公司" maxlength="32" value="{{logisticsCompany}}"/>
         </div>
     </div>
     <div class="ui-form-item">
         <label class="ui-form-label">物流单号：</label>
         <div class="ui-form-group">
-            <input type="text" required="required" class="ui-input" name="trackingNumber" placeholder="物流单号"  maxlength="32"/>
+            <input type="text" required="required" class="ui-input" name="trackingNumber" placeholder="物流单号"  maxlength="32" value="{{trackingNumber}}"/>
         </div>
     </div>
     <div class="ui-form-item">
         <label class="ui-form-label">备注：</label>
         <div class="ui-form-group">
-            <input type="text" class="ui-input" name="note" placeholder="备注"/>
+            <input type="text" class="ui-input" name="note" placeholder="备注"  value="{{note}}"/>
         </div>
     </div>
 </form>    

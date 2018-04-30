@@ -672,7 +672,7 @@ $.extend(App,{
  */
 App.DatePicker = function DatePicker(cfg){
     $.extend(this,{
-        config: {},
+        config: null,
         minTime: null,
         maxTime: null,
         todayDt: null,
@@ -718,9 +718,7 @@ $.extend(App.DatePicker.prototype,{
 
 
     init: function(cfg){
-        $.extend(this.config,this.defaultCfg);
-        $.extend(this.config,cfg);
-
+        this.config = $.extend({}, this.defaultCfg, cfg);
         this.config.el.attr("readOnly",true);
         this.initVal();
 
@@ -771,12 +769,16 @@ $.extend(App.DatePicker.prototype,{
 
         this.todayDt = new Date();
 
-        var val = this.config.el.val() || this.config.val;
+        var val =  this.config.val || this.config.el.val();
         if(!val){
             val = new Date();
         }else if(typeof val === "string"){
-            this.config.el.val(val);
-            val = App.Format.parseDate(val);
+            if(/\d+/.test(val)){
+                val = new Date(+val);
+            }else{
+                this.config.el.val(val);
+                val = App.Format.parseDate(val, this.config.hasTime ? 'yyyy-MM-dd hh:mm:ss':'yyyy-MM-dd');
+            }
         }
         this.val = val;
         this.config.el.val(App.Format.fmDate(val,this.config.format));

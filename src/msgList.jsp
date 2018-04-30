@@ -63,8 +63,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <link rel="import" href="./pub/pageBar.jsp?__inline">
         </div>
     </div>
     <link rel="import" href="./pub/copyright.jsp?__inline">

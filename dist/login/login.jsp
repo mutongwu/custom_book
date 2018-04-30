@@ -83,7 +83,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") != null){
             <div class="thirdLoginBox">
                 <p class="tc"><a href="https://api.weibo.com/oauth2/authorize?client_id=1260913599&response_type=code&with_offical_account=1&redirect_uri=http%3A%2F%2Fwww.sy111.com%2Fbook%2Flogin%2Fweibo.do" class="thirdLogin wb"></a></p>
                 <p class="tc"><a href="#" class="thirdLogin qq"></a></p>
-				<p class="tc"><a href="#" class="thirdLogin wx"></a></p>
+				<p class="tc"><a href="https://open.weixin.qq.com/connect/qrconnect?appid=wxad7fc562739cab87&response_type=code&redirect_uri=http%3A%2F%2Fwww.sy111.com%2Fbook%2Flogin%2Fweixin.do%3Fclient%3Dpc%26fowardURL%3Dhttp%3A%2F%2Fwww.sy111.com%2Fbook&scope=snsapi_login" class="thirdLogin wx"></a></p>
                 <p class="tip tc">或者用本站账号登录</p>
             </div>
             <div class="formBox tc">

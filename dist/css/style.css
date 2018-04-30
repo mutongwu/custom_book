@@ -1152,6 +1152,7 @@ p.txt {
   border: 1px solid #a7a7a7;
   margin-bottom: 30px;
   border-radius: 5px;
+  list-style-type: none;
 }
 
 .bookList .bookList-inner {
@@ -1349,6 +1350,11 @@ p.txt {
   margin-top: 50px;
 }
 
+.bookResultCnt .jsonInfo {
+  margin: 10px auto;
+  border: 1px solid #a7a7a7;
+}
+
 .cartCnt > .section {
   margin: 30px auto;
   background: #fff;
@@ -1439,7 +1445,7 @@ p.txt {
 }
 
 .orderdetailCnt .orderInfo {
-  padding: 20px 10%;
+  padding: 20px 5%;
   border-top: 1px solid #a7a7a7;
 }
 

@@ -77,43 +77,10 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 </div>
 <!-- END:公共顶部 -->
 
-    <div class="container orderCnt">
-    	<h1 class="tc">我的订单</h1>
-    	<div class="couponInfo fs18 cf">
-            <div class="fl j_couponInfo none">
-                你的优惠码<strong class="red">123</strong>&nbsp;<a href="/book/help/help.jsp?t=coupon" target="_blank">优惠码有什么用？</a>
-            </div>
-            <div class="fr">
-                <a href="/book/profile/address.jsp">管理我的收货地址</a>
-            </div>
-        </div>
-        <div class="ui-tab ">
-            <ul class="cf">
-                <li class="tabItem fs18 active"><a  class="j_order" data-status="">全部订单</a></li>
-                <li class="tabItem fs18"><a  class="j_order" data-status="0">未支付</a></li>
-                <li class="tabItem fs18"><a  class="j_order" data-status="4">已完成</a></li>
-            </ul>
-        </div>
-        <div class="orderData fs16">
-            <table class="table table-border-vertical">
-                <thead>
-                <tr>
-                    <th class="tc">订单号</th>
-                    <th class="tl">订购的产品</th>
-                    <th class="tc">总金额</th>
-                    <th class="tc">下单时间</th>
-                    <th class="tc">订单状态</th>
-                    <th class="tc">操作</th>
-                </tr>
-                </thead>
-                <tbody class="j_tbdBox">
-                </tbody>
-            </table>
-            <div class="pageBox" id="j_pageBox">
-
-            </div>
-        </div>
-    </div><!-- END container-->
+    <div class="container bookResultCnt">
+    	
+    </div>
+    <!-- END container-->
 
     
 <div class="copyright ">
@@ -130,48 +97,67 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
     </div>
 </div>
 </div>
-<script type="text/html" id="orderTpl">
-{{each list as item}}
-<tr>
-    <td>
-        <a href="./orderdetail.jsp?orderId={{item.orderId}}">{{item.orderNo}}</a>
-    </td>
-    <td class="tl">
-        <p>{{item.summary}}</p>
-    </td>
-    <td>
-        <strong class="price">{{item.statementPrice | priceFormat}}元</strong>
-    </td>
-    <td>
-        {{item.createTime | dateFormat}}
-    </td>
-    <td>
-        {{if item.status == 0}}
-        <strong class="red">未支付</strong>
-        {{else if item.status == 1}}
-        <strong class="green">已支付</strong>
-        {{else if item.status == 2}}
-        <strong class="yellow">制作中</strong>
-        {{else if item.status == 3}}
-        <strong class="yellow">已发货</strong>
-        {{else if item.status == 4}}
-        <strong class="green">交易成功</strong>
-        {{else if item.status == -3}}
-        <strong class="red">订单取消</strong>
-         {{else if item.status == -2}}
-        <strong class="red">订单作废</strong>
-        {{else if item.status == -1}}
-        <strong class="red">退货退款</strong>
-        {{/if}}
-    </td>
-    <td>
-        {{if item.status == 0}}
-        <a href="/book/alipay/pay.do?orderId={{item.orderId}}" class="ui-button" style="width:4em">立即支付</a>
-        {{/if}}
-    </td>
-</tr>
-{{/each}}
-</script>
+<script type="text/html" id="bookTpl">
+<div class="infoBox">
+    <h1 class="tc">中文名：{{item.chineseName}}</h1>
+    <h1 class="tc">拼音名：{{item.pinyinName}}</h1>
+</div>
+<div class="bookPreview">
+    <div id="j_bookCnt"></div>
+</div>
+
+<div class="memoPicBox">
+    <div class="bd">
+        <ul class="pure-g">
+            <li class="pure-u-14-24 item">
+                <h3>我的寄语</h3>
+                <p>我们将印刷在绘本的第2页上</p>
+                <p class="message">{{item.message}}</p>
+            </li>
+            <li class="pure-u-10-24 item">
+                <h3>礼品包装：
+                    {{if item.isPacking}}
+                    <span class="green">是</span>
+                    {{else}}
+                     <span class="red">否</span>   
+                    {{/if}}
+                </h3>
+                
+                <div class="photo">
+                    <img src="/book/u/s.do?attachmentId={{item.attachmentId}}" class="uploadPhoto">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+{{if _admin}}
+<div class="jsonInfo">
+    <h1 class="tc">图片详细信息：</h1>
+    <table class="table table-border-vertical">
+        <thead>
+            <th>字母</th>
+            <th>中文</th>
+            <th>拼音</th>
+            <th>小图</th>
+            <th>故事图1</th>
+            <th>故事图2</th>
+        </thead>
+        <tbody>
+            {{each _jsonInfo}}
+            <tr class="tl">
+                <td>{{$value.ch}}</td>
+                <td>{{$value.zh}}</td>
+                <td>{{$value.py}}</td>
+                <td>{{$value.thumb}}</td>
+                <td>{{$value.first}}</td>
+                <td>{{$value.second}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{/if}}
+</script> 
 
 <script>
 	var GlobalData = {
@@ -203,6 +189,6 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
         })
     });
 </script>
-<script src="//www.sy111.com/book/static/js/order/order.js"></script>
+<script src="//www.sy111.com/book/static/js/book/result.js"></script>
 </body>
 </html>

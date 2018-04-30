@@ -36,7 +36,7 @@ $(function(){
 				$page.find('.j_tbdBox').html(template('orderTpl', json));
 				initPageBar(json, params.pageSize);
 			}else{
-				$page.find('.j_tbdBox').html('<tr><td colspan="5"><p class="tc">暂无相关订单~</p></td></tr>');
+				$page.find('.j_tbdBox').html('<tr><td colspan="' + $page.find('thead th').length + '"><p class="tc">暂无相关订单~</p></td></tr>');
 			}
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');

@@ -81,7 +81,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
         <div class="success none">
             <h1 class="tc">恭喜！订单已支付成功</h1>
             <div class="orderInfo tc">
-                <a class="ui-button ui-button-yellow ui-button-XL"  href="/book/order/orderdetail.jsp?orderId=${out_trade_no}">查看订单</a>
+                <a class="ui-button ui-button-yellow ui-button-XL"  href="/book/order/orderdetail.jsp?orderId=${orderId}">查看订单</a>
                 <a class="ui-button ui-button-green ui-button-XL"  href="/book/index.jsp">返回首页</a>
             </div>
         </div>

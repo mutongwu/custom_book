@@ -34,6 +34,7 @@
                     <th class="tc">总金额</th>
                     <th class="tc">下单时间</th>
                     <th class="tc">订单状态</th>
+                    <th class="tc">操作</th>
                 </tr>
                 </thead>
                 <tbody class="j_tbdBox">
@@ -51,10 +52,10 @@
 {{each list as item}}
 <tr>
     <td>
-        <a href="">{{item.orderNo}}</a>
+        <a href="./orderdetail.jsp?orderId={{item.orderId}}">{{item.orderNo}}</a>
     </td>
     <td class="tl">
-        <p><a href="">{{item.summary}}</a></p>
+        <p>{{item.summary}}</p>
     </td>
     <td>
         <strong class="price">{{item.statementPrice | priceFormat}}元</strong>
@@ -79,6 +80,11 @@
         <strong class="red">订单作废</strong>
         {{else if item.status == -1}}
         <strong class="red">退货退款</strong>
+        {{/if}}
+    </td>
+    <td>
+        {{if item.status == 0}}
+        <a href="@ROOT_PATH/alipay/pay.do?orderId={{item.orderId}}" class="ui-button" style="width:4em">立即支付</a>
         {{/if}}
     </td>
 </tr>

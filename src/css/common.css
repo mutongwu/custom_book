@@ -216,6 +216,7 @@ input{outline:none;}
     border-radius: 5px;
 }
 .ui-button-yellow{background:#e8a910; }
+.ui-button-red{background:#e01414; }
 .ui-button-gray{background:#615d5d; }
 .ui-button.disable,.ui-button.disable:hover{
     filter:none;

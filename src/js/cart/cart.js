@@ -15,17 +15,19 @@ $(function(){
 
 	var totalPrice = 0;
 	var totalDiscount = 0;
+	var payTotal = 0;
 	function calTotalDiscount(json){
 		$.each(json, function(i, item){
 			totalPrice += item.price;
 			totalDiscount += item.originalPrice - item.price;
+			payTotal += item.statementPrice;
 		});
 	}
 	function updatePrice(){
 		var $box = $page.find('.j_priceTotal');
 		$box.find('.j_total').text(formatRmb(totalPrice));
 		$box.find('.j_discount').text(formatRmb(totalDiscount));
-		$box.find('.j_price').text(formatRmb(totalPrice - totalDiscount));
+		$box.find('.j_price').text(formatRmb(payTotal));
 	}
 
 	function nextDiscount(){
