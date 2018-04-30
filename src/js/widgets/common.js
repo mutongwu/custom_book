@@ -1345,3 +1345,6 @@ function dateFormat(val) {
 }
 template.helper('dateFormat', dateFormat);
 template.helper('priceFormat', formatRmb);
+App.isLogin = function(){
+    return !!(GlobalData.userId || (App.User && App.User.userId));
+}

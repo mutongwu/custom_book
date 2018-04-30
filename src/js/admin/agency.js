@@ -144,8 +144,26 @@ $(function(){
 		var $tr = $(this).closest('tr');
 		var id = $tr.data('id');
 		auditApply(id, false);
+	}).on('click', '.j_lock',function(){
+		var $tr = $(this).closest('tr');
+		var id = $tr.data('uid');
+		App.confirm('确定终止用户['+ id + ']的合作伙伴关系吗？',function(){
+			App.onceAjax({
+				'call': 'admin.discontinuePartnerInfo',
+				'userId':id
+			}).done(function(data){
+				if(data > 0){
+					App.tip('停止合作操作成功！');
+					reloadData();
+				}else{
+					App.tip('停止合作操作失败！','error');
+				}
+			}).fail(function(res){
+				App.tip(res && res.message || '停止合作操作失败！', 'error');
+			});
+		});
 	});
 	initDatePicker();
 	initStatusSelect();
 	$('.j_distinctSelect').distpicker();
-})
+});

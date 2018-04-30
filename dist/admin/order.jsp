@@ -198,13 +198,11 @@
             <input type="button" class="ui-button j_cancelOrder" value="取消" />
         {{else if ['1'].indexOf(item.status) !== -1}}
             <input type="button" class="ui-button j_acceptOrder" value="确认订单" />
+            <input type="button" class="ui-button j_refundOrder" value="退货退款" />
         {{else if ['2'].indexOf(item.status) !== -1}}
             <input type="button" class="ui-button j_sendGoods" value="发货" />
         {{else if ['3'].indexOf(item.status) !== -1}}
-            <input type="button" class="ui-button j_sendGoods" value="更改物流" />
-        {{/if}}
-        {{if ['1','2','3','4'].indexOf(item.status) !== -1}}
-            <input type="button" class="ui-button j_refundOrder" value="退货退款" />
+            <input type="button" class="ui-button j_sendGoods" value="更改发货单" />
         {{/if}}
     </td>
 </tr>

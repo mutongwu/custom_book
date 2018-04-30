@@ -28,6 +28,14 @@ $(function () {
     	App.linkTo('/book/editname.jsp', params);
     }).on('click','#j_goMemoEdit', function(){
     	App.BookData.setInstance(instance.getResult());
-    	App.linkTo('/book/memoedit.jsp', params);
+		if(App.isLogin()){
+			App.linkTo('/book/memoedit.jsp', params);
+		}else{
+			App.confirm('您需要登录才能进行下一步操作。是否前往登录？',function(){
+				App.linkTo('/login/login.jsp',{
+					returnurl: location.href.replace('preview','memoedit')
+				});
+			});
+		}
     });
 });

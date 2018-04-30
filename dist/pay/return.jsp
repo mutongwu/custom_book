@@ -11,7 +11,14 @@
 </head>
 <body>
 <div class="wrapper">
-    <!-- 公共顶部 -->
+    <%
+String DEBUG = "";
+if (DEBUG.equals("") && request.getAttribute("userId") == null){
+    response.sendRedirect((String)request.getAttribute("basePath"));
+    return;
+}
+%>
+<!-- 公共顶部 -->
 <div class="topNav" id="j_topNav">
     <div class="userInfo j_userInfo noLogin">
         <div class="bd cf">
@@ -70,20 +77,18 @@
 </div>
 <!-- END:公共顶部 -->
 
-    <div class="container bookPreviewCnt">
-    	<div class="infoBox">
-            <h1 class="tc">为孩子定制独一无二、珍藏一生的礼物</h1>
-            <h2 class="tc">激发儿童阅读兴趣、培养情商的启蒙绘本</h2>
+    <div class="container payCnt">
+        <div class="success none">
+            <h1 class="tc">恭喜！订单已支付成功</h1>
+            <div class="orderInfo tc">
+                <a class="ui-button ui-button-yellow ui-button-XL"  href="/book/order/orderdetail.jsp?orderId=${out_trade_no}">查看订单</a>
+                <a class="ui-button ui-button-green ui-button-XL"  href="/book/index.jsp">返回首页</a>
+            </div>
         </div>
-    	<div class="bookPreview">
-            <div id="j_bookCnt"></div>
-        </div>
-        <div class="btnBox tc">
-            <a class="ui-button ui-button-green ui-button-XL" id="j_goModify" >修改名字</a>
-            <a class="ui-button ui-button-yellow ui-button-XL" id="j_goMemoEdit">马上下订单</a>
+        <div class="fail  none">
+            <h1 class="tc">订单支付失败！</h1>
         </div>
     </div><!-- END container-->
-
     
 <div class="copyright ">
 	<div class="bd cf">
@@ -129,7 +134,26 @@
             App.linkTo('/index.jsp');
         })
     });
+
+
+    $(function(){
+        //验证支付结果,true/false
+        var signVerified=${signVerified};
+
+        //商户订单号
+        var out_trade_no="${out_trade_no}";
+
+        //支付宝交易号
+        var trade_no="${trade_no}";
+
+        //付款金额
+        var total_amount="${total_amount}";
+        if(signVerified){
+            $('.success').removeClass('none');
+        }else{
+            $('.fail').removeClass('none');
+        }
+    })
 </script>
-<script src="//www.sy111.com/book/static/js/book/preview.js"></script>
 </body>
 </html>

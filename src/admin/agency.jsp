@@ -109,7 +109,7 @@
 </div>
 <script type="text/html" id="itemTpl">
 {{each list as item}}
-<tr data-id="{{item.partnerInfoId}}">
+<tr data-id="{{item.partnerInfoId}}" data-uid="{{item.userId}}">
     <td>
         <a>{{item.userId}}</a>
     </td>

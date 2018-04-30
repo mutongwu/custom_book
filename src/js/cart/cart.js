@@ -37,13 +37,13 @@ $(function(){
 		}
 	}
 	function initAddress(json){
+		json = json || {};
 		for(var p in json){
 			var el = $form.find('[name="'+p+'"]');
 			if(json[p] && el.length){
 				el.val(json[p]);
 			}
 		}
-
 		$('#j_distpicker').distpicker({
 			province: json.province,
 			city: json.city,
@@ -103,7 +103,9 @@ $(function(){
 			}).done(function(json){
 				App.tip('订单提交成功，正在前往支付');
 				setTimeout(function(){
-
+					App.linkTo('/alipay/pay.do',{
+						orderId: json.orderId
+					});
 				},1000);
 			}).fail(function(res){
 				App.tip(res && res.message, 'error');
@@ -143,7 +145,22 @@ $(function(){
 		}else{
 			EditCartItem.init()
 		}
-		
+	}).on('click','.j_saveAddress', function(){
+		var result = validator.validate();
+		if(!result.FAILED){
+			result.call = result.addressId ? 'address.modifyAddress' : 'address.saveAddress';
+			App.onceAjax({
+				method:'POST',
+				data: result
+			}).done(function(json){
+				$form.find('[name="addressId"]').val(json.addressId);
+				App.tip('收货地址保存成功');
+			}).fail(function(res){
+				App.tip('收货地址保存失败','error');
+			});
+		}else{
+			App.tip('请填写收货地址','error');
+		}
 	});
 
 	loadData();

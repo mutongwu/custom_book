@@ -1,5 +1,6 @@
 $(function(){
     var $form = $('.loginForm');
+	var params = App.params();
     var validator = new App.FormValidator({
     	'$form': $form
     });
@@ -12,7 +13,11 @@ $(function(){
     		App.onceAjax({
     			'data':result
     		}).done(function(){
-    			App.linkTo('/index.jsp');
+				if(params.returnurl){
+					location.replace(params.returnurl);
+				}else{
+					App.linkTo('/index.jsp');
+				}
     		}).fail(function(res){
     			App.tip(res && res.message,'error');
     		});

@@ -11,14 +11,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <%
-String DEBUG = "";
-if (DEBUG.equals("") && request.getAttribute("userId") == null){
-    response.sendRedirect((String)request.getAttribute("basePath"));
-    return;
-}
-%>
-<!-- 公共顶部 -->
+    <!-- 公共顶部 -->
 <div class="topNav" id="j_topNav">
     <div class="userInfo j_userInfo noLogin">
         <div class="bd cf">

@@ -23,14 +23,6 @@ $(function(){
 			pageBar = null;
 		}
 	}
-	// function formatRmb(price) {
-	//     return (price/100).toFixed(2);
-	// }
-	// function dateFormat(val) {
-	//     return App.Format.fmDate(val, 'yyyy-MM-dd hh:mm:ss');
-	// }
-	// template.helper('dateFormat', dateFormat);
-	// template.helper('priceFormat', formatRmb);
 	function loadData(params){
 		App.ajax({
 			data:{
@@ -40,11 +32,11 @@ $(function(){
 				'status': params.status
 			}
 		}).done(function(json){
-			if(json && json.list){
+			if(json && json.list && json.count){
 				$page.find('.j_tbdBox').html(template('orderTpl', json));
 				initPageBar(json, params.pageSize);
 			}else{
-				$page.find('.j_tbdBox').html('<tr><td colspan="5"><p class="tc">暂无订单~</p></td></tr>');
+				$page.find('.j_tbdBox').html('<tr><td colspan="5"><p class="tc">暂无相关订单~</p></td></tr>');
 			}
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');

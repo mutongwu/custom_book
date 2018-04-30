@@ -6,7 +6,7 @@
 </head>
 <body>
 <div class="wrapper">
-    <link rel="import" href="../pub/top.jsp?__inline">
+    <link rel="import" href="../pub/top.html?__inline">
 
     <div class="container bookEditCnt">
         <h1 class="tc">编辑绘本</h1>
