@@ -6,6 +6,7 @@ $(function(){
     });
 
 	function initForm(json){
+		json = json || {};
 		for(var p in json){
 			var el = $form.find('[name="'+p+'"]');
 			if(json[p] && el.length){
