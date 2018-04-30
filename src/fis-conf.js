@@ -16,7 +16,7 @@ fis.match('*.scss', {
 });
 
 
-fis.match('*.{png,js,css,jpeg,jpg,gif}', {
+fis.match('*.{png,js,css,scss,jpeg,jpg,gif}', {
   release: '/static/$0'
 });
 

@@ -7,7 +7,7 @@
 <title>书友</title>
 
     <link type="text/css" rel="stylesheet" href="//www.sy111.com/book/static/pkg/aio.css" />
-    <link rel="stylesheet" type="text/css" href="//www.sy111.com/book/css/admin/admin.css" />
+    <link rel="stylesheet" type="text/css" href="//www.sy111.com/book/static/css/admin/admin.css" />
 </head>
 <body>
 <div class="wrapper adminPage">

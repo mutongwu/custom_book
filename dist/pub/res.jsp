@@ -9,7 +9,7 @@
 	};
 </script>
 <link type="text/css" href="//www.sy111.com/book/static/css/common.css" rel="stylesheet" />
-<link type="text/css" href="//www.sy111.com/book/css/style.css" rel="stylesheet" />
+<link type="text/css" href="//www.sy111.com/book/static/css/style.css" rel="stylesheet" />
 <link type="text/css" href="//www.sy111.com/book/static/css/bookfx.css" rel="stylesheet" />
 <script src="//www.sy111.com/book/static/js/lib/jquery-1.11.3.min.js"></script>
 <script src="//www.sy111.com/book/static/js/lib/jquery.clip.js"></script>
