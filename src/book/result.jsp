@@ -17,8 +17,7 @@
 </div>
 <script type="text/html" id="bookTpl">
 <div class="infoBox">
-    <h1 class="tc">中文名：{{item.chineseName}}</h1>
-    <h1 class="tc">拼音名：{{item.pinyinName}}</h1>
+    <h1 class="tc">姓名：{{item.chineseName}}({{item.pinyinName}})</h1>
 </div>
 <div class="bookPreview">
     <div id="j_bookCnt"></div>
@@ -57,8 +56,8 @@
             <th>中文</th>
             <th>拼音</th>
             <th>小图</th>
-            <th>故事图1</th>
-            <th>故事图2</th>
+            <th>(/{{_v}}/{{_sex}}/)故事图1</th>
+            <th>(/{{_v}}/{{_sex}}/)故事图2</th>
         </thead>
         <tbody>
             {{each _jsonInfo}}

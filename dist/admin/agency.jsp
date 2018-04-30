@@ -29,7 +29,7 @@
     <div class="navMenu">
         <div class="bd">
             <ul class="cf">
-                <li class="fl active"><a href="./order.jsp" class="link">订单管理</a></li>
+                <li class="fl"><a href="./order.jsp" class="link">订单管理</a></li>
                 <li class="fl"><a href="./member.jsp"  class="link">会员管理</a></li>
                 <li class="fl"><a href="./agency.jsp"  class="link">合作伙伴管理</a></li>
                 <li class="fl"><a href="./rebate.jsp" class="link">返利列表</a></li>
@@ -121,6 +121,7 @@
             <table class="table table-border-vertical">
                 <thead>
                 <tr>
+                    <th class="tc">申请ID</th>
                     <th class="tc">用户ID</th>
                     <th class="tc">代理名称</th>
                     <th class="tc">类型</th>
@@ -157,6 +158,9 @@
 <script type="text/html" id="itemTpl">
 {{each list as item}}
 <tr data-id="{{item.partnerInfoId}}" data-uid="{{item.userId}}">
+    <td>
+        <a href="./agencydetail.jsp?partnerInfoId={{item.partnerInfoId}}" target="_blank">{{item.partnerInfoId}}</a>
+    </td>
     <td>
         <a>{{item.userId}}</a>
     </td>

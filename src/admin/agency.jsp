@@ -87,6 +87,7 @@
             <table class="table table-border-vertical">
                 <thead>
                 <tr>
+                    <th class="tc">申请ID</th>
                     <th class="tc">用户ID</th>
                     <th class="tc">代理名称</th>
                     <th class="tc">类型</th>
@@ -110,6 +111,9 @@
 <script type="text/html" id="itemTpl">
 {{each list as item}}
 <tr data-id="{{item.partnerInfoId}}" data-uid="{{item.userId}}">
+    <td>
+        <a href="./agencydetail.jsp?partnerInfoId={{item.partnerInfoId}}" target="_blank">{{item.partnerInfoId}}</a>
+    </td>
     <td>
         <a>{{item.userId}}</a>
     </td>

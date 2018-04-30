@@ -29,7 +29,7 @@
     <div class="navMenu">
         <div class="bd">
             <ul class="cf">
-                <li class="fl active"><a href="./order.jsp" class="link">订单管理</a></li>
+                <li class="fl"><a href="./order.jsp" class="link">订单管理</a></li>
                 <li class="fl"><a href="./member.jsp"  class="link">会员管理</a></li>
                 <li class="fl"><a href="./agency.jsp"  class="link">合作伙伴管理</a></li>
                 <li class="fl"><a href="./rebate.jsp" class="link">返利列表</a></li>
@@ -163,9 +163,9 @@
 </div>
 <script type="text/html" id="itemTpl">
 {{each list as item}}
-<tr>
+<tr data-id="{{item.userId}}">
     <td>
-        <a>{{item.userId}}</a>
+        {{item.userId}}
     </td>
     <td>
         {{item.userName}}
@@ -201,9 +201,9 @@
     </td>
     <td>
         {{if item.status == 1}}
-        <input type="button" class="ui-button ui-button-yellow" value="锁定" />
+        <input type="button" class="ui-button ui-button-red j_lockUser" value="锁定" />
         {{else}}
-        <input type="button" class="ui-button ui-button-yellow" value="解锁" />
+        <input type="button" class="ui-button ui-button-yellow j_unlockUser" value="解锁" />
         {{/if}}
     </td>
 </tr>

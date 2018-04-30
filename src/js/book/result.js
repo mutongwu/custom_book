@@ -39,6 +39,8 @@ $(function () {
                     $page.html(template('bookTpl', {
                         item: orderGoodVo,
                         _admin: GlobalData.type,
+                        _sex: orderGoodVo.gender == 1 ? 'boy':'girl',
+                        _v:  orderGoodVo.storyId,
                         _jsonInfo: JSON.parse(orderGoodVo.nameInfo)
                     }));
 

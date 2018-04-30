@@ -1,0 +1,1 @@
+$(function(){function n(){return App.ajax({data:{call:"admin.getPartnerInfo",partnerInfoId:e.partnerInfoId}})}var a=$(".adminAgencyDetailCnt"),e=App.params();n().done(function(n){n?a.find(".agencyBox").html(template("agencyTpl",n)):App.tip(n&&n.message,"error")}).fail(function(n){App.tip(n&&n.message,"error")})});

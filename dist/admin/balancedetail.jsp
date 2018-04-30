@@ -7,7 +7,7 @@
 <title>书友</title>
 
     <link type="text/css" rel="stylesheet" href="//www.sy111.com/book/static/pkg/aio.css" />
-    <link rel="stylesheet" type="text/css" href="./css/admin.css" />
+    <link rel="stylesheet" type="text/css" href="//www.sy111.com/book/css/admin/admin.css" />
 </head>
 <body>
 <div class="wrapper adminPage">
@@ -29,7 +29,7 @@
     <div class="navMenu">
         <div class="bd">
             <ul class="cf">
-                <li class="fl active"><a href="./order.jsp" class="link">订单管理</a></li>
+                <li class="fl"><a href="./order.jsp" class="link">订单管理</a></li>
                 <li class="fl"><a href="./member.jsp"  class="link">会员管理</a></li>
                 <li class="fl"><a href="./agency.jsp"  class="link">合作伙伴管理</a></li>
                 <li class="fl"><a href="./rebate.jsp" class="link">返利列表</a></li>
@@ -43,48 +43,51 @@
 </div>
 <!-- END:公共顶部 -->
 
-    <div class="container applyCnt adminBalanceDetailCnt">
+    <div class="container  adminBalanceDetailCnt">
         <h1 class="tc">新增汇款记录</h1>
-        <div class="applyBox tc">
-            <form class="ui-form applyForm tl">
+        <div class="balanceBox tc">
+            <form class="ui-form balanceForm tl">
                 <div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>汇款日期：</label>
                     <div class="ui-form-group">
-                        <input class="ui-input" name="shopname" placeholder="店铺名称"   />
+                        <input required="required" class="ui-input j_date" name="date" placeholder="汇款日期"   />
+                            <p class="ui-field-error"></p>
                     </div>
                 </div>
                 <div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>合作伙伴：</label>
                     <div class="ui-form-group">
-                        <input class="ui-input" name="shopurl" placeholder="合作伙伴"   />
+                        <input  required="required" class="ui-input" name="shopurl" placeholder="合作伙伴"   />
+                            <p class="ui-field-error"></p>
                     </div>
                 </div>
                 <div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>收款人：</label>
                     <div class="ui-form-group">
-                        <input class="ui-input" name="site" placeholder="收款人"   />
+                        <input  required="required" class="ui-input" name="site" placeholder="收款人"   />
+                            <p class="ui-field-error"></p>
                     </div>
                 </div>
                
                 <div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>汇入银行：</label>
                     <div class="ui-form-group">
-                        <select class="ui-select" name="bank">
-                            <option>请选择</option>
-                        </select>
+                        <input  required="required" class="ui-input" name="bank" placeholder="收款人"   />
+                            <p class="ui-field-error"></p>
                     </div>
                 </div>
                 
                 <div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>汇款金额：</label>
                     <div class="ui-form-group">
-                        <input class="ui-input" name="qq" placeholder="汇款金额"   />
+                        <input  required="required" type="number" class="ui-input" name="account" placeholder="汇款金额"   />
+                            <p class="ui-field-error"></p>
                     </div>
                 </div>
                 <div class="ui-form-item">
                     <label class="ui-form-label">&nbsp;</label>
                     <div class="ui-form-group">
-                        <input type="button" class="ui-button ui-button ui-button-XL" value="提交" />
+                        <input type="button" class="ui-button ui-button ui-button-XL" value="提交" id="j_submit"/>
                     </div>
                 </div>
             </form>
@@ -115,7 +118,7 @@
 	};
 </script>
 <script src="//www.sy111.com/book/static/pkg/aio.js"></script>
-<script type="text/javascript">
+<script>
     $(function(){
         var url = document.location.href;
         var page = null;
@@ -146,5 +149,6 @@
         });
     });
 </script>
+<script src="//www.sy111.com/book/static/js/admin/balancedetail.js"></script>
 </body>
 </html>

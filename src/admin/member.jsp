@@ -116,9 +116,9 @@
 </div>
 <script type="text/html" id="itemTpl">
 {{each list as item}}
-<tr>
+<tr data-id="{{item.userId}}">
     <td>
-        <a>{{item.userId}}</a>
+        {{item.userId}}
     </td>
     <td>
         {{item.userName}}
@@ -154,9 +154,9 @@
     </td>
     <td>
         {{if item.status == 1}}
-        <input type="button" class="ui-button ui-button-yellow" value="锁定" />
+        <input type="button" class="ui-button ui-button-red j_lockUser" value="锁定" />
         {{else}}
-        <input type="button" class="ui-button ui-button-yellow" value="解锁" />
+        <input type="button" class="ui-button ui-button-yellow j_unlockUser" value="解锁" />
         {{/if}}
     </td>
 </tr>

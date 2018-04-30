@@ -1308,6 +1308,7 @@ App.ajax = function(config){
         url: '//www.sy111.com/book/a/c.do',
         method: 'GET',
         dataType: 'json',
+        cache: false,
         xhrFields: {
             withCredentials: true
         }
