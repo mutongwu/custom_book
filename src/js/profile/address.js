@@ -40,8 +40,8 @@ $(function(){
         data: {
             'call': 'address.getDefaultAddressByUserId'
         }
-    }).done(function(json){
-        initForm(json);
+    }).always(function(res){
+        initForm(res.data);
     });
 
   	$page.on('click', '#j_submit',function(){
