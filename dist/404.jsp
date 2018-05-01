@@ -119,7 +119,7 @@
                     'call': 'user.getUserInfo'
                 }
             }).done(handleRes);
-        }else{
+        }else if(GlobalData.userId){
             handleRes(GlobalData);
         }
         $('.j_logout').on('click',function(){

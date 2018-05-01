@@ -240,7 +240,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                     'call': 'user.getUserInfo'
                 }
             }).done(handleRes);
-        }else{
+        }else if(GlobalData.userId){
             handleRes(GlobalData);
         }
         $('.j_logout').on('click',function(){
