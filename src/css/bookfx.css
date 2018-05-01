@@ -33,7 +33,9 @@
   width: 50%;
   min-height: 100%;
   max-height: 100%;
-  background: black;
+  /*background: black;*/
+  background: url(../images/picLoading.gif) 50% 50% no-repeat #353535;
+  background-size:100px 100px;
   overflow: hidden;
   transform:rotateY(0);
   /*-ms-transform: perspective(2000px)  rotateY(0);*/

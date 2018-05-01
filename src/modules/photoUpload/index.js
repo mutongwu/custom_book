@@ -30,13 +30,17 @@ PhotoUpload.prototype = {
             dataType: 'json',
             done: function (e, data) {
                 var result = data.result;
-                $box.find('.j_photo').attr('src','@ROOT_PATH/u/s.do?attachmentId=' + result.data);
+                if(result.data && typeof result.data === 'string'){
+                    $box.find('.j_photo').attr('src','@ROOT_PATH/u/s.do?attachmentId=' + result.data);
+                    $box.find('.attachmentId').val(result.data);
+                }else{
+                    App.tip(result.message || '图片上传失败.','error');
+                }
                 $box.find('.progress-bar').hide();
-                $box.find('.attachmentId').val(result.data);
             },
-            progressall: function (e, data) {
-                var progress = parseInt(data.loaded / data.total * 100, 10);
-                $('.progress-bar').show().html('正在上传' + progress + '%');
+            progress: function (e, data) {
+                // var progress = parseInt(data.loaded / data.total * 100, 10);
+                $box.find('.progress-bar').show().html('正在上传中，请稍后...');
             }
         });
     },

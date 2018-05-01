@@ -36,14 +36,11 @@ function initGlobalData(){
 		'idx':4
 	}];
 
+	// 所有字母，共用4种图
 	var getNextTy = (function(){
-		var currMap = {};
+		var curr = 0;
 		return function(ch){
 			var result = null;
-			var curr = currMap[ch];
-			if(!curr){
-				curr = currMap[ch] = 0;
-			}
 			if(curr < tyRoles.length){
 				var item = tyRoles[curr];
 				result = $.extend({
@@ -51,7 +48,7 @@ function initGlobalData(){
 					first:'/ty/' + ['ty','0'+item.idx,item.py,1].join('_') + '.jpg',
 					second:'/ty/' + ['ty','0'+item.idx,item.py,ch].join('_') + '.jpg'
 				},item);
-				currMap[ch] += 1;
+				curr += 1;
 			}
 			return result;
 		};

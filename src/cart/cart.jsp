@@ -40,10 +40,10 @@
                         <p class="ui-field-error"></p>
                     </div>
                     <div class="ui-form-item">
-                        <input required class="ui-input" name="address" placeholder="详细地址" maxlength="30"/>
+                        <input required class="ui-input address_input" name="address" placeholder="详细地址" maxlength="30"/>
                     </div>
                     <div class="btnBox tc">
-                        <input type="input" class="ui-button ui-button-XL ui-button-green j_saveAddress" value="保存" />
+                        <input type="button" class="ui-button ui-button-XL ui-button-green j_saveAddress" value="保存" />
                     </div>
                 </div>
             </div>

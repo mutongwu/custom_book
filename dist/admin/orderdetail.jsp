@@ -146,7 +146,12 @@
 	var GlobalData = {
 		"rootPath" :'/book/',
 		"userId" : "${userId}",
-		"type":"${userMap.role}"
+		"type":"${userMap.role}",
+		"attachmentId":"${userMap.attachmentId}",
+		"username":"${userMap.username}",
+		"email":"${userMap.email}",
+		"nickname":"${userMap.nickname}",
+		"mobile":"${userMap.mobile}"
 	};
 </script>
 <script src="//www.sy111.com/book/static/pkg/aio.js"></script>

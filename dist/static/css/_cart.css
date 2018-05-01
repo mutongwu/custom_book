@@ -20,7 +20,9 @@
 				width: 600px;
 				margin: 20px auto;
 			}
-			.address{width: 504px;}
+		}
+		.address_input{
+			width: 504px;
 		}
 	}
 	.priceBox{

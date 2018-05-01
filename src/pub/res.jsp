@@ -5,7 +5,12 @@
 	var GlobalData = {
 		"rootPath" :'@ROOT_PATH/',
 		"userId" : "${userId}",
-		"type":"${userMap.role}"
+		"type":"${userMap.role}",
+		"attachmentId":"${userMap.attachmentId}",
+		"username":"${userMap.username}",
+		"email":"${userMap.email}",
+		"nickname":"${userMap.nickname}",
+		"mobile":"${userMap.mobile}"
 	};
 </script>
 <link type="text/css" href="/css/common.css" rel="stylesheet" />

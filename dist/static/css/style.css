@@ -1380,7 +1380,7 @@ p.txt {
   margin: 20px auto;
 }
 
-.cartCnt .addressBox .addAddress .address {
+.cartCnt .addressBox .address_input {
   width: 504px;
 }
 

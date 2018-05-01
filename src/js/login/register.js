@@ -42,7 +42,7 @@ $(function(){
     	}
     }
     function countdown($btn){
-    	var n = 30;
+    	var n = registerType === 'phone'? 60 : 30;
     	function setTxt(){
 			if(n > 1){
 				$btn.html('请等待' + n + '秒再获取');

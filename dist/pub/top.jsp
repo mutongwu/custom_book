@@ -65,19 +65,23 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 <!-- END:公共顶部 -->
 <script type="text/javascript">
     $(function(){
-        App.ajax({
-            data: {
-                'call': 'user.getUserInfo'
-            }
-        }).done(function(json){
-            if(json && json.userId){
-                App.User = json;
-                var $box = $('#j_topNav .j_userInfo');
-                $box.find('.j_userName').text(json.nickname || '书友会员');
-                json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
-                $box.removeClass('noLogin');
-            }
-        });
+        function handleRes(json){
+            App.User = json;
+            var $box = $('#j_topNav .j_userInfo');
+            $box.find('.j_userName').text(json.username || json.nickname || json.email || json.mobile || '书友会员');
+
+            json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
+            $box.removeClass('noLogin');
+        }
+        if(""){
+            App.ajax({
+                data: {
+                    'call': 'user.getUserInfo'
+                }
+            }).done(handleRes);
+        }else{
+            handleRes(GlobalData);
+        }
         $('.j_logout').on('click',function(){
             Cookies.remove('onlineId',{path:'/',domain:'.sy111.com'});
             Cookies.remove('user',{path:'/',domain:'.sy111.com'});
