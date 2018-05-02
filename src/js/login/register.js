@@ -29,6 +29,11 @@ $(function(){
     			return;
     		}
     		result['call'] = Constants[type].api;
+			if(type === 'phone'){
+				delete result.email;
+			}else{
+				delete result.mobile;
+			}
     		App.ajax({
     			'data':result,
     			'method': 'POST'

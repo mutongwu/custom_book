@@ -26,7 +26,7 @@ $(function(){
     	}
     }
     var Constants = {
-        phone:{
+        mobile:{
             codeApi: 'user.getSmsCode',
             tip: '验证码已发送，请留意您的手机短信'
         },
@@ -114,7 +114,7 @@ $(function(){
                     'method': 'POST'
                 }).done(function(res){
                     if(res){
-                        goNext(result['source'], 'phone');    
+                        goNext(result['source'], 'mobile');    
                     }else{
                         App.tip(res && res.message || '账号不存在','error');    
                     }
