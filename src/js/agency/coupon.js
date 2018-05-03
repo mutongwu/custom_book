@@ -12,15 +12,22 @@ $(function(){
 			'call': 'agent.getCouponVo'
 		}
 	}).done(function(json){
-		if(json){
-			var $box = $page.find('.j_agencyTxt');
-			$box.find('.type').text(agentNameByType(json.level));
-			$box.find('.num').text(json.couponNo);
-			$box.removeClass('none');
+		if(json && json.couponNo){
+			$page.find('.j_couponInfoBox').html(template('couponInfoTpl', json));
+
+			$page.find('.j_applyLink').filter(function(index){
+				return index <= parseInt(json.level) - 1;
+			}).addClass('disable');
 		}else{
-			$page.find('.j_noAgency').removeClass('none');
+			$page.find('.j_couponInfoBox').html(template('couponInfoTpl'), {});
 		}
 	}).fail(function(res){
 		App.tip(res && res.message);
-	})
+	});
+	$page.on('click','.j_applyLink',function(e){
+		if($(this).hasClass('disable')){
+			e.preventDefault();
+			return false;
+		}
+	});
 });

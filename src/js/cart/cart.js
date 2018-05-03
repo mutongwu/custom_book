@@ -57,7 +57,7 @@ $(function(){
 	        data: {
 	            'call': 'address.getDefaultAddressByUserId'
 	        }
-	    }).done(function(json){
+	    }).always(function(json){
 	        initAddress(json);
 	    });
 	}
@@ -163,6 +163,14 @@ $(function(){
 		}else{
 			App.tip('请填写收货地址','error');
 		}
+	}).on('click','.j_showCouponTip',function(){
+		new App.LightBox({
+			type:'alert',
+			title: '优惠券说明',
+			msg: template('couponTipTpl',{}),
+			msgType:'none',
+			timeout:null
+		}).show();
 	});
 
 	loadData();

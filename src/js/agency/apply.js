@@ -60,6 +60,13 @@ $(function(){
 		});
 	}	
 
+	function loadCurrLevel(){
+		return App.ajax({
+			data:{
+				'call': 'agent.getCouponVo'
+			}
+		});
+	}
 	function loadApplyInfo(){
 		return App.ajax({
 			data:{
@@ -76,11 +83,19 @@ $(function(){
                 "call": 'attachment.upload'
             },
             dataType: 'json',
+            progress: function (e, data) {
+                $(e.target).siblings('.uploading').show();
+            },
             done: function (e, data) {
                 var $file = $(e.target);
 				var result = data.result;
-                $file.siblings('.pic').attr('src','@ROOT_PATH/u/s.do?attachmentId=' + result.data);
-                $file.siblings('.attachmentId').val(result.data);
+				if(result.data && typeof result.data === 'string'){
+					$file.siblings('.pic').attr('src','@ROOT_PATH/u/s.do?attachmentId=' + result.data);
+					$file.siblings('.attachmentId').val(result.data);
+                }else{
+                    App.tip(result.message || '图片上传失败.','error');
+                }
+				$file.siblings('.uploading').hide();
             }
         });
 		
@@ -118,13 +133,20 @@ $(function(){
 		}
 	}
 	function initInfo(){
-		loadApplyInfo().done(function(applyInfo){
+		$.when(loadCurrLevel(),loadApplyInfo()).done(function(currLevel, applyInfo){
+			if(currLevel && currLevel.level){
+				$page.find('.j_typeRadio').filter(function(index){
+					return this.value <= parseInt(currLevel.level)
+				}).attr('disabled','disabled');
+			}
 			if(applyInfo){
 				fillForm(applyInfo);
 			}else{
 				$page.find('.j_typeRadio[value="'+currentLevel+'"]').click();
 				$('.j_distSelect').distpicker();
 			}
+		}).fail(function(res){
+			App.tip(res && res.message,'error');
 		});
 	}
 	$page.on('change', '.j_typeRadio',function(){

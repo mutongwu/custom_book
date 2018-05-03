@@ -23,7 +23,7 @@ $(function () {
     function loadData(orderId){
 		App.ajax({
 			data:{
-				'call': 'order.showMyOrderDetail',
+				'call': GlobalData.type == '1'? 'admin.showOrderDetail':'order.showMyOrderDetail',
 				'orderId':orderId
 			}
 		}).done(function(json){

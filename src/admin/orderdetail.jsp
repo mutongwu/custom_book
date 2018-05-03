@@ -53,7 +53,7 @@
         </div>
         <div class="item pure-u-3-4">
             <strong>收货地址：</strong>
-            <span>{{ordersVo.province}}{{ordersVo.city}}{{ordersVo.county}}</span>
+            <span>{{ordersVo.province}} {{ordersVo.city}} {{ordersVo.county}} {{ordersVo.address}}</span>
         </div>
         <div class="item pure-u-1-4">
             <strong>联系电话：</strong>

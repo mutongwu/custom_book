@@ -73,7 +73,7 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label"><em>*</em>网店地址：</label>
                         <div class="ui-form-group">
-                            <input required class="ui-input" name="shopURL" placeholder="网店地址" maxlength="255"/>
+                            <input required vtype="url" class="ui-input" name="shopURL" placeholder="网店地址" maxlength="255"/>
                             <p class="ui-field-error"></p>
                         </div>
                     </div>
@@ -133,21 +133,21 @@
                     <div class="ui-form-item">
                         <label class="ui-form-label"><em>*</em>店铺名称：</label>
                         <div class="ui-form-group">
-                            <input required class="ui-input" name="username" placeholder="代理人姓名" maxlength="32" />
+                            <input required class="ui-input" name="name" placeholder="店铺名称" maxlength="32" />
                             <p class="ui-field-error"></p>
                         </div>
                     </div>
                     <div class="ui-form-item">
                         <label class="ui-form-label">网店地址：</label>
                         <div class="ui-form-group">
-                            <input vtype="url" class="ui-input" name="username" placeholder="网店地址"  maxlength="255" />
+                            <input required vtype="url"  class="ui-input" name="shopURL" placeholder="网店地址"  maxlength="255" />
                             <p class="ui-field-error"></p>
                         </div>
                     </div>
                     <div class="ui-form-item">
                         <label class="ui-form-label">官网地址：</label>
                         <div class="ui-form-group">
-                            <input vtype="url" class="ui-input" name="username" placeholder="官网地址" maxlength="255" />
+                            <input vtype="url" class="ui-input" name="webSiteURL" placeholder="官网地址" maxlength="255" />
                             <p class="ui-field-error"></p>
                         </div>
                     </div>
@@ -159,16 +159,19 @@
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
                                     <input type="hidden" name="pic1" class="attachmentId" />
+                                    <span class="uploading"></span>
                                 </div>
                                 <div class="uploadItem fl">
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
                                     <input type="hidden" name="pic2" class="attachmentId" />
+                                    <span class="uploading"></span>
                                 </div>
                                 <div class="uploadItem fl">
                                     <img src="/images/core/boy1.jpg" class="pic" />
                                     <input type="file" name="bytes" class="uploadInput" />
                                     <input type="hidden" name="pic3" class="attachmentId" />
+                                    <span class="uploading"></span>
                                 </div>
                             </div>
                             <p class="ui-field-error">请上传带店铺名称的实体店照片，需要3张图。</p>
@@ -253,7 +256,7 @@
                 <div class="ui-form-item">
                     <label class="ui-form-label">联系电子邮箱：</label>
                     <div class="ui-form-group">
-                        <input vtype="email" class="ui-input" name="contactEmail" placeholder="联系电子邮箱" maxlength="50"/>
+                        <input vtype="email" class="ui-input" name="contactEMail" placeholder="联系电子邮箱" maxlength="50"/>
                         <p class="ui-field-error"></p>
                     </div>
                 </div>

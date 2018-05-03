@@ -32,7 +32,7 @@ function initGlobalData(){
 		'idx':3
 	},{
 		'zh':'龙卷风',
-		'py': 'longjuanfen',
+		'py': 'longjuanfeng',
 		'idx':4
 	}];
 

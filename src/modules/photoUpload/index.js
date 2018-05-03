@@ -40,7 +40,7 @@ PhotoUpload.prototype = {
             },
             progress: function (e, data) {
                 // var progress = parseInt(data.loaded / data.total * 100, 10);
-                $box.find('.progress-bar').show().html('正在上传中，请稍后...');
+                $box.find('.progress-bar').show().html('正在上传中，请稍候...');
             }
         });
     },
