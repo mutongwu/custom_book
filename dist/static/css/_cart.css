@@ -39,3 +39,9 @@
 	.memoPicBox{border:none;border-top: 1px solid $border-color;}
 	.btnBox {margin: 30px auto 60px;}
 }
+.couponTipPop{
+	width: 400px;
+	p{
+		text-indent: 2em;
+	}
+}

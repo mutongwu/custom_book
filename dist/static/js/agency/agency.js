@@ -1,1 +1,1 @@
-$(function(){function n(){return App.ajax({data:{call:"agent.getPartnerInfo"}})}var a=$(".agencyCnt");n().done(function(n){n?(console.log(n),a.find(".agencyBox").html(template("agencyTpl",n))):a.find(".agencyBox").html('<p class="notAgency">您还未成为代理.</p>')}).fail(function(n){App.tip(n&&n.message,"error")})});
+$(function(){function n(){return App.ajax({data:{call:"agent.getPartnerInfo"}})}var a=$(".agencyCnt");n().done(function(n){a.find(".agencyBox").html(n?template("agencyTpl",n):'<p class="notAgency">您还未成为代理.</p>')}).fail(function(n){App.tip(n&&n.message,"error")})});

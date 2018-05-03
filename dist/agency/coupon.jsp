@@ -90,24 +90,8 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
     </ul>
 </div>
         </div>
-        <h1 class="red tc j_noAgency none">赶快申请成为代理吧！</h1>
-        <h1 class="green tc j_agencyTxt none">您是<span class="type">个人代理</span>，优惠码为：<span class="num red">12345</span></h1>
-        <div class="agencyIntro">
-            <p>用户订购产品时，输入优惠码结算，在官网优惠基础上，结算价还可以额外优惠5%；赶紧告诉您的朋友吧。同时，您将同步获得5%的返利！不限时间，多推广，多收益，长期可获得收益哦！</p>
-        </div>
-        <div class="btnBox fs18 tc">
-            <div class="applyType">
-                <a class="ui-button ui-button-L ui-button-yellow" href="./apply.jsp?level=1">个人代理</a>
-                <p class="green">人人都可以申请</p>
-            </div>
-            <div class="applyType">
-                <a class="ui-button ui-button-L ui-button-yellow" href="./apply.jsp?level=2">网店代理</a>
-                <p class="green">要求有网络店铺</p>
-            </div>
-            <div class="applyType">
-                <a class="ui-button ui-button-L ui-button-yellow" href="./apply.jsp?level=3">实体店代理</a>
-                <p class="green">要求有实体店铺</p>
-            </div>
+        <div class="j_couponInfoBox">
+
         </div>
     </div><!-- END container-->
 
@@ -126,6 +110,44 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
     </div>
 </div>
 </div>
+<script type="text/html" id="couponInfoTpl">
+{{if level}}
+    <h1 class="green tc">您是<span class="type">
+         {{if level == 1}}
+            个人代理
+        {{else if level == 2}}
+            网店合作伙伴
+        {{else}}
+            实体店合作伙伴
+        {{/if}}
+    </span>，优惠码为：<span class="num red">{{couponNo}}</span></h1>
+    <div class="agencyIntro">
+        {{if level == 1}}
+        <p>用户订购产品时，输入优惠码结算，结算价可优惠5%；赶紧告诉您的朋友吧。同时，您将获得5%的返利！长期可获得收益哦！</p>
+        {{else if level == 2}}
+        <p>用户订购产品时，输入优惠码结算，结算价可优惠5%；赶紧去推广吧。同时，您将获得10%的返利！长期可获得收益哦！</p>
+        {{else}}
+        <p>用户订购产品时，输入优惠码结算，结算价可优惠5%；赶紧去推广吧。同时，您将获得15%的返利！长期可获得收益哦！</p>
+        {{/if}}
+    </div>
+{{else}}    
+    <h1 class="red tc">赶快申请成为代理吧！</h1>
+{{/if}}
+<div class="btnBox fs18 tc">
+    <div class="applyType">
+        <a class="ui-button ui-button-L ui-button-yellow j_applyLink" href="./apply.jsp?level=1">个人代理</a>
+        <p class="green">人人都可以申请</p>
+    </div>
+    <div class="applyType">
+        <a class="ui-button ui-button-L ui-button-yellow j_applyLink" href="./apply.jsp?level=2">网店代理</a>
+        <p class="green">要求有网络店铺</p>
+    </div>
+    <div class="applyType">
+        <a class="ui-button ui-button-L ui-button-yellow j_applyLink" href="./apply.jsp?level=3">实体店代理</a>
+        <p class="green">要求有实体店铺</p>
+    </div>
+</div>
+</script>
 
 <script>
 	var GlobalData = {

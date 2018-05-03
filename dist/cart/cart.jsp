@@ -121,7 +121,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
             <h3 class="tc">总价</h3>
             <ul class="pure-g ui-form ui-form-L">
                 <li class="pure-u-1-2 item">
-                    <p>输入优惠码，还可以再优惠10%<span class="icon icon-question"></span></p>
+                    <p>输入优惠码，结算价可获得优惠<span class="icon icon-question j_showCouponTip"></span></p>
                     <div class="ui-form-item">
                         <input class="ui-input coupon" placeholder="优惠码"/>
                     </div>
@@ -222,6 +222,14 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
     <a class="ui-button ui-button-green ui-button-XL disable" id="j_cancelUpdate">取消修改</a>
     <a class="ui-button ui-button-yellow ui-button-XL" id="j_updateCartItem">确认修改</a>
 </div>
+</script>
+<script type="text/html" id="couponTipTpl">
+    <div class="couponTipPop">
+    <strong>什么是优惠码？</strong>
+    <p>用户订单产品时，输入优惠码结算，结算价可获得优惠。</p>
+    <strong>如何获得优惠码？</strong>
+    <p>您可以从我们的个人、网店、实体店合作伙伴处获得优惠码，也可以在首次订购产品成功后，申请成为我们的合作伙伴，即可获得优惠码。</p>
+    </div>
 </script>
 
 <script>

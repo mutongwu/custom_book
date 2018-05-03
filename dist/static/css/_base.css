@@ -477,6 +477,16 @@ p.txt{text-indent: 2em;line-height: 1.8;}
       z-index: 1;
       opacity: 1;
     }
+    .uploading{
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top:0;
+      left:0;
+      z-index: 5;
+      background:url('//www.sy111.com/book/static/images/loading.gif') 50% 50% no-repeat rgba(255,255,255,0.5);
+    }
   }
 }
 .ui-form-label em {
