@@ -15,10 +15,10 @@
 		    	<p>我们为您提供精致的礼品包装</p>
 		    	<div class="giftBox">
 		    		<div class="fieldItem">
-		    			<label><input type="radio" name="gift" value="1" checked />需要加礼品包装:5元</label>
+		    			<label><input type="radio" name="gift" value="1"  class="j_isPacking"/>需要加礼品包装:5元</label>
 		    		</div>
 		    		<div class="fieldItem">
-		    			<label><input type="radio" name="gift" value="0"/>不需要礼品包装</label>
+		    			<label><input type="radio" name="gift" value="0" checked class="j_isPacking"/>不需要礼品包装</label>
 		    		</div>
 		    	</div>
 		    </li>

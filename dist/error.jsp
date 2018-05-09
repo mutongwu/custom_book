@@ -104,7 +104,7 @@
 		"userId" : "${userId}",
 		"type":"${userMap.role}",
 		"attachmentId":"${userMap.attachmentId}",
-		"username":"${userMap.username}",
+		"userName":"${userMap.userName}",
 		"email":"${userMap.email}",
 		"nickname":"${userMap.nickname}",
 		"mobile":"${userMap.mobile}"
@@ -116,7 +116,7 @@
         function handleRes(json){
             App.User = json;
             var $box = $('#j_topNav .j_userInfo');
-            $box.find('.j_userName').text(json.username || json.nickname || json.email || json.mobile || '书友会员');
+            $box.find('.j_userName').text(json.userName || json.nickname || json.email || json.mobile || '书友会员');
 
             json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
             $box.removeClass('noLogin');

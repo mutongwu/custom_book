@@ -166,7 +166,7 @@ $(function(){
 	}).on('click','.j_showCouponTip',function(){
 		new App.LightBox({
 			type:'alert',
-			title: '优惠券说明',
+			title: '优惠码说明',
 			msg: template('couponTipTpl',{}),
 			msgType:'none',
 			timeout:null
@@ -216,6 +216,7 @@ $(function(){
 			// 	v:  currCart.storyId
 			// });
 			this.$box.find('.ui-textarea').val(currCart.message);
+			this.$box.find('.j_isPacking').filter('[value="'+ currCart.isPacking +'"]').click();
 			this.initEvent();
 		},
 		saveItem:function(){
@@ -236,6 +237,9 @@ $(function(){
 			}).done(function(res){
 				App.tip(res && res.message || '商品修改成功！');
 				self.destroy();
+				setTimeout(function(){
+					location.reload();
+				},200);
 			}).fail(function(res){
 				App.tip(res && res.message, 'error');
 			});

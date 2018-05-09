@@ -84,7 +84,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") != null){
             <form class="ui-form registerForm tl">
                 <div class="ui-tab">
                     <ul class="cf">
-                        <li class="tabItem active" type="phone"><a href="javascript:;">手机注册</a></li>
+                        <li class="tabItem active" type="mobile"><a href="javascript:;">手机注册</a></li>
                         <li class="tabItem" type="email"><a href="javascript:;">邮箱注册</a></li>
                     </ul>
                 </div>
@@ -173,7 +173,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") != null){
 		"userId" : "${userId}",
 		"type":"${userMap.role}",
 		"attachmentId":"${userMap.attachmentId}",
-		"username":"${userMap.username}",
+		"userName":"${userMap.userName}",
 		"email":"${userMap.email}",
 		"nickname":"${userMap.nickname}",
 		"mobile":"${userMap.mobile}"
@@ -185,7 +185,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") != null){
         function handleRes(json){
             App.User = json;
             var $box = $('#j_topNav .j_userInfo');
-            $box.find('.j_userName').text(json.username || json.nickname || json.email || json.mobile || '书友会员');
+            $box.find('.j_userName').text(json.userName || json.nickname || json.email || json.mobile || '书友会员');
 
             json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
             $box.removeClass('noLogin');

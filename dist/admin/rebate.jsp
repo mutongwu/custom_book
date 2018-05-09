@@ -141,7 +141,9 @@
 <tr data-id="{{item.rebateDetailId}}">
     <td>{{item.rebateDetailId}}</td>
     <td>{{item.orderNo}}</td>
-    <td>{{item.userId}}</td>
+    <td>
+        <p><a href="./memberdetail.jsp?userId={{item.userId}}" target="_blank">{{item.userId}}</a></p>
+    </td>
     <td>{{dateFormat(item.statementTime)}}</td>
     <td>
         <strong class="price">{{priceFormat(item.rebateAmount)}}</strong> 元
@@ -170,7 +172,7 @@
 		"userId" : "${userId}",
 		"type":"${userMap.role}",
 		"attachmentId":"${userMap.attachmentId}",
-		"username":"${userMap.username}",
+		"userName":"${userMap.userName}",
 		"email":"${userMap.email}",
 		"nickname":"${userMap.nickname}",
 		"mobile":"${userMap.mobile}"

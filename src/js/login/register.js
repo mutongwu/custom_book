@@ -6,20 +6,22 @@ $(function(){
     });
     
     var Constants = {
-    	phone:{
+    	mobile:{
     		api: 'user.mobileRegiste',
     		codeApi: 'user.getSmsCode',
     		tip: '验证码已发送，请留意您的手机短信',
-    		el: '.j_phone'
+    		el: '.j_phone',
+			checkApi: 'user.isMobileExists'
     	},
 		email:{
     		api: 'user.emailRegiste',
     		codeApi: 'user.getEmailCode',
     		tip: '验证码已发送，请前往您的邮箱查阅',
-    		el: '.j_email'
+    		el: '.j_email',
+			checkApi: 'user.isEmailExists'
     	}
     };
-    var registerType = 'phone';
+    var registerType = 'mobile';
     // 注册
     function registerByType(type){
     	var result = validator.validate();
@@ -29,7 +31,7 @@ $(function(){
     			return;
     		}
     		result['call'] = Constants[type].api;
-			if(type === 'phone'){
+			if(type === 'mobile'){
 				delete result.email;
 			}else{
 				delete result.mobile;
@@ -47,7 +49,7 @@ $(function(){
     	}
     }
     function countdown($btn){
-    	var n = registerType === 'phone'? 60 : 30;
+    	var n = registerType === 'mobile'? 60 : 30;
     	function setTxt(){
 			if(n > 1){
 				$btn.html('请等待' + n + '秒再获取');
@@ -68,22 +70,41 @@ $(function(){
     	var $el = $form.find( Constants[registerType].el );
     	var result = validator.validateField($el[0]);
     	if(result === true){
-    		$btn.addClass('disable');
-    		var timer = countdown($btn);
-    		var params = {
-				'call': Constants[registerType].codeApi
-			};
-			params[$el.attr('name')] = $el.val();
-    		App.ajax({
-    			'data': params,
-    			'method': 'POST'
-    		}).done(function(json){
-    			App.tip(Constants[registerType].tip);
-    			$form.find('.j_verificationId').val(json.verificationId);
-    		}).fail(function(res){
-    			App.tip(res && res.message,'error');
-    			clearTimer(timer, $btn);
-    		});
+			var checkParam = {
+				'call': Constants[registerType].checkApi
+			}
+			checkParam[registerType] =  $el.val();;
+			App.onceAjax({
+				data: checkParam
+			}).done(function(res){
+				if(res == true){
+					App.alert('此手机已注册账号，请去取回密码进行登录。',function(){
+						App.linkTo('/login/findPwd.jsp');
+					});
+				}
+				return false;
+			}).fail(function(res){
+				App.tip(res && res.message,'error');
+			}).then(function(isExist){
+				if(isExist === false){
+					$btn.addClass('disable');
+					var timer = countdown($btn);
+					var params = {
+						'call': Constants[registerType].codeApi
+					};
+					params[registerType] = $el.val();
+					App.ajax({
+						'data': params,
+						'method': 'POST'
+					}).done(function(json){
+						App.tip(Constants[registerType].tip);
+						$form.find('.j_verificationId').val(json.verificationId);
+					}).fail(function(res){
+						App.tip(res && res.message,'error');
+						clearTimer(timer, $btn);
+					});
+				}
+			});
     	}else{
     		validator.setInvalid($el[0], result);
     	}

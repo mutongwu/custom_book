@@ -41,7 +41,7 @@ $(function(){
             'call': 'address.getDefaultAddressByUserId'
         }
     }).always(function(res){
-        initForm(res.data);
+        initForm(res);
     });
 
   	$page.on('click', '#j_submit',function(){

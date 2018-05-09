@@ -15,7 +15,7 @@
             <form class="ui-form registerForm tl">
                 <div class="ui-tab">
                     <ul class="cf">
-                        <li class="tabItem active" type="phone"><a href="javascript:;">手机注册</a></li>
+                        <li class="tabItem active" type="mobile"><a href="javascript:;">手机注册</a></li>
                         <li class="tabItem" type="email"><a href="javascript:;">邮箱注册</a></li>
                     </ul>
                 </div>

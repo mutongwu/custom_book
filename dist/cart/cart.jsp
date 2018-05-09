@@ -103,7 +103,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                         <select class="ui-select"  name="city" required label="城市">
                             <option>城市</option>
                         </select>
-                        <select class="ui-select"  name="contry" required label="区县">
+                        <select class="ui-select"  name="county" required label="区县">
                             <option>区县</option>
                         </select>
                         <p class="ui-field-error"></p>
@@ -207,10 +207,10 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 		    	<p>我们为您提供精致的礼品包装</p>
 		    	<div class="giftBox">
 		    		<div class="fieldItem">
-		    			<label><input type="radio" name="gift" value="1" checked />需要加礼品包装:5元</label>
+		    			<label><input type="radio" name="gift" value="1"  class="j_isPacking"/>需要加礼品包装:5元</label>
 		    		</div>
 		    		<div class="fieldItem">
-		    			<label><input type="radio" name="gift" value="0"/>不需要礼品包装</label>
+		    			<label><input type="radio" name="gift" value="0" checked class="j_isPacking"/>不需要礼品包装</label>
 		    		</div>
 		    	</div>
 		    </li>
@@ -238,7 +238,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 		"userId" : "${userId}",
 		"type":"${userMap.role}",
 		"attachmentId":"${userMap.attachmentId}",
-		"username":"${userMap.username}",
+		"userName":"${userMap.userName}",
 		"email":"${userMap.email}",
 		"nickname":"${userMap.nickname}",
 		"mobile":"${userMap.mobile}"
@@ -250,7 +250,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
         function handleRes(json){
             App.User = json;
             var $box = $('#j_topNav .j_userInfo');
-            $box.find('.j_userName').text(json.username || json.nickname || json.email || json.mobile || '书友会员');
+            $box.find('.j_userName').text(json.userName || json.nickname || json.email || json.mobile || '书友会员');
 
             json.attachmentId && $box.find('.j_headPic').attr('src', '/book/u/s.do?attachmentId=' + json.attachmentId);
             $box.removeClass('noLogin');

@@ -118,7 +118,7 @@
 {{each list as item}}
 <tr data-id="{{item.userId}}">
     <td>
-        {{item.userId}}
+        <p><a href="./memberdetail.jsp?userId={{item.userId}}" target="_blank">{{item.userId}}</a></p>
     </td>
     <td>
         {{item.userName}}

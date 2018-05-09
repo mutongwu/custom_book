@@ -26,7 +26,7 @@ $(function(){
     });
 	function initForm(user){
 		user.attachmentId && $form.find('.j_headPic').attr('src', '@ROOT_PATH/u/s.do?attachmentId=' + user.attachmentId);
-		$form.find('.j_uname').text(user.name);
+		$form.find('.j_uname').text(GlobalData.userName);
 		for(var p in user){
 			var el = $form.find('[name="'+p+'"]');
 			if(user[p] && el.length){

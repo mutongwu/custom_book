@@ -162,7 +162,7 @@
         <a href="./agencydetail.jsp?partnerInfoId={{item.partnerInfoId}}" target="_blank">{{item.partnerInfoId}}</a>
     </td>
     <td>
-        <a>{{item.userId}}</a>
+        <p><a href="./memberdetail.jsp?userId={{item.userId}}" target="_blank">{{item.userId}}</a></p>
     </td>
     <td>
         {{item.name}}
@@ -221,7 +221,7 @@
 		"userId" : "${userId}",
 		"type":"${userMap.role}",
 		"attachmentId":"${userMap.attachmentId}",
-		"username":"${userMap.username}",
+		"userName":"${userMap.userName}",
 		"email":"${userMap.email}",
 		"nickname":"${userMap.nickname}",
 		"mobile":"${userMap.mobile}"

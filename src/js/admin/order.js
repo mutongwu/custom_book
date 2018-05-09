@@ -186,7 +186,7 @@ $(function(){
 				'orderId': orderId
 			}
 		}).done(function(json){
-			sendGoods(orderId, json);
+			sendGoods(orderId, json || {});
 		}).fail(function(res){
 			App.tip(res && res.message, 'error');
 		});

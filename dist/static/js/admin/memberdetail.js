@@ -1,0 +1,1 @@
+$(function(){function e(){return App.ajax({data:{call:"admin.getUserVoAndUserInfoVo",userId:a.userId}})}var r=$(".adminUserDetailCnt"),a=App.params();e().done(function(e){e?r.find(".userDetailBox").html(template("userTpl",e)):App.tip(e&&e.message,"error")}).fail(function(e){App.tip(e&&e.message,"error")})});

@@ -43,9 +43,9 @@
 </div>
 <!-- END:公共顶部 -->
 
-    <div class="container  agencyCnt adminAgencyDetailCnt">
-        <h1 class="tc">合作伙伴申请资料</h1>
-        <div class="agencyBox tc">
+    <div class="container  adminUserDetailCnt">
+        <h1 class="tc">用户信息详情</h1>
+        <div class="userDetailBox tc">
             
         </div>
     </div><!-- END container-->
@@ -65,118 +65,119 @@
     </div>
 </div>
 </div>
-<script type="text/html" id="agencyTpl">
-<form class="ui-form agencyInfoForm tl">
-    <div class="ui-form-item">
-        <label class="ui-form-label">代理类型：</label>
-        <div class="ui-form-group">
-            <strong class="red">
-                {{if partnerInfoVo.level == 1}}
-                    个人代理
-                {{else if partnerInfoVo.level == 2}}
-                    网店代理
-                {{else if partnerInfoVo.level == 3}}
-                    实体店代理
-                {{/if}}
-            </strong>
-        </div>
-    </div>
-    <p class="sectionTitle">合作伙伴信息：</p>
-    {{if partnerInfoVo.level == 1}}
-    <div class="ui-form-item">
-        <label class="ui-form-label">代理人姓名：</label>
-        <div class="ui-form-group">
-            <p class="ui-text">{{partnerInfoVo.name}}</p>
-        </div>
-    </div>
-    <div class="ui-form-item">
-        <label class="ui-form-label">代理人地址：</label>
-        <div class="ui-form-group">
-            <p class="ui-text">{{partnerInfoVo.province}}{{partnerInfoVo.city}}{{partnerInfoVo.county}}{{partnerInfoVo.address}}</p>
-        </div>
-    </div>
-    {{else}}
+<script type="text/html" id="userTpl">
 
+<form class="ui-form userDetailForm  pure-g tl">
+<div class="pure-u-1-3">
     <div class="ui-form-item">
-        <label class="ui-form-label">店铺名称：</label>
+        <label class="ui-form-label">用户ID：</label>
         <div class="ui-form-group">
-            <p class="ui-text">{{partnerInfoVo.name}}</p>
+            <p class="ui-text">{{userVo.userId}}</p>
+        </div>
+    </div>
+</div>
+<div class="pure-u-1-3">    
+    <div class="ui-form-item">
+        <label class="ui-form-label">用户名：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{userVo.userName}}</p>
+        </div>
+    </div>
+</div>    
+
+<div class="pure-u-1-3">    
+    <div class="ui-form-item">
+        <label class="ui-form-label">角色：</label>
+        <div class="ui-form-group">
+            {{if userVo.role == 0}}
+            <p class="ui-text green">普通会员</p>
+            {{else}}
+            <p class="ui-text yellow">管理员</p>
+            {{/if}}
+        </div>
+    </div>
+</div>    
+
+<div class="pure-u-1-3">    
+    <div class="ui-form-item">
+        <label class="ui-form-label">状态：</label>
+        <div class="ui-form-group">
+            {{if userVo.status == 0}}
+            <p class="ui-text red">无效</p>
+            {{else}}
+            <p class="ui-text green">有效</p>
+            {{/if}}
+        </div>
+    </div>
+</div>     
+
+<div class="pure-u-1-3">       
+    <div class="ui-form-item">
+        <label class="ui-form-label">邮箱：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{userVo.email}}</p>
+        </div>
+    </div>
+</div>    
+<div class="pure-u-1-3">        
+    <div class="ui-form-item">
+        <label class="ui-form-label">手机：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{userVo.mobile}}</p>
+        </div>
+    </div>
+</div>    
+<div class="pure-u-1-3">        
+    <div class="ui-form-item">
+        <label class="ui-form-label">性别：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{userVo.gender == '1'? '男':'女'}}</p>
+        </div>
+    </div>
+</div>    
+<div class="pure-u-1-3">        
+    <div class="ui-form-item">
+        <label class="ui-form-label">头像：</label>
+        <div class="ui-form-group">
+            <p class="ui-text"> <img src="/book/u/s.do?attachmentId={{userInfoVo.attachmentId}}" class="pic"/></p>
+        </div>
+    </div>
+</div>    
+<div class="pure-u-1-3">        
+    <div class="ui-form-item">
+        <label class="ui-form-label">地址：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{userInfoVo.province}}{{userInfoVo.city}}{{userInfoVo.county}}{{userInfoVo.address}}</p>
+        </div>
+    </div>
+</div>    
+<div class="pure-u-1-3">        
+    <div class="ui-form-item">
+        <label class="ui-form-label">昵称：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{userInfoVo.nickname}}</p>
+        </div>
+    </div>
+</div>    
+<div class="pure-u-1-3">        
+    <div class="ui-form-item">
+        <label class="ui-form-label">个性签名：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{userInfoVo.signature}}</p>
         </div>
     </div>
 
+</div>    
+<div class="pure-u-1-3">        
     <div class="ui-form-item">
-        <label class="ui-form-label">店铺地址：</label>
+        <label class="ui-form-label">注册来源：</label>
         <div class="ui-form-group">
-            <p class="ui-text">{{partnerInfoVo.province}}{{partnerInfoVo.city}}{{partnerInfoVo.county}}{{partnerInfoVo.address}}</p>
+            <p class="ui-text">{{userInfoVo.source}}</p>
         </div>
-    </div>
-    <div class="ui-form-item">
-        <label class="ui-form-label">网店地址：</label>
-        <div class="ui-form-group">
-            <p class="ui-text">{{partnerInfoVo.shopURL}}</p>
-        </div>
-    </div>                
-    <div class="ui-form-item">
-        <label class="ui-form-label">官网地址：</label>
-        <div class="ui-form-group">
-            <p class="ui-text">{{partnerInfoVo.webSiteURL}}</p>
-        </div>
-    </div>
-    
-    <div class="ui-form-item">
-        <label class="ui-form-label">店铺资料：</label>
-        <div class="ui-form-group">
-            <p class="ui-text">
-                {{each picInfoVoList }}
-                    <img src="/book/u/s.do?attachmentId={{$value.attachmentId}}" class="pic"/>
-                {{/each}}
-            </p>
-        </div>
-    </div>
+    </div>    
 
-    {{/if}}
-    <p class="sectionTitle">联系人信息：</p>
-    <div class="j_contactBox">
-            
-        <div class="ui-form-item">
-            <label class="ui-form-label">联系人姓名：</label>
-            <div class="ui-form-group">
-                <p class="ui-text">{{partnerInfoVo.contact}}</p>
-            </div>
-        </div>
-        <div class="ui-form-item">
-            <label class="ui-form-label">联系人地址：</label>
-            <div class="ui-form-group">
-                <p class="ui-text">{{partnerInfoVo.contactProvince}}{{partnerInfoVo.contactCity}}
-                    {{partnerInfoVo.contactCounty}}{{partnerInfoVo.contactAddress}}</p>
-            </div>
-        </div>
-        <div class="ui-form-item">
-            <label class="ui-form-label">联系手机：</label>
-            <div class="ui-form-group">
-                <p class="ui-text">{{partnerInfoVo.contactMobile}}</p>
-            </div>
-        </div>
-        <div class="ui-form-item">
-            <label class="ui-form-label">联系电话：</label>
-            <div class="ui-form-group">
-                <p class="ui-text">{{partnerInfoVo.contactTelephone}}</p>
-            </div>
-        </div>
-        <div class="ui-form-item">
-            <label class="ui-form-label">联系QQ：</label>
-            <div class="ui-form-group">
-                <p class="ui-text">{{partnerInfoVo.contactQQ}}</p>
-            </div>
-        </div>
-        <div class="ui-form-item">
-            <label class="ui-form-label">联系电子邮箱：</label>
-            <div class="ui-form-group">
-                <p class="ui-text">{{partnerInfoVo.contactEmail}}</p>
-            </div>
-        </div>
-    </div><!--contactBox -->
-</form>
+    </div>        
+</form>    
 </script>
 
 <script>
@@ -223,6 +224,6 @@
         });
     });
 </script>
-<script src="//www.sy111.com/book/static/js/admin/agencydetail.js"></script>
+<script src="//www.sy111.com/book/static/js/admin/memberdetail.js"></script>
 </body>
 </html>

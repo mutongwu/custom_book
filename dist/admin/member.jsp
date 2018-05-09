@@ -165,7 +165,7 @@
 {{each list as item}}
 <tr data-id="{{item.userId}}">
     <td>
-        {{item.userId}}
+        <p><a href="./memberdetail.jsp?userId={{item.userId}}" target="_blank">{{item.userId}}</a></p>
     </td>
     <td>
         {{item.userName}}
@@ -217,7 +217,7 @@
 		"userId" : "${userId}",
 		"type":"${userMap.role}",
 		"attachmentId":"${userMap.attachmentId}",
-		"username":"${userMap.username}",
+		"userName":"${userMap.userName}",
 		"email":"${userMap.email}",
 		"nickname":"${userMap.nickname}",
 		"mobile":"${userMap.mobile}"

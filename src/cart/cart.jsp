@@ -34,7 +34,7 @@
                         <select class="ui-select"  name="city" required label="城市">
                             <option>城市</option>
                         </select>
-                        <select class="ui-select"  name="contry" required label="区县">
+                        <select class="ui-select"  name="county" required label="区县">
                             <option>区县</option>
                         </select>
                         <p class="ui-field-error"></p>

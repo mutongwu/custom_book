@@ -157,7 +157,7 @@
         <a href="./orderdetail.jsp?orderId={{item.orderId}}">{{item.orderNo}}</a>
     </td>
     <td>
-        <p><a>{{item.userId}}</a></p>
+        <p><a href="./memberdetail.jsp?userId={{item.userId}}" target="_blank">{{item.userId}}</a></p>
     </td>
     <td>
         <p>{{item.name}}</p>
@@ -237,7 +237,7 @@
 		"userId" : "${userId}",
 		"type":"${userMap.role}",
 		"attachmentId":"${userMap.attachmentId}",
-		"username":"${userMap.username}",
+		"userName":"${userMap.userName}",
 		"email":"${userMap.email}",
 		"nickname":"${userMap.nickname}",
 		"mobile":"${userMap.mobile}"
