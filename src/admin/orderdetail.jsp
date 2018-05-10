@@ -81,6 +81,7 @@
             <div class="pure-u-7-24">
                 <div class="moreBox">
                     <strong class="price">{{$value.statementPrice | priceFormat}} 元</strong>
+                    <span class="oldPrice">原价:<span class="price">{{$value.originalPrice | priceFormat}}</span> 元</span>
                     {{if $value.isPacking}}
                     <p>带礼品包装</p>
                     {{/if}}

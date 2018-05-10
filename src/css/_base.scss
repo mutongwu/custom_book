@@ -433,6 +433,10 @@ p.txt{text-indent: 2em;line-height: 1.8;}
       margin:50px 0 0;
       .price{color: #dc0e5b;}
       p,a{font-size: 16px;}
+      .oldPrice{
+        font-size:14px;
+        text-decoration: line-through;
+      }
     }
     .delBox{
       position: absolute;

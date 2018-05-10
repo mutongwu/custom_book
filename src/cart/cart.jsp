@@ -54,13 +54,13 @@
                 <li class="pure-u-1-2 item">
                     <p>输入优惠码，结算价可获得优惠<span class="icon icon-question j_showCouponTip"></span></p>
                     <div class="ui-form-item">
-                        <input class="ui-input coupon" placeholder="优惠码"/>
+                        <input class="ui-input coupon j_couponInput" placeholder="优惠码"/>
                     </div>
                 </li>
                 <li class="pure-u-1-2 item j_priceTotal">
-                    <p><label>价格：</label><strong class="j_total">218元</strong></p>
-                    <p><label>优惠：</label><strong class="j_discount">-18元</strong></p>
-                    <p><label>总价：</label><strong class="price j_price">200元</strong></p>
+                    <p><label>价格：</label><strong class="j_total">0元</strong></p>
+                    <p><label>优惠：</label><strong class="j_discount">0元</strong></p>
+                    <p><label>总价：</label><strong class="price j_price">0元</strong></p>
                 </li>
             </ul>
 
@@ -86,7 +86,8 @@
         </div>
         <div class="pure-u-7-24">
             <div class="moreBox">
-                <strong class="price">{{$value.price | priceFormat}} 元</strong>
+                <strong class="price">{{$value.statementPrice | priceFormat}} 元</strong>
+                <span class="oldPrice">原价:<span class="price">{{$value.originalPrice | priceFormat}}</span> 元</span>
                 {{if $value.isPacking}}
                 <p>带礼品包装</p>
                 {{/if}}

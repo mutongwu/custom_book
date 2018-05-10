@@ -4,6 +4,7 @@ $(function(){
 
 	var $page = $('.cartCnt');
 	var $form = $page.find('.j_addressForm');
+	var $box = $page.find('.j_priceTotal');
 	var validator = new App.FormValidator({$form: $form});
 	var cartData = null;
 
@@ -11,20 +12,20 @@ $(function(){
 	function formatRmb(price) {
 	    return (price/100).toFixed(2);
 	}
-	template.helper('priceFormat', formatRmb);
+	// template.helper('priceFormat', formatRmb);
 
 	var totalPrice = 0;
 	var totalDiscount = 0;
 	var payTotal = 0;
 	function calTotalDiscount(json){
 		$.each(json, function(i, item){
-			totalPrice += item.price;
-			totalDiscount += item.originalPrice - item.price;
+			totalPrice += item.statementPrice;
+			totalDiscount += item.originalPrice - item.statementPrice;
 			payTotal += item.statementPrice;
 		});
 	}
 	function updatePrice(){
-		var $box = $page.find('.j_priceTotal');
+		
 		$box.find('.j_total').text(formatRmb(totalPrice));
 		$box.find('.j_discount').text(formatRmb(totalDiscount));
 		$box.find('.j_price').text(formatRmb(payTotal));
@@ -82,6 +83,28 @@ $(function(){
 			App.tip(res && res.message, 'error');
 		});
 	}
+	function updateCouponPrice($el, coupon){
+		App.onceAjax({
+			method:'POST',
+			data:{
+				couponNo:coupon,
+				call:'shopCart.calcShopCartPrice'
+			}
+		}).done(function(json){
+			if(json && json.couponNo){
+				App.tip('优惠码使用成功,总价已更新');
+				
+				$box.find('.j_discount').text(formatRmb(json.originalPrice - json.statementPrice));
+				$box.find('.j_price').text(formatRmb(json.statementPrice));
+			}else{
+				App.tip('无效的优惠码','error');
+				$el.addClass('ui-input-error');
+			}
+		}).fail(function(res){
+			$el.addClass('ui-input-error');
+			App.tip(res && res.message, 'error');
+		});
+	}
 	function getGoodsId(){
 		var str = [];
 		$.each(cartData, function(i,item){
@@ -99,6 +122,7 @@ $(function(){
 			}
 			data.addressId = result.addressId;
 			data.orderGoodsIds  = getGoodsId();
+			data.couponNo = $.trim($('.j_couponInput').val());
 			App.onceAjax({
 				method:'POST',
 				data:data
@@ -171,6 +195,13 @@ $(function(){
 			msgType:'none',
 			timeout:null
 		}).show();
+	}).on('blur','.j_couponInput',function(){
+		var coupon = $.trim(this.value);
+		if(coupon){
+			updateCouponPrice($(this), coupon);
+		}
+	}).on('focus','.j_couponInput',function(){
+		$(this).removeClass('ui-input-error');
 	});
 
 	loadData();

@@ -166,7 +166,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 		    <li class="pure-u-14-24 item">
 		    	<h3>写下你的独特寄语吧</h3>
 		    	<p>我们将印刷在绘本的第2页上</p>
-		    	<textarea class="ui-textarea memo" name="message" maxlength="300" label="寄语"></textarea>
+		    	<textarea required="required" class="ui-textarea memo" name="message" maxlength="300" label="寄语"></textarea>
 		    	<p>只能写300字以内</p>
 		    </li>
 		    <li class="pure-u-10-24 item">

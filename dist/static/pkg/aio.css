@@ -1182,6 +1182,11 @@ p.txt {
   font-size: 16px;
 }
 
+.bookList .bookList-inner .moreBox .oldPrice {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
 .bookList .bookList-inner .delBox {
   position: absolute;
   right: 20px;
