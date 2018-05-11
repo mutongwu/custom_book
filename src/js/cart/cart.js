@@ -232,6 +232,7 @@ $(function(){
 				$cnt: $('#j_bookCnt'),
 				data:  {
 					nameStr: currCart.pinyinName,
+					zhNameStr: currCart.chineseName,
 					opt:{
 						sex: currCart.gender == 1 ? 'boy':'girl',
 						v:  currCart.storyId	

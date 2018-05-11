@@ -2,7 +2,8 @@
 $(function () {
 	var params = App.params();
 	var bookData = {
-		nameStr: '',
+		nameStr: params['py'].toLowerCase(),
+		zhNameStr: params['zh'],
 		opt:{
 			sex: 'boy',// 男孩
 			v: 'v1'	
@@ -14,7 +15,6 @@ $(function () {
 	if(/^(v1|v2|v3)$/.test(params['v'])){
 		bookData.opt.v = RegExp.$1;	
 	}
-	bookData.nameStr = params['py'].toLowerCase();
     var instance = new App.BookFx({
         $cnt: $('#j_bookCnt'),
         data: bookData,

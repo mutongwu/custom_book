@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*!
 Pure v0.6.2
 Copyright 2013 Yahoo!
@@ -1831,6 +1832,77 @@ p.txt {
 .flipBook .flipItem.evenItem .picBox .pic {
   left: auto;
   right: 50%;
+}
+
+.flipBook .flipItem {
+  /*大于10个字符*/
+  /*大于15个字符*/
+  /*大于10个字符*/
+  /*大于15个字符*/
+}
+
+.flipBook .flipItem .childNameBox {
+  position: absolute;
+  top: 40%;
+  left: 4%;
+  width: 100%;
+  line-height: 1;
+  z-index: 1;
+}
+
+.flipBook .flipItem .childNameBox .pyName {
+  font-size: 60px;
+  color: #941313;
+  letter-spacing: 5px;
+  font-family: monospace;
+}
+
+.flipBook .flipItem .childNameBox.L .pyName {
+  font-size: 50px;
+  letter-spacing: 3px;
+}
+
+.flipBook .flipItem .childNameBox.XL .pyName {
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+
+.flipBook .flipItem .childNameBox .zhName {
+  font-size: 70px;
+  color: yellow;
+  letter-spacing: 10px;
+  margin-top: 20px;
+}
+
+.flipBook .flipItem .childNameCoverBox {
+  position: absolute;
+  top: 28%;
+  left: 0%;
+  width: 100%;
+  line-height: 1;
+  z-index: 1;
+}
+
+.flipBook .flipItem .childNameCoverBox .pyName {
+  font-size: 40px;
+  color: #c63d8f;
+  letter-spacing: 5px;
+  font-family: monospace;
+}
+
+.flipBook .flipItem .childNameCoverBox.L .pyName {
+  font-size: 30px;
+  letter-spacing: 2px;
+}
+
+.flipBook .flipItem .childNameCoverBox.XL .pyName {
+  font-size: 24px;
+}
+
+.flipBook .flipItem .childNameCoverBox .zhName {
+  font-size: 24px;
+  color: #9b266d;
+  margin-top: 10px;
 }
 
 .flipBook {

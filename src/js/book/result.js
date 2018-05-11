@@ -9,6 +9,7 @@ $(function () {
             editable: false,
             data: {
                 nameStr: vo.pinyinName,
+                zhNameStr: vo.chineseName,
                 opt:{
                     sex: vo.gender == 1 ? 'boy':'girl',
                     v:  vo.storyId	

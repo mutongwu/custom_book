@@ -158,6 +158,7 @@ App.BookData = initGlobalData();
 	        $cnt: null,
 	        data: {
 	        	nameStr:'',
+				zhNameStr: '',
 	        	opt:{
 	        	}
 	        },
@@ -222,7 +223,32 @@ App.BookData = initGlobalData();
 	        this._initDom();
 	        this._initEvent();
 	        this.start();
+			this.paintName();
 	    },
+		paintName: function(){
+			var $box = this.config.$bookBox;
+			var pyName = this.config.data.nameStrTrim,
+				len = pyName.length,
+				cls = '';
+			if(len > 15){
+				cls = 'XL';
+			}else if(len > 10){
+				cls = 'L';
+			}
+			var nameDom = '<div class="childNameBox tc '+ cls +'">'+
+				'<p class="pyName">' + pyName + '</p>'+
+				'<p class="zhName">'+ this.config.data.zhNameStr +'</p></div>',
+				nameCoverDom = '<div class="childNameCoverBox tc '+ cls +'">'+
+				'<p class="pyName">' + pyName + '</p>'+
+				'<p class="zhName">'+ this.config.data.zhNameStr +'的神奇之旅</p></div>';
+			if(this._isIE()){
+				$box.find('.j_jiewei').eq(0).prepend(nameDom);
+				$box.find('.j_bookCover').eq(1).prepend(nameCoverDom);
+			}else{
+				$box.find('.j_jiewei').eq(0).append(nameDom);
+				$box.find('.j_bookCover').eq(1).append(nameCoverDom);
+			}
+		},
 	    getResult: function(){
 	    	return this.config.data.list;
 	    },
@@ -232,7 +258,7 @@ App.BookData = initGlobalData();
 	    _getBookTpl: function(){
 	    	return this._isIE() ? [
 	    		'        <div class="flipBook j_bookFx">',
-				'            <div class="flipItem j_flipItem">',
+				'            <div class="flipItem j_flipItem j_bookCover">',
 				'				<div class="picBox">',
 				'              		<img src="{{_picBase}}{{_frontEnd.cover}}" class="pic"/>',
 				'            	</div>',
@@ -261,7 +287,7 @@ App.BookData = initGlobalData();
 				// 故事结尾
 				
 				'            {{each _frontEnd.jiewei }}',
-				'            <div class="flipItem j_flipItem">',
+				'            <div class="flipItem j_flipItem {{$index === 0 ? "j_jiewei" : ""}}">',
 				'				<div class="picBox">',
 				'              		<img src="{{_picBase}}{{$value}}" class="pic"/>',
 				'            	</div>',
@@ -276,7 +302,7 @@ App.BookData = initGlobalData();
 				'         </div>',
 	    	].join(''):[
 				'        <div class="Heidelberg-Book with-Spreads j_bookFx">',
-				'            <div class="Heidelberg-Spread">',
+				'            <div class="Heidelberg-Spread j_bookCover">',
 				'              <img src="{{_picBase}}{{_frontEnd.cover}}" />',
 				'            </div>',
 
@@ -296,7 +322,7 @@ App.BookData = initGlobalData();
 				'            {{/each}}',
 
 				'            {{each _frontEnd.jiewei }}',
-				'            <div class="Heidelberg-Spread">',
+				'            <div class="Heidelberg-Spread {{$index ===0 ? "j_jiewei": ""}}">',
 				'              <img src="{{_picBase}}{{$value}}" />',
 				'            </div>',
 				'            {{/each}}',

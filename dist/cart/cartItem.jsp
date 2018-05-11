@@ -254,7 +254,11 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 	
 	var bookData = {
 		nameStr: 'xiaonanhai',
-		sex: 1// 男孩
+		zhNameStr: '小男孩',
+		opt:{
+			sex: 'boy',// 男孩
+			v: 'v1'	
+		}
 	};
 		
 

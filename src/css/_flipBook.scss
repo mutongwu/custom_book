@@ -60,6 +60,68 @@
 			}
 		}
 	}
+	.flipItem{
+		
+		.childNameBox{
+			position: absolute;
+			top: 40%;
+			left: 4%;
+			width: 100%;
+			line-height: 1;
+			z-index: 1;
+		}
+		.childNameBox .pyName{
+			font-size: 60px;
+			color: #941313;
+			letter-spacing: 5px;
+			font-family: monospace;
+		}
+		/*大于10个字符*/
+		.childNameBox.L .pyName{
+			font-size: 50px;
+			letter-spacing: 3px;
+		}
+		/*大于15个字符*/
+		.childNameBox.XL .pyName{
+			font-size: 40px;
+			letter-spacing: 2px;
+		}
+		.childNameBox .zhName{
+			font-size: 70px;
+			color: yellow;
+			letter-spacing: 10px;
+			margin-top:20px;
+		}
+
+		.childNameCoverBox{
+			position: absolute;
+			top: 28%;
+			left: 0%;
+			width: 100%;
+			line-height: 1;
+			z-index: 1;
+		}
+		.childNameCoverBox .pyName{
+			font-size: 40px;
+			color: #c63d8f;
+			letter-spacing: 5px;
+			font-family: monospace;
+		}
+		/*大于10个字符*/
+		.childNameCoverBox.L .pyName{
+			font-size: 30px;
+			letter-spacing: 2px;
+		}
+		/*大于15个字符*/
+		.childNameCoverBox.XL .pyName{
+			font-size: 24px;
+		}
+		.childNameCoverBox .zhName{
+			font-size: 24px;
+			color: #9b266d;
+			margin-top:10px;
+		}
+	}
 }
 .flipBook{
 	perspective: 2200px;
