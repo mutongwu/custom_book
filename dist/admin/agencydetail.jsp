@@ -172,7 +172,7 @@
         <div class="ui-form-item">
             <label class="ui-form-label">联系电子邮箱：</label>
             <div class="ui-form-group">
-                <p class="ui-text">{{partnerInfoVo.contactEmail}}</p>
+                <p class="ui-text">{{partnerInfoVo.contactEMail}}</p>
             </div>
         </div>
     </div><!--contactBox -->

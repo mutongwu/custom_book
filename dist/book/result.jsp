@@ -108,10 +108,12 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 <div class="memoPicBox">
     <div class="bd">
         <ul class="pure-g">
-            <li class="pure-u-14-24 item">
+            <li class="pure-u-12-24 item">
                 <h3>我的寄语</h3>
                 <p>我们将印刷在绘本的第2页上</p>
                 <p class="message">{{item.message}}</p>
+            </li>
+            <li class="pure-u-2-24 item">
             </li>
             <li class="pure-u-10-24 item">
                 <h3>礼品包装：
