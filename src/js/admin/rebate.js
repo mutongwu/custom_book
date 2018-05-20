@@ -119,6 +119,7 @@ $(function(){
 			}).done(function(json){
 				if(json){
 					App.tip('提现操作成功。');
+					reloadData();
 				}
 			}).fail(function(res){
 				App.tip(res && res.message, 'error');

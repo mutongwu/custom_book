@@ -101,7 +101,7 @@ $(function(){
 			timeout:null,
 			confirmFn: function(){
 				var validator = new App.FormValidator({
-					$form: $page.find('.popForm')
+					$form: $('.j_agencyAuditForm')
 				});
 				var result = validator.validate();
 				
@@ -147,7 +147,8 @@ $(function(){
 	}).on('click', '.j_lock',function(){
 		var $tr = $(this).closest('tr');
 		var id = $tr.data('uid');
-		App.confirm('确定终止用户['+ id + ']的合作伙伴关系吗？',function(){
+		var name = decodeURIComponent($tr.data('name'));
+		App.confirm('确定终止代理【<span class="red">'+ name + '</span>】的合作伙伴关系吗？',function(){
 			App.onceAjax({
 				'call': 'admin.discontinuePartnerInfo',
 				'userId':id

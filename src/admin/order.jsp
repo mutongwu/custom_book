@@ -155,7 +155,7 @@
         {{else if [2].indexOf(item.status) !== -1}}
             <input type="button" class="ui-button j_sendGoods" value="发货" />
         {{else if [3].indexOf(item.status) !== -1}}
-            <input type="button" class="ui-button j_sendGoods" value="更改发货单" />
+            <input type="button" class="ui-button j_sendGoods" value="查看/更改物流" />
         {{/if}}
     </td>
 </tr>

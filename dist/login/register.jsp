@@ -113,7 +113,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") != null){
                     <div class="ui-form-item">
                         <label class="ui-form-label">手机号码：</label>
                         <div class="ui-form-group">
-                            <input vtype="phone" required="required" class="ui-input j_phone" name="mobile" placeholder="手机号码"/>
+                            <input vtype="phone" required="required" class="ui-input j_mobile" name="mobile" placeholder="手机号码"/>
                             <span class="tip">仅用于密码找回，不对外公开</span>
                         </div>
                     </div>

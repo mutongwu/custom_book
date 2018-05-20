@@ -93,7 +93,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                     <input type="hidden" name="addressId" />
                     <div class="ui-form-item">
                         <input class="ui-input" class="fl username" placeholder="收货人" required  name="name" maxlength="16" />
-                        <input required="required" vtype="phone" class="ui-input" name="mobile" class="fl phone" placeholder="联系电话"/>
+                        <input required="required" vtype="phone|tel" class="ui-input" name="mobile" class="fl phone" placeholder="联系电话"/>
                         <p class="ui-field-error"></p>
                     </div>
                     <div class="ui-form-item" id="j_distpicker">

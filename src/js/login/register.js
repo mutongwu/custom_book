@@ -115,7 +115,7 @@ $(function(){
         var el = $(this);
         registerType = el.attr('type');
         el.addClass("active").siblings().removeClass("active");
-        $form.find('.j_email,.j_phone').toggleClass('disable');
+        $form.find('.j_email,.j_mobile').toggleClass('disable');
         $form.find('.phoneRegister, .emailRegister').toggleClass("none");
     }).on('click','#j_submit', function(){
     	registerType = $('.ui-tab .tabItem.active').attr('type');

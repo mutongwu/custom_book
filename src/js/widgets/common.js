@@ -267,7 +267,8 @@ App.FormValidator.prototype = {
         maxTxt : '不能大于{0}位'
     },
 
-    PHONE: /^1[3578]\d{9}$/,
+    PHONE: /^1[3456789]\d{9}$/,
+    TEL: /^(0[0-9]{2,3}\-)([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/,
     NUM: /^\d+$/,
     BLANK: /^\s*$/,
     EMAIL: /^[\w\.\-]+@([\w\-]+\.)+[a-zA-Z]+$/,
@@ -319,9 +320,10 @@ App.FormValidator.prototype = {
         }
         var _this = this,
             val = item.value,
+            vtypes = null,
             msg = _this._getLabel(el);
         msg = msg.replace(/^\*/,'').replace(/[:：]$/,'');
-        vtype = el.attr("vtype");
+        vtypes = el.attr("vtype");
         if(el.attr("novalidate")){
             return true;
         }
@@ -340,28 +342,40 @@ App.FormValidator.prototype = {
             if(tmp > 0 && val.length !== tmp){
                 return msg = _this._tmpl(_this.config.vTxt,tmp) + msg;
             }
-
-            if(vtype === "phone" && !_this.PHONE.test(val)){
-                return msg = _this.config.errorTxt + msg;
+            if(vtypes){
+                var isValid = false, reg = null;
+                $.each(vtypes.split('|'),function(i, vtype){
+                    msg = _this.config.errorTxt + msg;
+                    switch(vtype){
+                        case 'phone':
+                            reg = _this.PHONE;break;
+                        case 'num':
+                            reg = _this.NUM;
+                            msg = _this.config.numTxt + msg;
+                            break;
+                        case 'email':
+                            reg = _this.EMAIL;break;
+                        case 'postcode':
+                            reg = _this.POSTCODE;break;
+                        case 'idcard':
+                            reg = _this.IDCARD;break;
+                        case 'passport':
+                            reg = _this.PASSPORT;break;
+                        case 'url':
+                            reg = _this.URL;break;
+                        case 'tel':
+                            reg = _this.TEL;break;
+                        default:
+                            reg = null;
+                    }
+                    if(reg && reg.test(val)){
+                        isValid = true;
+                        return false; // 提前结束循环。
+                    }
+                });
+                return isValid || msg;
             }
-            if(vtype === "num" && !_this.NUM.test(val)){
-                return msg = _this.config.numTxt + msg;
-            }
-            if(vtype === "email" && !_this.EMAIL.test(val)){
-                return msg = _this.config.errorTxt + msg;
-            }
-            if(vtype === "postcode" && !_this.POSTCODE.test(val)){
-                return msg = _this.config.errorTxt + msg;
-            }
-            if(vtype === "idcard" && !_this.IDCARD.test(val)){
-                return msg = _this.config.errorTxt + msg;
-            }
-            if(vtype === "passport" && !_this.PASSPORT.test(val)){
-                return msg = _this.config.errorTxt + msg;
-            }
-            if(vtype === "url" && !_this.URL.test(val)){
-                return msg = _this.config.errorTxt + msg;
-            }
+            
         }
         return true;
     },
@@ -1348,6 +1362,9 @@ function dateFormat(val) {
 }
 template.helper('dateFormat', dateFormat);
 template.helper('priceFormat', formatRmb);
+template.helper('encodeURIComp', function(val){
+    return encodeURIComponent(val);
+});
 App.isLogin = function(){
     return !!(GlobalData.userId || (App.User && App.User.userId));
 };

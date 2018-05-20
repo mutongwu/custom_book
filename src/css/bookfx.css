@@ -179,7 +179,7 @@
   font-size: 60px;
   color: #941313;
   letter-spacing: 5px;
-  font-family: monospace;
+  font-family: "arial";
 }
  /*大于10个字符*/
 .Heidelberg-Page .childNameBox.L .pyName{
@@ -193,6 +193,7 @@
 }
 .Heidelberg-Page .childNameBox .zhName{
   font-size: 70px;
+  font-family: "微软雅黑";
   color: yellow;
   letter-spacing: 10px;
   margin-top:20px;
@@ -206,22 +207,23 @@
   line-height: 1;
 }
 .Heidelberg-Page .childNameCoverBox .pyName{
-  font-size: 40px;
+  font-size: 45px;
   color: #c63d8f;
   letter-spacing: 5px;
-  font-family: monospace;
+  font-family: arial;
 }
  /*大于10个字符*/
 .Heidelberg-Page .childNameCoverBox.L .pyName{
-  font-size: 30px;
+  font-size: 40px;
   letter-spacing: 2px;
 }
  /*大于15个字符*/
 .Heidelberg-Page .childNameCoverBox.XL .pyName{
-  font-size: 24px;
+  font-size: 30px;
 }
 .Heidelberg-Page .childNameCoverBox .zhName{
   font-size: 24px;
   color: #9b266d;
   margin-top:10px;
+  font-family: "微软雅黑";
 }

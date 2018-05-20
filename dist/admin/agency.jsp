@@ -157,7 +157,7 @@
 </div>
 <script type="text/html" id="itemTpl">
 {{each list as item}}
-<tr data-id="{{item.partnerInfoId}}" data-uid="{{item.userId}}">
+<tr data-id="{{item.partnerInfoId}}" data-uid="{{item.userId}}" data-name="{{encodeURIComp(item.name)}}">
     <td>
         <a href="./agencydetail.jsp?partnerInfoId={{item.partnerInfoId}}" target="_blank">{{item.partnerInfoId}}</a>
     </td>
@@ -197,6 +197,8 @@
         {{if item.status == 0}}
             <input type="button" class="ui-button j_accept" value="审核通过" />
             <input type="button" class="ui-button ui-button-yellow j_deny" value="不通过" />
+        {{else if item.status == -1}}
+            <input type="button" class="ui-button j_accept" value="审核通过" />
         {{else if item.status == 1}}
             <input type="button" class="ui-button ui-button-red j_lock" value="停止合作" />
         {{/if}}
@@ -205,7 +207,7 @@
 {{/each}}
 </script>
 <script type="text/html" id="popFormTpl">
-<form class="ui-form popForm">
+<form class="ui-form popForm j_agencyAuditForm">
     <div class="ui-form-item">
         <label class="ui-form-label">审核意见：</label>
         <div class="ui-form-group">

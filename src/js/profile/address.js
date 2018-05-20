@@ -30,7 +30,7 @@ $(function(){
 		        data: result,
 		        method: 'POST'
 		    }).done(function(json){
-		        App.tip( result.addressId ?'用户地址修改成功！': '用户地址添加成功！');
+		        App.tip( result.addressId ?'用户收货地址修改成功！': '用户收货地址添加成功！');
                 $form.find('[name="addressId"]').val(json.addressId);
 		    });
 		}

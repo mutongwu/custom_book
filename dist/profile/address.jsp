@@ -126,9 +126,9 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
                         </div>
                     </div> -->
                     <div class="ui-form-item">
-                        <label class="ui-form-label">联系手机：</label>
+                        <label class="ui-form-label">联系电话：</label>
                         <div class="ui-form-group">
-                            <input  required="required" vtype="phone" class="ui-input" name="mobile" placeholder="联系手机"/>
+                            <input  required="required" vtype="phone|tel" class="ui-input" name="mobile" placeholder="联系手机/固话"/>
                             <p class="ui-field-error"></p>
                         </div>
                     </div>

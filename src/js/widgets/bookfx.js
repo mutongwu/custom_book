@@ -227,7 +227,7 @@ App.BookData = initGlobalData();
 	    },
 		paintName: function(){
 			var $box = this.config.$bookBox;
-			var pyName = this.config.data.nameStrTrim,
+			var pyName = this.config.data.nameStrTrim.toUpperCase(),
 				len = pyName.length,
 				cls = '';
 			if(len > 15){

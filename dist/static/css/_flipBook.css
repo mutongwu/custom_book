@@ -74,7 +74,7 @@
 			font-size: 60px;
 			color: #941313;
 			letter-spacing: 5px;
-			font-family: monospace;
+			font-family: arial;
 		}
 		/*大于10个字符*/
 		.childNameBox.L .pyName{
@@ -91,6 +91,7 @@
 			color: yellow;
 			letter-spacing: 10px;
 			margin-top:20px;
+			font-family: "微软雅黑";
 		}
 
 		.childNameCoverBox{
@@ -102,19 +103,20 @@
 			z-index: 1;
 		}
 		.childNameCoverBox .pyName{
-			font-size: 40px;
+			font-size: 45px;
 			color: #c63d8f;
 			letter-spacing: 5px;
-			font-family: monospace;
+			font-family: arial;
 		}
 		/*大于10个字符*/
 		.childNameCoverBox.L .pyName{
-			font-size: 30px;
+			font-size: 40px;
 			letter-spacing: 2px;
+			font-family: "微软雅黑";
 		}
 		/*大于15个字符*/
 		.childNameCoverBox.XL .pyName{
-			font-size: 24px;
+			font-size: 30px;
 		}
 		.childNameCoverBox .zhName{
 			font-size: 24px;
