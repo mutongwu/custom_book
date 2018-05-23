@@ -1,5 +1,5 @@
 
-.accountCnt,.addressCnt,.modifyPwdCnt{
+.accountCnt,.addressCnt,.modifyPwdCnt,.contactFormCnt{
     width: 1000px;
     .bd{width:650px;margin:0 auto;}
     .ui-form{

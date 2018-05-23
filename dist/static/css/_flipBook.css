@@ -64,7 +64,7 @@
 		
 		.childNameBox{
 			position: absolute;
-			top: 40%;
+			top: 42%;
 			left: 4%;
 			width: 100%;
 			line-height: 1;
@@ -87,10 +87,10 @@
 			letter-spacing: 2px;
 		}
 		.childNameBox .zhName{
-			font-size: 70px;
+			font-size: 65px;
 			color: yellow;
 			letter-spacing: 10px;
-			margin-top:20px;
+			margin-top:15px;
 			font-family: "微软雅黑";
 		}
 

@@ -1,0 +1,1 @@
+$(function(){var n=$(".contactFormCnt"),o=require("modules/contactForm/index");new o({$container:n.find("#j_concactFormBox"),data:{formCls:""}})});

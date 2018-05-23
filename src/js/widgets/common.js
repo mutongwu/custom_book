@@ -343,15 +343,14 @@ App.FormValidator.prototype = {
                 return msg = _this._tmpl(_this.config.vTxt,tmp) + msg;
             }
             if(vtypes){
-                var isValid = false, reg = null;
+                var isValid = false, reg = null, msgArr = [msg], err;
                 $.each(vtypes.split('|'),function(i, vtype){
-                    msg = _this.config.errorTxt + msg;
                     switch(vtype){
                         case 'phone':
                             reg = _this.PHONE;break;
                         case 'num':
                             reg = _this.NUM;
-                            msg = _this.config.numTxt + msg;
+                            err = _this.config.numTxt;
                             break;
                         case 'email':
                             reg = _this.EMAIL;break;
@@ -372,8 +371,12 @@ App.FormValidator.prototype = {
                         isValid = true;
                         return false; // 提前结束循环。
                     }
+                    err = _this.config.errorTxt;
+                    if(msgArr.length === 1){
+                        msgArr.unshift(err)
+                    }
                 });
-                return isValid || msg;
+                return isValid || msgArr.join('');
             }
             
         }

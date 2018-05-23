@@ -82,6 +82,7 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
         <div class="ui-tab">
             <ul class="cf">
                 <li class="tabItem"><a href="./account.jsp">基本资料</a></li>
+                <li class="tabItem"><a href="./contact.jsp">联系方式</a></li>
                 <li class="tabItem "><a href="./address.jsp">收货地址</a></li>
                 <li class="tabItem active"><a href="./pwd.jsp">修改密码</a></li>
             </ul>

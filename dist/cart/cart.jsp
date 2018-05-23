@@ -87,35 +87,45 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
             <a href="/book/index.jsp" class="ui-button ui-button-XL ui-button-yellow moreBtn">马上再订一本</a>
         </div>
         <div class="section addressBox none">
-            <div class="addAddress">
-                <h3 class="tc">填写收货地址</h3>
-                <div class="ui-form ui-form-L j_addressForm">
-                    <input type="hidden" name="addressId" />
-                    <div class="ui-form-item">
-                        <input class="ui-input" class="fl username" placeholder="收货人" required  name="name" maxlength="16" />
-                        <input required="required" vtype="phone|tel" class="ui-input" name="mobile" class="fl phone" placeholder="联系电话"/>
-                        <p class="ui-field-error"></p>
-                    </div>
-                    <div class="ui-form-item" id="j_distpicker">
-                        <select class="ui-select"  name="province" required label="省份">
-                            <option>省份</option>
-                        </select>
-                        <select class="ui-select"  name="city" required label="城市">
-                            <option>城市</option>
-                        </select>
-                        <select class="ui-select"  name="county" required label="区县">
-                            <option>区县</option>
-                        </select>
-                        <p class="ui-field-error"></p>
-                    </div>
-                    <div class="ui-form-item">
-                        <input required class="ui-input address_input" name="address" placeholder="详细地址" maxlength="30"/>
-                    </div>
-                    <div class="btnBox tc">
-                        <input type="button" class="ui-button ui-button-XL ui-button-green j_saveAddress" value="保存" />
+            <div class="pure-g">
+                <div class="pure-u-2-3">
+                    <div class="addAddress">
+                    <h3 class="tc">填写收货地址</h3>
+                    <div class="ui-form ui-form-L j_addressForm">
+                        <input type="hidden" name="addressId" />
+                        <div class="ui-form-item">
+                            <input class="ui-input" class="fl username" placeholder="收货人" required  name="name" maxlength="16" />
+                            <input required="required" vtype="phone|tel" class="ui-input" name="mobile" class="fl phone" placeholder="联系电话"/>
+                            <p class="ui-field-error"></p>
+                        </div>
+                        <div class="ui-form-item" id="j_distpicker">
+                            <select class="ui-select"  name="province" required label="省份">
+                                <option>省份</option>
+                            </select>
+                            <select class="ui-select"  name="city" required label="城市">
+                                <option>城市</option>
+                            </select>
+                            <select class="ui-select"  name="county" required label="区县">
+                                <option>区县</option>
+                            </select>
+                            <p class="ui-field-error"></p>
+                        </div>
+                        <div class="ui-form-item">
+                            <input required class="ui-input address_input" name="address" placeholder="详细地址" maxlength="30"/>
+                        </div>
+                        <div class="btnBox ">
+                            <input type="button" class="ui-button ui-button-XL ui-button-green j_saveAddress" value="保存" />
+                        </div>
                     </div>
                 </div>
-            </div>
+                </div>
+                <div class="pure-u-1-3">
+                    <div class="addAddress contactInfo">
+                        <h3 class="tc">填写联系方式</h3>
+                        <div id="j_contactFormBox"></div>
+                    </div>
+                </div>
+            </div>            
         </div>
         <div class="section priceBox none">
             <h3 class="tc">总价</h3>

@@ -1,6 +1,6 @@
 $(function(){
 	var PhotoUpload = require('/modules/photoUpload/index');
-	// var NameRoleForm = require('/modules/nameRoleForm/index');
+	var ContactForm = require('/modules/contactForm/index');
 
 	var $page = $('.cartCnt');
 	var $form = $page.find('.j_addressForm');
@@ -8,6 +8,13 @@ $(function(){
 	var validator = new App.FormValidator({$form: $form});
 	var cartData = null;
 
+	var contactForm = new ContactForm({
+		$container: $page.find('#j_contactFormBox'),
+		data:{
+			formCls: 'ui-form-L',
+			submitCls: 'ui-button-XL ui-button-green'
+		}
+	});
 
 	function formatRmb(price) {
 	    return (price/100).toFixed(2);
@@ -120,6 +127,9 @@ $(function(){
 				App.tip('请先添加收货地址信息.','error');
 				return;
 			}
+			if(!contactForm.check()){
+				return;
+			}
 			data.addressId = result.addressId;
 			data.orderGoodsIds  = getGoodsId();
 			data.couponNo = $.trim($('.j_couponInput').val());
@@ -136,6 +146,8 @@ $(function(){
 			}).fail(function(res){
 				App.tip(res && res.message, 'error');
 			});
+		}else{
+			App.tip('请先添加收货地址信息.','error');
 		}
 	}
 

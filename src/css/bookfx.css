@@ -170,7 +170,7 @@
 }
 .Heidelberg-Page .childNameBox{
   position: absolute;
-  top: 40%;
+  top: 42%;
   left: 4%;
   width: 46%;
   line-height: 1;
@@ -192,11 +192,11 @@
   letter-spacing: 2px;
 }
 .Heidelberg-Page .childNameBox .zhName{
-  font-size: 70px;
+  font-size: 65px;
   font-family: "微软雅黑";
   color: yellow;
   letter-spacing: 10px;
-  margin-top:20px;
+  margin-top:15px;
 }
 
 .Heidelberg-Page .childNameCoverBox{

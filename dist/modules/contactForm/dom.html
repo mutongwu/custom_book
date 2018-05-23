@@ -1,0 +1,23 @@
+<div class="ui-form contactForm {{formCls}}">
+    <div class="ui-form-item">
+        <label class="ui-form-label">联系电话：</label>
+        <div class="ui-form-group">
+            <input type="text" vtype="phone|tel" maxlength="16"  class="ui-input" name="contactMobile" placeholder="联系电话"/>
+            <p class="ui-field-error"></p>
+        </div>
+    </div>
+    
+    <div class="ui-form-item">
+        <label class="ui-form-label">电子邮箱：</label>
+        <div class="ui-form-group">
+            <input type="text"  vtype="email"   maxlength="32" class="ui-input" name="contactEMail" placeholder="电子邮箱"/>
+            <p class="ui-field-error"></p>
+        </div>
+    </div>
+    <div class="ui-form-item">
+        <label class="ui-form-label">&nbsp;</label>
+        <div class="ui-form-group">
+            <input type="button" class="ui-button ui-button-L j_submitBtn {{submitCls}}" value="保存" />
+        </div>
+    </div>
+</div>
