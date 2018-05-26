@@ -50,9 +50,9 @@
                 <div class="pure-g">
                     <div class="pure-u-1-3">
                         <div class="ui-form-item">
-                            <label class="ui-form-label">合作伙伴：</label>
+                            <label class="ui-form-label">用户ID：</label>
                             <div class="ui-form-group">
-                                <input class="ui-input" name="username" placeholder="合作伙伴"/>
+                                <input class="ui-input" name="userId" placeholder="用户ID"/>
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                 <tr>
                     <th class="tc">序号</th>
                     <th class="tc">订单号</th>
-                    <th class="tc">合作伙伴</th>
+                    <th class="tc">用户ID</th>
                     <th class="tc">返利日期</th>
                     <th class="tc">结算金额</th>
                     <th class="tc">状态</th>

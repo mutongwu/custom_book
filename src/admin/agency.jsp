@@ -112,7 +112,7 @@
 {{each list as item}}
 <tr data-id="{{item.partnerInfoId}}" data-uid="{{item.userId}}" data-name="{{encodeURIComp(item.name)}}">
     <td>
-        <a href="./agencydetail.jsp?partnerInfoId={{item.partnerInfoId}}" target="_blank">{{item.partnerInfoId}}</a>
+        <a href="./agencydetail.jsp?partnerInfoId={{item.partnerInfoId}}&uid={{item.userId}}" target="_blank">{{item.partnerInfoId}}</a>
     </td>
     <td>
         <p><a href="./memberdetail.jsp?userId={{item.userId}}" target="_blank">{{item.userId}}</a></p>

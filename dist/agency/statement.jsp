@@ -77,8 +77,8 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 </div>
 <!-- END:公共顶部 -->
 
-    <div class="container myBankCnt">
-        <h1 class="tc">结算银行</h1>
+    <div class="container statementCnt">
+        <h1 class="tc">结算记录</h1>
     	<div class="tabBox">
             
 <div class="ui-tab mb30">
@@ -91,51 +91,25 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
     </ul>
 </div>
         </div>
-        <div class="bankInfoBox tc">
-            <form class="ui-form bankForm tl">
-                <div class="ui-form-item">
-                    <label class="ui-form-label"><em>*</em>开户行：</label>
-                    <div class="ui-form-group">
-                        <select class="ui-select j_bankSelect" name="source">
-                            <option value="工商银行">工商银行</option>
-                            <option value="农业银行">农业银行</option>
-                            <option value="招商银行">招商银行</option>
-                            <option value="建设银行">建设银行</option>
-                            <option value="中国银行">中国银行</option>
-                            <option value="交通银行">交通银行</option>
-                            <option value="支付宝账号">支付宝账号</option>
-                            <option value="微信账号">微信账号</option>
-                            <option value="">其它</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="ui-form-item j_otherBank none">
-                    <label class="ui-form-label">&nbsp;</label>
-                    <div class="ui-form-group">
-                        <input required maxlength="32" class="ui-input disable" name="other" placeholder="开户行名称" label="开户行名称"/><p class="ui-field-error"></p>
-                    </div>
-                </div>
-                <div class="ui-form-item">
-                    <label class="ui-form-label"><em>*</em>银行账户名称：</label>
-                    <div class="ui-form-group">
-                        <input required class="ui-input" name="name" placeholder="银行账户名称"/>
-                        <p class="ui-field-error"></p>
-                    </div>
-                </div>
-                <div class="ui-form-item">
-                    <label class="ui-form-label"><em>*</em>账号：</label>
-                    <div class="ui-form-group">
-                        <input required class="ui-input" name="accountNumber" placeholder="账号"/>
-                        <p class="ui-field-error"></p>
-                    </div>
-                </div>
-                <div class="ui-form-item">
-                    <label class="ui-form-label">&nbsp;</label>
-                    <div class="ui-form-group">
-                        <input type="button" class="ui-button ui-button-XL ui-button-yellow" value="提交结算银行" id="j_submit" />
-                    </div>
-                </div>
-            </form>
+        <div class="statementBox">
+            <table class="table table-border-vertical">
+                <thead>
+                <tr>
+                    <th class="tc">记录ID</th>
+                    <th class="tc">日期</th>
+                    <th class="tc">开户行</th>
+                    <th class="tc">姓名</th>
+                    <th class="tc">提现金额</th>
+                    <th class="tc">备注</th>
+                    <th class="tc">状态</th>
+                </tr>
+                </thead>
+                <tbody class="j_dataTBody">
+                </tbody>
+            </table>
+            <div class="pageBox" id="j_pageBox">
+
+            </div>
         </div>
     </div><!-- END container-->
 
@@ -154,6 +128,27 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
     </div>
 </div>
 </div>
+<script type="text/html" id="recordTpl">
+{{each data}}
+<tr>
+    <td>
+        {{$value.statementId}}
+    </td>
+    <td>
+        {{dateFormat($value.statementTime)}}
+    </td>
+    <td>{{$value.source}}</td>
+    <td>{{$value.name}}</td>
+    <td>
+        <strong class="price">{{$value.statementAmount}}</strong> 元
+    </td>
+    <td>{{$value.comment}}</td>
+    <td>
+        {{$value._statusTxt}}
+    </td>
+</tr>
+{{/each}}
+</script>
 
 <script>
 	var GlobalData = {
@@ -202,6 +197,6 @@ if (DEBUG.equals("") && request.getAttribute("userId") == null){
 		}
 	})
 </script>
-<script src="//www.sy111.com/book/static/js/agency/mybank.js"></script>
+<script src="//www.sy111.com/book/static/js/agency/statement.js"></script>
 </body>
 </html>

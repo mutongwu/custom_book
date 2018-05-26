@@ -13,13 +13,17 @@
         <h1 class="tc">合作伙伴申请资料</h1>
         <div class="agencyBox tc">
             
+            <form class="ui-form agencyInfoForm tl">
+                <div class="j_agencySection"></div>
+                <div class="j_agencyAccountSection"></div>
+                
+            </form>
         </div>
     </div><!-- END container-->
 
     <link rel="import" href="../pub/copyright.jsp?__inline">
 </div>
 <script type="text/html" id="agencyTpl">
-<form class="ui-form agencyInfoForm tl">
     <div class="ui-form-item">
         <label class="ui-form-label">代理类型：</label>
         <div class="ui-form-group">
@@ -129,7 +133,29 @@
             </div>
         </div>
     </div><!--contactBox -->
-</form>
+</script>
+<script type="text/html" id="agencyAccountTpl">
+<p class="sectionTitle">银行信息：</p>
+<div>    
+    <div class="ui-form-item">
+        <label class="ui-form-label">开户行：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{source}}</p>
+        </div>
+    </div>
+    <div class="ui-form-item">
+        <label class="ui-form-label">账户：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{accountNumber}}</p>
+        </div>
+    </div>
+    <div class="ui-form-item">
+        <label class="ui-form-label">姓名：</label>
+        <div class="ui-form-group">
+            <p class="ui-text">{{name}}</p>
+        </div>
+    </div>
+<div>
 </script>
 <script src="../js/admin/agencydetail.js"></script>
 </body>

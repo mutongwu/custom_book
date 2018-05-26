@@ -1722,7 +1722,7 @@ p.txt {
   border-top: 1px solid #ccc;
 }
 
-.recordCnt {
+.recordCnt, .statementCnt {
   width: 980px;
 }
 

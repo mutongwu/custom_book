@@ -72,6 +72,7 @@ ContactForm.prototype = {
         }
     },
     save: function(){
+        var _this = this;
         var result = this.validate();
         if(result){
             delete this.userInfo.updateTime;

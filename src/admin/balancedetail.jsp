@@ -10,46 +10,52 @@
     <link rel="import" href="../pub/admin/top.jsp?__inline">
 
     <div class="container  adminBalanceDetailCnt">
-        <h1 class="tc">新增汇款记录</h1>
+        <h1 class="tc">更新结算记录</h1>
         <div class="balanceBox tc">
             <form class="ui-form balanceForm tl">
                 <div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>汇款日期：</label>
                     <div class="ui-form-group">
-                        <input required="required" class="ui-input j_date" name="date" placeholder="汇款日期"   />
+                        <input required="required" class="ui-input j_date" name="statementTime" placeholder="汇款日期"   />
                             <p class="ui-field-error"></p>
                     </div>
                 </div>
                 <div class="ui-form-item">
-                    <label class="ui-form-label"><em>*</em>合作伙伴：</label>
+                    <label class="ui-form-label"><em>*</em>合作伙伴用户ID：</label>
                     <div class="ui-form-group">
-                        <input  required="required" class="ui-input" name="shopurl" placeholder="合作伙伴"   />
+                        <input  required="required" vtype="num" class="ui-input j_userId" name="userId" placeholder="请输入用户ID"   />
+                            <p class="ui-field-error"></p>
+                    </div>
+                </div>
+              
+                <div class="ui-form-item">
+                    <label class="ui-form-label"><em>*</em>开户银行：</label>
+                    <div class="ui-form-group">
+                        <input  required="required" class="ui-input" name="source" placeholder="开户银行"   />
+                            <p class="ui-field-error"></p>
+                    </div>
+                </div>
+                <div class="ui-form-item">
+                    <label class="ui-form-label"><em>*</em>账户：</label>
+                    <div class="ui-form-group">
+                        <input  required="required" class="ui-input" name="accountNumber" placeholder="账户"   />
                             <p class="ui-field-error"></p>
                     </div>
                 </div>
                 <div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>收款人：</label>
                     <div class="ui-form-group">
-                        <input  required="required" class="ui-input" name="site" placeholder="收款人"   />
+                        <input  required="required" class="ui-input" name="name" placeholder="收款人"   />
                             <p class="ui-field-error"></p>
                     </div>
                 </div>
-               
-                <div class="ui-form-item">
-                    <label class="ui-form-label"><em>*</em>汇入银行：</label>
-                    <div class="ui-form-group">
-                        <input  required="required" class="ui-input" name="bank" placeholder="收款人"   />
-                            <p class="ui-field-error"></p>
-                    </div>
-                </div>
-                
-                <div class="ui-form-item">
+                <!--<div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>汇款金额：</label>
                     <div class="ui-form-group">
-                        <input  required="required" type="number" class="ui-input" name="account" placeholder="汇款金额"   />
+                        <input  required="required" type="number" class="ui-input" name="amount" placeholder="汇款金额"   />
                             <p class="ui-field-error"></p>
                     </div>
-                </div>
+                </div>-->
                 <div class="ui-form-item">
                     <label class="ui-form-label">&nbsp;</label>
                     <div class="ui-form-group">

@@ -11,3 +11,11 @@
 .userDetailBox .pic {
   width: 200px;
 }
+
+.adminBalanceDetailCnt .ui-form .ui-form-label {
+  width: 120px;
+}
+
+.adminBalanceDetailCnt .ui-form .ui-form-group {
+  margin-left: 130px;
+}

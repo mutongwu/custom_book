@@ -697,7 +697,6 @@ App.DatePicker = function DatePicker(cfg){
 
         elWidth: 0,           //控件的宽度
         elHeight: 0,          //控件的高度
-
         domEl: null
 
     });
@@ -730,7 +729,9 @@ $.extend(App.DatePicker.prototype,{
         beforeEl: null,
 
         //关联大于值元素。则控件日期将大于该元素值。
-        afterEl: null
+        afterEl: null,
+
+        onUpdate:null
     },
 
 
@@ -969,6 +970,7 @@ $.extend(App.DatePicker.prototype,{
                 this.config.el.val(App.Format.fmDate(val,this.config.format));
             }
         }
+        this.config.onUpdate && this.config.onUpdate.call(this, this.config.el.val());
     },
 
     calPosition: function(){

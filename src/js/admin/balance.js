@@ -1,9 +1,9 @@
 $(function(){
-	var memberStatusData = {
-		'0':'有效',
-		'1':'无效'
+	var balanceStatusData = {
+		'0':'结算中',
+		'1':'已结算'
 	};
-
+	var jsonList = null;
 	var $page = $('.adminBalanceCnt');
 	var validator = new App.FormValidator({
 		$form: $page.find('.queryForm')
@@ -42,6 +42,10 @@ $(function(){
 			data:params
 		}).done(function(json){
 			if(json && json.list  && json.list.length){
+				jsonList = json.list;
+				$.each(json.list, function(i, item){
+					item._statusTxt = balanceStatusData[item.status + ""];
+				});
 				$page.find('.j_tbdBox').html(template('itemTpl', json));
 				initPageBar(json, params);
 			}else{
@@ -54,10 +58,10 @@ $(function(){
 	}
 	function initStatusSelect(){
 		var str = '';
-		$.each(memberStatusData, function(key, val){
+		$.each(balanceStatusData, function(key, val){
 			str += '<option value="'+key+'">'+val+'</option>';
 		});
-		$page.find('.j_memberStatusSel').append(str);
+		$page.find('.j_balanceStatusSel').append(str);
 	}
 	function initDatePicker(){
 		var $begin = $page.find('.j_beginTime');
@@ -99,7 +103,11 @@ $(function(){
 		}
 		loadData($.extend({},defaultParams,filterEmpty(result)));
 		resetPager();
+	}).on('click','.j_accept', function(){
+		var idx = $(this).closest('tr').data('idx');
+		sessionStorage.setItem('BALANCE_DETAIL', JSON.stringify(jsonList[idx]));
+		location.href = './balancedetail.jsp';
 	});
 	initDatePicker();
-	// initStatusSelect();
+	initStatusSelect();
 })
