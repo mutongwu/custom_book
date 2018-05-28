@@ -95,7 +95,7 @@ $(function(){
     }
     function initData(detail){
 
-        initDatePicker(detail.statementTime);
+        // initDatePicker(detail.statementTime);
         fillForm(detail);
     }
 

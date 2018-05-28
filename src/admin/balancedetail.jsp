@@ -13,13 +13,13 @@
         <h1 class="tc">更新结算记录</h1>
         <div class="balanceBox tc">
             <form class="ui-form balanceForm tl">
-                <div class="ui-form-item">
+                <!--<div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>汇款日期：</label>
                     <div class="ui-form-group">
                         <input required="required" class="ui-input j_date" name="statementTime" placeholder="汇款日期"   />
                             <p class="ui-field-error"></p>
                     </div>
-                </div>
+                </div>-->
                 <div class="ui-form-item">
                     <label class="ui-form-label"><em>*</em>合作伙伴用户ID：</label>
                     <div class="ui-form-group">
