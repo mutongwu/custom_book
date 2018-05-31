@@ -97,7 +97,10 @@
     <td>
         <p><a href="./memberdetail.jsp?userId={{item.userId}}" target="_blank">{{item.userId}}</a></p>
     </td>
-    <td>{{dateFormat(item.statementTime)}}</td>
+    <td>{{if item.rebateTime}}
+            {{dateFormat(item.rebateTime)}}
+        {{/if}}
+    </td>
     <td>
         <strong class="price">{{priceFormat(item.rebateAmount)}}</strong> 元
     </td>
